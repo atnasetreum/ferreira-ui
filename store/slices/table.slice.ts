@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "..";
-import { Table } from "../../ts/interfaces";
+
+interface Table {
+  id: number;
+}
 
 const initialState: Table[] = [];
 

@@ -85,3 +85,5 @@ export const SecondaryListItems = () => {
     </React.Fragment>
   );
 };
+
+export default MainListItems;
