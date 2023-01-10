@@ -6,7 +6,6 @@
 .pnp.js
 .env.development
 .env.production
-.env.production2
 
 # testing
 /coverage
