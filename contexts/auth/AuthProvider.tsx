@@ -44,9 +44,10 @@ export const AuthProvider: FC<Props> = ({ children }) => {
     dispatch({ type: "[Auth] - Logout" });
     dispatchRedux(setTables([]));
     Cookies.remove("token");
-    if (router.pathname !== "/") {
-      window.location.replace("/");
-    }
+    console.log("token", Cookies.get("token"));
+    // if (router.pathname !== "/") {
+    //   window.location.replace("/");
+    // }
   };
 
   const checkToken = async () => {
