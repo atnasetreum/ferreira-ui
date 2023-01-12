@@ -65,7 +65,7 @@ function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Ferreira Inc.
+            Ferreira Enterprise.
           </Typography>
           <Box
             component="form"
