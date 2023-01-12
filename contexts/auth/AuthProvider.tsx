@@ -1,13 +1,5 @@
-import {
-  FC,
-  useReducer,
-  useEffect,
-  ReactNode,
-  useState,
-  useContext,
-} from "react";
+import { FC, useReducer, useEffect, ReactNode, useState } from "react";
 import { AuthContext, authReducer } from "./";
-import Cookies from "js-cookie";
 import { UserSession } from "../../ts/interfaces";
 import { AuthApi } from "../../utils/api";
 import { useRouter } from "next/router";
@@ -43,18 +35,17 @@ export const AuthProvider: FC<Props> = ({ children }) => {
   const existApp = () => {
     dispatch({ type: "[Auth] - Logout" });
     dispatchRedux(setTables([]));
-    Cookies.remove("token");
-    console.log("token", Cookies.get("token"));
-    // if (router.pathname !== "/") {
-    //   window.location.replace("/");
-    // }
+    localStorage.removeItem("token");
+    if (router.pathname !== "/") {
+      window.location.replace("/");
+    }
   };
 
   const checkToken = async () => {
     setLoading(true);
     try {
       const data = await AuthApi.validateToken();
-      Cookies.set("token", data.token);
+      localStorage.setItem("token", data.token);
       dispatch({ type: "[Auth] - Login", payload: data });
       setTimeout(() => setLoading(false), 2000);
       if (router.pathname === "/") {
@@ -78,7 +69,7 @@ export const AuthProvider: FC<Props> = ({ children }) => {
         id,
         password,
       });
-      Cookies.set("token", data.token);
+      localStorage.setItem("token", data.token);
       dispatch({ type: "[Auth] - Login", payload: data });
       return {
         userSession: data,

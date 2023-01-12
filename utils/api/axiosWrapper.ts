@@ -1,7 +1,19 @@
-import axios from "axios";
+import axios, { AxiosHeaders, AxiosRequestHeaders } from "axios";
 
-axios.interceptors.request.use(
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_ROUTE,
+});
+
+api.interceptors.request.use(
   function (config) {
+    const token = localStorage.getItem("token") || "";
+
+    const headers = { ...config.headers } as Partial<AxiosRequestHeaders>;
+    headers["x-app-key"] = process.env.NEXT_PUBLIC_APP_KEY;
+    headers["authorization"] = `Bearer ${token}`;
+
+    config.headers = headers;
+
     // Do something before request is sent
     return config;
   },
@@ -12,7 +24,7 @@ axios.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+api.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -25,12 +37,4 @@ axios.interceptors.response.use(
   }
 );
 
-export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_ROUTE,
-  xsrfCookieName: "csrftoken",
-  xsrfHeaderName: "X-CSRFToken",
-  withCredentials: true,
-  headers: {
-    "x-app-key": process.env.NEXT_PUBLIC_APP_KEY,
-  },
-});
+export { api };
