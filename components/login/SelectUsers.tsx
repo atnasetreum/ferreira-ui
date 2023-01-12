@@ -2,7 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled, lighten, darken } from "@mui/system";
-import { User } from "../../ts/interfaces";
+import { UserLogin } from "../../ts/interfaces";
 import { UserApi } from "../../utils/api";
 
 const GroupHeader = styled("div")(({ theme }) => ({
@@ -21,15 +21,15 @@ const GroupItems = styled("ul")({
 });
 
 interface Props {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: UserLogin | null;
+  setUser: (user: UserLogin | null) => void;
 }
 
 export const SelectUsers = ({ user, setUser }: Props) => {
-  const [users, setUsers] = React.useState<User[]>([]);
+  const [users, setUsers] = React.useState<UserLogin[]>([]);
 
   React.useEffect(() => {
-    UserApi.getAll().then((data) => {
+    UserApi.getUsersLogin().then((data) => {
       setUsers(data);
     });
   }, []);
@@ -37,9 +37,11 @@ export const SelectUsers = ({ user, setUser }: Props) => {
   return (
     <Autocomplete
       id="grouped-demo"
-      options={users}
-      groupBy={(option) => option.userType.name}
-      getOptionLabel={(option) => `${option.name} - ${option.userType.name}`}
+      options={users.sort(
+        (a, b) => -b.nameUserType.localeCompare(a.nameUserType)
+      )}
+      groupBy={(option) => option.nameUserType}
+      getOptionLabel={(option) => `${option.name} - ${option.nameUserType}`}
       renderInput={(params) => <TextField {...params} label="Usuarios" />}
       renderGroup={(params) => (
         <li key={params.group}>
