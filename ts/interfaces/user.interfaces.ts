@@ -15,3 +15,9 @@ export interface UserType {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface UserLogin {
+  id: number;
+  name: string;
+  nameUserType: string;
+}

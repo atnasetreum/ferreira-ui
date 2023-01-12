@@ -28,4 +28,7 @@ axios.interceptors.response.use(
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_ROUTE,
   withCredentials: true,
+  headers: {
+    "x-app-key": process.env.NEXT_PUBLIC_APP_KEY,
+  },
 });

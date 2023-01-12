@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Copyright } from "../components/ui";
 import { SelectUsers } from "../components/login";
-import { User } from "../ts/interfaces";
+import { UserLogin } from "../ts/interfaces";
 import { AuthContext } from "../contexts/auth";
 import { useNotify } from "../hooks";
 import { useRouter } from "next/router";
@@ -19,7 +19,7 @@ const theme = createTheme();
 
 function Login() {
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [user, setUser] = React.useState<User | null>(null);
+  const [user, setUser] = React.useState<UserLogin | null>(null);
   const [password, setPassword] = React.useState<string>("");
   const { loginUser, isLoggedIn } = React.useContext(AuthContext);
   const { notify } = useNotify();
