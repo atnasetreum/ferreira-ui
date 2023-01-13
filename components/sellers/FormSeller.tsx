@@ -3,6 +3,7 @@ import { useState } from "react";
 import TabsSeller from "./TabsSeller";
 import SaveIcon from "@mui/icons-material/Save";
 import { useNotify } from "../../hooks/useNotify";
+import { SellerApi } from "../../utils/api";
 
 export interface Referencia {
   description: string;
@@ -29,7 +30,7 @@ export interface NewSeller {
   cp: string;
   linkUbicacion: string;
   personaQueAtiende: string;
-  idSeller: string;
+  seller: { id: number; uuid: string; nombre: string } | null;
   image: File | null;
   referencias: Referencia[];
   telefonos: Telefono[];
@@ -47,13 +48,17 @@ const initialForm = {
   cp: "",
   linkUbicacion: "",
   personaQueAtiende: "",
-  idSeller: "",
+  seller: null,
   image: null,
   referencias: [],
   telefonos: [],
 };
 
-const FormSeller = () => {
+interface Props {
+  getSellers: () => void;
+}
+
+const FormSeller = ({ getSellers }: Props) => {
   const [form, setForm] = useState<NewSeller>(initialForm);
   const { notify } = useNotify();
 
@@ -89,31 +94,85 @@ const FormSeller = () => {
     }
 
     const calle = form.calle.trim();
-    const numero = form.numero.trim();
-    const cp = form.cp.trim();
-    const linkUbicacion = form.linkUbicacion.trim();
-    const personaQueAtiende = form.personaQueAtiende.trim();
-    const idSeller = form.idSeller.trim();
-    const image = form.image;
-    const referencias = form.referencias;
-    const telefonos = form.telefonos;
     if (!calle) {
       return notify("Agregue la calle");
     }
 
+    const numero = form.numero.trim();
     if (!numero) {
       return notify("Agregue el numero");
     }
 
+    const cp = form.cp.trim();
     if (!cp) {
       return notify("Agregue el codigo postal");
     }
 
+    const linkUbicacion = form.linkUbicacion.trim();
     if (!linkUbicacion) {
       return notify("Agregue el link de la ubicacion");
     }
 
-    console.log({ form });
+    const image = form.image;
+    if (!image) {
+      return notify("Agregue una imagen del seller");
+    }
+
+    const personaQueAtiende = form.personaQueAtiende.trim();
+    const idSeller = form.seller?.id;
+
+    const referencias = form.referencias;
+    const telefonos = form.telefonos;
+
+    const formData = new FormData();
+
+    formData.append("uuid", id);
+    formData.append("nombre", nombre);
+    formData.append("estado", estado);
+    formData.append("municipio", municipio);
+    formData.append("ciudad", ciudad);
+    formData.append("colonia", colonia);
+    formData.append("calle", calle);
+    formData.append("numero", numero);
+    formData.append("cp", cp);
+    formData.append("linkUbicacion", linkUbicacion);
+    formData.append("image", image);
+
+    if (personaQueAtiende) {
+      formData.append("personaQueAtiende", personaQueAtiende);
+    }
+
+    if (idSeller) {
+      formData.append("idSeller", idSeller.toString());
+    }
+
+    if (referencias.length) {
+      formData.append(
+        "referencias",
+        JSON.stringify(
+          referencias.map((ref) => ({ ...ref, image: ref.image?.name || "" }))
+        )
+      );
+
+      for (let i = 0, t = referencias.length; i < t; i++) {
+        const referencia = referencias[i];
+        if (referencia.image) {
+          formData.append("refImage", referencia.image, referencia.image.name);
+        }
+      }
+    }
+
+    if (telefonos.length) {
+      formData.append("telefonos", JSON.stringify(telefonos));
+    }
+
+    SellerApi.create(formData)
+      .then(() => {
+        notify("Seller creado correctamente", "success");
+        getSellers();
+        setForm(initialForm);
+      })
+      .catch((err) => notify(err.message));
   };
 
   return (

@@ -170,7 +170,11 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
       </Grid>
       <Grid item xs={12} md={6} lg={2}>
         <Paper>
-          <SelectSellers label="Seller padre" />
+          <SelectSellers
+            label="Seller padre"
+            value={form.seller}
+            onChange={(seller) => setForm({ ...form, seller })}
+          />
         </Paper>
       </Grid>
       <Grid
