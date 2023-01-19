@@ -11,6 +11,7 @@ import { StyledTableCell, StyledTableRow } from "../ui";
 import { formatTimeStamp } from "../../utils/dates";
 import { Link, Typography } from "@mui/material";
 import Image from "next/image";
+import { createUrlImage } from "../../utils/images";
 
 interface Props {
   sellers: Seller[];
@@ -60,7 +61,7 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
               </StyledTableCell>
               <StyledTableCell>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/sellers/${seller.image}`}
+                  src={createUrlImage(seller.image)}
                   alt={seller.image}
                   width={125}
                   height={125}
