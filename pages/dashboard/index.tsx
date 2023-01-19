@@ -5,7 +5,7 @@ import Orders from "./Orders";
 
 export default function DashboardContent() {
   return (
-    <MainLayout title="Dashboard">
+    <MainLayout title="Inicio">
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>

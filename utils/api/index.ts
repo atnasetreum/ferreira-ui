@@ -5,3 +5,4 @@ export * from "./entidad.api";
 export * from "./municipio.api";
 export * from "./ciudad.api";
 export * from "./seller.api";
+export * from "./userType.api";
