@@ -10,6 +10,7 @@ import { Seller } from "../../ts/interfaces";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import { formatTimeStamp } from "../../utils/dates";
 import { Link, Typography } from "@mui/material";
+import Image from "next/image";
 
 interface Props {
   sellers: Seller[];
@@ -26,6 +27,7 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
             <StyledTableCell>UUID</StyledTableCell>
             <StyledTableCell>Nombre</StyledTableCell>
             <StyledTableCell>Ubicacion</StyledTableCell>
+            <StyledTableCell>Imagen</StyledTableCell>
             <StyledTableCell>Persona que atiende</StyledTableCell>
             <StyledTableCell>No. de sucursales</StyledTableCell>
             <StyledTableCell>Fecha de creacion</StyledTableCell>
@@ -55,6 +57,14 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
                     {seller.linkUbicacion}
                   </Link>
                 </Typography>
+              </StyledTableCell>
+              <StyledTableCell>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/sellers/${seller.image}`}
+                  alt="Picture of the author"
+                  width={125}
+                  height={125}
+                />
               </StyledTableCell>
               <StyledTableCell>{seller.personaQueAtiende}</StyledTableCell>
               <StyledTableCell>{seller.sellers.length}</StyledTableCell>
