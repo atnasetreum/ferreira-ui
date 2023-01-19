@@ -2,9 +2,9 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import MainLayout from "../../layouts/MainLayout";
 
-function VendedoresPage() {
+function RutasPage() {
   return (
-    <MainLayout>
+    <MainLayout title="Rutas">
       <Grid container spacing={3}>
         <Grid container xs={12} md={6} lg={4} spacing={2} sx={{ mt: 2 }}>
           <Grid item xs={12} md={6} lg={12}>
@@ -22,4 +22,4 @@ function VendedoresPage() {
   );
 }
 
-export default VendedoresPage;
+export default RutasPage;
