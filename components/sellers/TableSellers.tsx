@@ -5,17 +5,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import { Seller } from "../../ts/interfaces";
 import { StyledTableCell, StyledTableRow } from "../ui";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import moment from "moment";
-import "moment/locale/es";
+import { formatTimeStamp } from "../../utils/dates";
+import { Link, Typography } from "@mui/material";
 
 interface Props {
   sellers: Seller[];
+  setSellerSelected: (seller: Seller) => void;
 }
 
-export default function TableSellers({ sellers }: Props) {
+export default function TableSellers({ sellers, setSellerSelected }: Props) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -25,32 +26,50 @@ export default function TableSellers({ sellers }: Props) {
             <StyledTableCell>UUID</StyledTableCell>
             <StyledTableCell>Nombre</StyledTableCell>
             <StyledTableCell>Ubicacion</StyledTableCell>
+            <StyledTableCell>Persona que atiende</StyledTableCell>
+            <StyledTableCell>No. de sucursales</StyledTableCell>
             <StyledTableCell>Fecha de creacion</StyledTableCell>
             <StyledTableCell>Ultima Actualizacion</StyledTableCell>
+            <StyledTableCell align="center">Detalles</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {sellers.map((row) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.id}
+          {sellers.map((seller) => (
+            <StyledTableRow key={seller.id}>
+              <StyledTableCell component="th" scope="seller">
+                {seller.id}
               </StyledTableCell>
-              <StyledTableCell>{row.uuid}</StyledTableCell>
-              <StyledTableCell>{row.nombre}</StyledTableCell>
+              <StyledTableCell>{seller.uuid}</StyledTableCell>
+              <StyledTableCell>{seller.nombre}</StyledTableCell>
               <StyledTableCell>
-                <a
-                  target="_blank"
-                  href={row.linkUbicacion}
-                  rel="noopener noreferrer"
+                <Typography
+                  sx={{ display: "inline" }}
+                  component={Link}
+                  color="text.primary"
                 >
-                  <OpenInNewIcon />
-                </a>
+                  <Link
+                    href={seller.linkUbicacion}
+                    underline="none"
+                    target="_blank"
+                  >
+                    {seller.linkUbicacion}
+                  </Link>
+                </Typography>
+              </StyledTableCell>
+              <StyledTableCell>{seller.personaQueAtiende}</StyledTableCell>
+              <StyledTableCell>{seller.sellers.length}</StyledTableCell>
+              <StyledTableCell>
+                {formatTimeStamp(seller.createdAt)}
               </StyledTableCell>
               <StyledTableCell>
-                {moment(row.createdAt).format("LLLL a")}
+                {formatTimeStamp(seller.updatedAt)}
               </StyledTableCell>
-              <StyledTableCell>
-                {moment(row.updatedAt).format("LLLL a")}
+              <StyledTableCell align="center">
+                <PrivacyTipIcon
+                  style={{ cursor: "pointer" }}
+                  color="primary"
+                  onClick={() => setSellerSelected(seller)}
+                />
               </StyledTableCell>
             </StyledTableRow>
           ))}

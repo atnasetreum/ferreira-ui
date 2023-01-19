@@ -12,12 +12,12 @@ export interface Seller {
   linkUbicacion: string;
   image: string;
   personaQueAtiende: string;
-  idGroup: null;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
   references: Reference[];
   referencePhones: ReferencePhone[];
+  sellers: Seller[] | [];
 }
 
 export interface ReferencePhone {
