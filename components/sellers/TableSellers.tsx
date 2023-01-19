@@ -61,7 +61,7 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
               <StyledTableCell>
                 <Image
                   src={`${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/sellers/${seller.image}`}
-                  alt="Picture of the author"
+                  alt={seller.image}
                   width={125}
                   height={125}
                 />
