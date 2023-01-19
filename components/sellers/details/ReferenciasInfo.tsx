@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid, Link } from "@mui/material";
 import { Seller } from "../../../ts/interfaces";
+import { createUrlImage } from "../../../utils/images";
 
 interface Props {
   sellerSelected: Seller;
@@ -26,7 +27,7 @@ function ReferenciasInfo({ sellerSelected }: Props) {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={`${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/sellers/${referencia.image}`}
+                    image={createUrlImage(referencia.image)}
                     alt={referencia.description}
                   />
                 )}

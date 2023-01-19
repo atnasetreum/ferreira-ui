@@ -7,7 +7,14 @@ import { styled } from "@mui/material/styles";
 import MuiGrid from "@mui/material/Grid";
 import { Seller } from "../../../ts/interfaces";
 import { formatTimeStamp } from "../../../utils/dates";
-import { Link, Typography } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardMedia,
+  Link,
+  Typography,
+} from "@mui/material";
+import { createUrlImage } from "../../../utils/images";
 
 const style = {
   width: "100%",
@@ -49,6 +56,20 @@ interface Props {
 export default function GeneralInfo({ sellerSelected }: Props) {
   return (
     <Grid container>
+      <Grid item xs={12} sm={12} md={12}>
+        <center>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="150"
+                image={createUrlImage(sellerSelected.image)}
+                alt={sellerSelected.nombre}
+              />
+            </CardActionArea>
+          </Card>
+        </center>
+      </Grid>
       <Grid item xs>
         <ListDetails
           details={[
