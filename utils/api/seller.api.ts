@@ -3,8 +3,8 @@ import { api } from "./axiosWrapper";
 
 const basePath = "/sellers";
 
-async function getAll() {
-  const { data } = await api.get(`${basePath}`);
+async function getAll(params: string) {
+  const { data } = await api.get(`${basePath}${params}`);
   return data as Seller[];
 }
 

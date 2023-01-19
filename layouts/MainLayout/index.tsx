@@ -72,9 +72,10 @@ const mdTheme = createTheme();
 
 interface Props {
   children: React.ReactNode;
+  title: string;
 }
 
-export default function DashboardPage({ children }: Props) {
+export default function DashboardPage({ children, title }: Props) {
   const [open, setOpen] = React.useState(true);
   const { isLoggedIn, user } = React.useContext(AuthContext);
   const toggleDrawer = () => {
@@ -155,6 +156,9 @@ export default function DashboardPage({ children }: Props) {
         >
           <Toolbar />
           <Container maxWidth={false} sx={{ mt: 4, mb: 4 }}>
+            <Typography variant="h4" gutterBottom>
+              {title}
+            </Typography>
             {children}
             <Copyright sx={{ pt: 4 }} />
           </Container>
