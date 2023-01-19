@@ -1,21 +1,28 @@
+import { Button, ButtonGroup } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import MainLayout from "../../layouts/MainLayout";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import TableUsers from "../../components/users/TableUsers";
 
 function UsersPage() {
   return (
-    <MainLayout>
-      <Grid container spacing={3}>
-        <Grid container xs={12} md={6} lg={4} spacing={2} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={6} lg={12}>
-            <Paper></Paper>
-          </Grid>
-          <Grid item xs={12} md={6} lg={12}>
-            <Paper></Paper>
-          </Grid>
+    <MainLayout title="Usuarios">
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={12} lg={12}>
+          <ButtonGroup
+            variant="contained"
+            aria-label="outlined primary button group"
+          >
+            <Button
+              startIcon={<PersonAddAlt1Icon />}
+              //onClick={() => setAction("add")}
+            >
+              Agregar
+            </Button>
+          </ButtonGroup>
         </Grid>
-        <Grid item xs={12} md={6} lg={8}>
-          <Paper></Paper>
+        <Grid item xs={12} md={12} lg={12}>
+          <TableUsers />
         </Grid>
       </Grid>
     </MainLayout>
