@@ -4,6 +4,7 @@ import TabsSeller from "./TabsSeller";
 import SaveIcon from "@mui/icons-material/Save";
 import { useNotify } from "../../hooks/useNotify";
 import { SellerApi } from "../../utils/api";
+import CloseIcon from "@mui/icons-material/Close";
 
 export interface Referencia {
   description: string;
@@ -56,9 +57,10 @@ const initialForm = {
 
 interface Props {
   getSellers: () => void;
+  closeForm: () => void;
 }
 
-const FormSeller = ({ getSellers }: Props) => {
+const FormSeller = ({ closeForm, getSellers }: Props) => {
   const [form, setForm] = useState<NewSeller>(initialForm);
   const { notify } = useNotify();
 
@@ -143,7 +145,7 @@ const FormSeller = ({ getSellers }: Props) => {
     }
 
     if (idSeller) {
-      formData.append("idSeller", idSeller.toString());
+      formData.append("idGroup", idSeller.toString());
     }
 
     if (referencias.length) {
@@ -169,8 +171,9 @@ const FormSeller = ({ getSellers }: Props) => {
     SellerApi.create(formData)
       .then(() => {
         notify("Seller creado correctamente", "success");
-        getSellers();
         setForm(initialForm);
+        getSellers();
+        closeForm();
       })
       .catch((err) => notify(err.message));
   };
@@ -180,7 +183,17 @@ const FormSeller = ({ getSellers }: Props) => {
       <Grid item xs={12} md={12} lg={12}>
         <TabsSeller form={form} setForm={setForm} initialForm={initialForm} />
       </Grid>
-      <Grid item xs={12} md={12} lg={12}>
+      <Grid item xs={6} md={6} lg={6}>
+        <Button
+          fullWidth
+          startIcon={<CloseIcon />}
+          variant="outlined"
+          onClick={() => closeForm()}
+        >
+          Cancelar
+        </Button>
+      </Grid>
+      <Grid item xs={6} md={6} lg={6}>
         <Button
           fullWidth
           startIcon={<SaveIcon />}
