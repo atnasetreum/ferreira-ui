@@ -1,3 +1,5 @@
+import { UserType } from "./userType.interfaces";
+
 export interface User {
   id: number;
   name: string;
@@ -6,14 +8,6 @@ export interface User {
   createdAt: string;
   updatedAt: string;
   userType: UserType;
-}
-
-export interface UserType {
-  id: number;
-  name: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface UserLogin {

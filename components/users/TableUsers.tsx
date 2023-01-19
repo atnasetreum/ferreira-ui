@@ -6,66 +6,65 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { StyledTableCell, StyledTableRow } from "../ui";
+import { User } from "../../ts/interfaces";
+import { formatTimeStamp } from "../../utils/dates";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { UserApi } from "../../utils/api";
+import { useNotify } from "../../hooks";
 
-interface Props {}
+interface Props {
+  users: User[];
+  getUsers: () => void;
+}
 
-function TableUsers({}: Props) {
+function TableUsers({ users, getUsers }: Props) {
+  const { notify } = useNotify();
+
+  const deleteUser = (id: number) => {
+    UserApi.remove(id)
+      .then(() => {
+        notify("Usuario eliminado correctamente", "success");
+        getUsers();
+      })
+      .catch((err) => notify(err.response?.data?.message || err.message));
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>ID</StyledTableCell>
-            <StyledTableCell>UUID</StyledTableCell>
             <StyledTableCell>Nombre</StyledTableCell>
-            <StyledTableCell>Ubicacion</StyledTableCell>
-            <StyledTableCell>Persona que atiende</StyledTableCell>
-            <StyledTableCell>No. de sucursales</StyledTableCell>
+            <StyledTableCell>Tipo</StyledTableCell>
             <StyledTableCell>Fecha de creacion</StyledTableCell>
             <StyledTableCell>Ultima Actualizacion</StyledTableCell>
-            <StyledTableCell align="center">Detalles</StyledTableCell>
+            <StyledTableCell align="center">Eliminar</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {sellers.map((seller) => (
-            <StyledTableRow key={seller.id}>
+          {users.map((user) => (
+            <StyledTableRow key={user.id}>
               <StyledTableCell component="th" scope="seller">
-                {seller.id}
+                {user.id}
               </StyledTableCell>
-              <StyledTableCell>{seller.uuid}</StyledTableCell>
-              <StyledTableCell>{seller.nombre}</StyledTableCell>
+              <StyledTableCell>{user.name}</StyledTableCell>
+              <StyledTableCell>{user.userType.name}</StyledTableCell>
               <StyledTableCell>
-                <Typography
-                  sx={{ display: "inline" }}
-                  component={Link}
-                  color="text.primary"
-                >
-                  <Link
-                    href={seller.linkUbicacion}
-                    underline="none"
-                    target="_blank"
-                  >
-                    {seller.linkUbicacion}
-                  </Link>
-                </Typography>
-              </StyledTableCell>
-              <StyledTableCell>{seller.personaQueAtiende}</StyledTableCell>
-              <StyledTableCell>{seller.sellers.length}</StyledTableCell>
-              <StyledTableCell>
-                {formatTimeStamp(seller.createdAt)}
+                {formatTimeStamp(user.createdAt)}
               </StyledTableCell>
               <StyledTableCell>
-                {formatTimeStamp(seller.updatedAt)}
+                {formatTimeStamp(user.updatedAt)}
               </StyledTableCell>
               <StyledTableCell align="center">
-                <PrivacyTipIcon
+                <DeleteIcon
+                  color="error"
                   style={{ cursor: "pointer" }}
-                  color="primary"
-                  onClick={() => setSellerSelected(seller)}
+                  onClick={() => deleteUser(user.id)}
                 />
               </StyledTableCell>
             </StyledTableRow>
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
