@@ -8,6 +8,11 @@ async function getAll() {
   return data as User[];
 }
 
+async function getDrivers() {
+  const { data } = await api.get(`${basePath}/drivers`);
+  return data as { id: number; name: string }[];
+}
+
 async function getUsersLogin() {
   const { data } = await api.get(`${basePath}/users-login`);
   return data as UserLogin[];
@@ -32,4 +37,5 @@ export const UserApi = {
   getUsersLogin,
   save,
   remove,
+  getDrivers,
 };
