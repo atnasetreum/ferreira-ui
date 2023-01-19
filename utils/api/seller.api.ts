@@ -1,3 +1,4 @@
+import { SellerRaw } from "../../components/ui";
 import { Seller } from "../../ts/interfaces";
 import { api } from "./axiosWrapper";
 
@@ -10,7 +11,12 @@ async function getAll(params: string) {
 
 async function getAllNoParent() {
   const { data } = await api.get(`${basePath}/no-parent`);
-  return data as { id: number; uuid: string; nombre: string }[];
+  return data as SellerRaw[];
+}
+
+async function getAllBasicSeller() {
+  const { data } = await api.get(`${basePath}/basic`);
+  return data as SellerRaw[];
 }
 
 async function create(formData: FormData) {
@@ -26,4 +32,5 @@ export const SellerApi = {
   getAll,
   create,
   getAllNoParent,
+  getAllBasicSeller,
 };

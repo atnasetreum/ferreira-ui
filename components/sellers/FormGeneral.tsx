@@ -172,6 +172,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
         <Paper>
           <SelectSellers
             label="Seller padre"
+            type="noParent"
             value={form.seller}
             onChange={(seller) => setForm({ ...form, seller })}
           />

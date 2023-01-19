@@ -76,39 +76,39 @@ const FormSeller = ({ closeForm, getSellers }: Props) => {
     }
 
     const estado = form.estado;
-    if (!estado) {
-      return notify("Seleccione un estado");
-    }
+    // if (!estado) {
+    //   return notify("Seleccione un estado");
+    // }
 
     const municipio = form.municipio;
-    if (!municipio) {
-      return notify("Seleccione un municipio");
-    }
+    // if (!municipio) {
+    //   return notify("Seleccione un municipio");
+    // }
 
     const ciudad = form.ciudad;
-    if (!ciudad) {
-      return notify("Seleccione una ciudad");
-    }
+    // if (!ciudad) {
+    //   return notify("Seleccione una ciudad");
+    // }
 
     const colonia = form.colonia.trim();
-    if (!colonia) {
-      return notify("Agregue una colonia");
-    }
+    // if (!colonia) {
+    //   return notify("Agregue una colonia");
+    // }
 
     const calle = form.calle.trim();
-    if (!calle) {
-      return notify("Agregue la calle");
-    }
+    // if (!calle) {
+    //   return notify("Agregue la calle");
+    // }
 
     const numero = form.numero.trim();
-    if (!numero) {
-      return notify("Agregue el numero");
-    }
+    // if (!numero) {
+    //   return notify("Agregue el numero");
+    // }
 
     const cp = form.cp.trim();
-    if (!cp) {
-      return notify("Agregue el codigo postal");
-    }
+    // if (!cp) {
+    //   return notify("Agregue el codigo postal");
+    // }
 
     const linkUbicacion = form.linkUbicacion.trim();
     if (!linkUbicacion) {
@@ -130,13 +130,27 @@ const FormSeller = ({ closeForm, getSellers }: Props) => {
 
     formData.append("uuid", id);
     formData.append("nombre", nombre);
-    formData.append("estado", estado);
-    formData.append("municipio", municipio);
-    formData.append("ciudad", ciudad);
-    formData.append("colonia", colonia);
-    formData.append("calle", calle);
-    formData.append("numero", numero);
-    formData.append("cp", cp);
+    if (estado) {
+      formData.append("estado", estado);
+    }
+    if (municipio) {
+      formData.append("municipio", municipio);
+    }
+    if (ciudad) {
+      formData.append("ciudad", ciudad);
+    }
+    if (colonia) {
+      formData.append("colonia", colonia);
+    }
+    if (calle) {
+      formData.append("calle", calle);
+    }
+    if (numero) {
+      formData.append("numero", numero);
+    }
+    if (cp) {
+      formData.append("cp", cp);
+    }
     formData.append("linkUbicacion", linkUbicacion);
     formData.append("image", image);
 

@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useEffect, useState } from "react";
 import { SellerApi } from "../../utils/api";
-interface SellerRaw {
+export interface SellerRaw {
   id: number;
   uuid: string;
   nombre: string;
@@ -12,14 +12,19 @@ interface Props {
   label?: string;
   value: SellerRaw | null;
   onChange: (value: SellerRaw | null) => void;
+  type?: string;
 }
 
-export const SelectSellers = ({ label, value, onChange }: Props) => {
+export const SelectSellers = ({ label, value, onChange, type }: Props) => {
   const [options, setOptions] = useState<SellerRaw[]>([]);
 
   useEffect(() => {
-    SellerApi.getAllNoParent().then(setOptions);
-  }, []);
+    if (type === "noParent") {
+      SellerApi.getAllNoParent().then(setOptions);
+    } else {
+      SellerApi.getAllBasicSeller().then(setOptions);
+    }
+  }, [type]);
 
   return (
     <Autocomplete
