@@ -140,7 +140,7 @@ const TableComponent = ({
         <TableBody {...getTableBodyProps()}>
           {rows.map((row, index) => {
             return (
-              prepareRow(row) || (
+              (prepareRow(row) !== null && prepareRow(row)) || (
                 <Row
                   index={index}
                   row={row}
