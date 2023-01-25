@@ -31,7 +31,7 @@ export const SelectSellers = ({ label, value, onChange, type }: Props) => {
       options={options}
       getOptionLabel={(option) => `${option.uuid} - ${option.nombre}`}
       renderInput={(params) => (
-        <TextField {...params} label={label ?? "Sellers"} />
+        <TextField {...params} label={label ?? "Sellers"} autoComplete="off" />
       )}
       value={value}
       onChange={(event: any, newValue: SellerRaw | null) => onChange(newValue)}

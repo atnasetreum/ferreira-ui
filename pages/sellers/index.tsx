@@ -10,7 +10,7 @@ import DetailsSeller from "../../components/sellers/details/DetailsSeller";
 import { Button, ButtonGroup } from "@mui/material";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { useFilters } from "../../hooks";
-import FiltersOptsSellers from "../../components/sellers/FiltersOptsSellers";
+import FiltersOptsSellers from "../../components/sellers/general/FiltersOptsSellers";
 
 export interface FiltersSellers {
   id: string;
@@ -49,10 +49,12 @@ function SellersPage() {
 
   return (
     <MainLayout title="Sellers">
-      <DetailsSeller
-        sellerSelected={sellerSelected}
-        setSellerSelected={setSellerSelected}
-      />
+      {action === "" && (
+        <DetailsSeller
+          sellerSelected={sellerSelected}
+          setSellerSelected={setSellerSelected}
+        />
+      )}
       <Grid container spacing={1}>
         {action === "" && (
           <Grid item xs={12} md={12} lg={12}>
@@ -69,12 +71,16 @@ function SellersPage() {
             </ButtonGroup>
           </Grid>
         )}
-        {action === "add" && (
+        {["add", "edit"].includes(action) && (
           <Grid item xs={12} md={12} lg={12}>
             <Paper sx={{ p: 2 }}>
               <FormSeller
+                sellerSelected={sellerSelected}
                 getSellers={getSellers}
-                closeForm={() => setAction("")}
+                closeForm={() => {
+                  setSellerSelected({} as Seller);
+                  setAction("");
+                }}
               />
             </Paper>
           </Grid>
@@ -88,6 +94,8 @@ function SellersPage() {
               <TableSellers
                 sellers={sellers}
                 setSellerSelected={setSellerSelected}
+                setAction={setAction}
+                getSellers={getSellers}
               />
             </Grid>
           </>

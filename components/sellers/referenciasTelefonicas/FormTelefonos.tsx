@@ -1,6 +1,6 @@
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { NewSeller } from "./FormSeller";
+import { NewSeller } from "../FormSeller";
 import { useState } from "react";
 import TableTelefonos from "./TableTelefonos";
 
@@ -58,11 +58,12 @@ const FormTelefonos = ({ form, setForm }: Props) => {
           sx={{ mt: 1 }}
           disabled={!telefono.name.trim() || !telefono.phone.trim()}
           onClick={() => {
+            const consecutivo = form.telefonos.length + 1;
             setForm({
               ...form,
               telefonos: [
                 ...form.telefonos,
-                { ...telefono, order: form.telefonos.length + 1 },
+                { ...telefono, order: consecutivo, id: `new${consecutivo}` },
               ],
             });
             setTelefono(initValues);

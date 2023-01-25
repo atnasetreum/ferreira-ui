@@ -62,7 +62,7 @@ export default function GeneralInfo({ sellerSelected }: Props) {
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="150"
+                height="300"
                 image={createUrlImage(sellerSelected.image)}
                 alt={sellerSelected.nombre}
               />
