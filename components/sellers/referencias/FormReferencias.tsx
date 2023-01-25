@@ -8,19 +8,21 @@ import {
 } from "@mui/material";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import AddIcon from "@mui/icons-material/Add";
-import { NewSeller } from "./FormSeller";
+import { NewSeller } from "../FormSeller";
 import TableReferencias from "./TableReferencias";
 import { useState } from "react";
-
-interface Props {
-  form: NewSeller;
-  setForm: (form: NewSeller) => void;
-}
+import { Seller } from "../../../ts/interfaces";
 
 interface Referencia {
   description: string;
   linkUbicacion: string;
   image: File | null;
+}
+
+interface Props {
+  form: NewSeller;
+  setForm: (form: NewSeller) => void;
+  sellerSelected: Seller;
 }
 
 const initValues = {
@@ -29,7 +31,7 @@ const initValues = {
   image: null,
 };
 
-const FormReferencias = ({ form, setForm }: Props) => {
+const FormReferencias = ({ form, setForm, sellerSelected }: Props) => {
   const [referencia, setReferencia] = useState<Referencia>(initValues);
   return (
     <Grid container spacing={1} sx={{ mt: 1, mb: 1 }}>
@@ -39,6 +41,7 @@ const FormReferencias = ({ form, setForm }: Props) => {
             label="Descripcion"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={referencia.description}
             onChange={({ target: { value } }) =>
               setReferencia({ ...referencia, description: value })
@@ -52,6 +55,7 @@ const FormReferencias = ({ form, setForm }: Props) => {
             label="Link de la ubicacion"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={referencia.linkUbicacion}
             onChange={({ target: { value } }) =>
               setReferencia({ ...referencia, linkUbicacion: value })
@@ -90,11 +94,12 @@ const FormReferencias = ({ form, setForm }: Props) => {
           startIcon={<AddIcon />}
           disabled={!referencia.description.trim()}
           onClick={() => {
+            const consecutivo = form.referencias.length + 1;
             setForm({
               ...form,
               referencias: [
                 ...form.referencias,
-                { ...referencia, order: form.referencias.length + 1 },
+                { ...referencia, order: consecutivo, id: `new${consecutivo}` },
               ],
             });
             setReferencia(initValues);
@@ -105,7 +110,11 @@ const FormReferencias = ({ form, setForm }: Props) => {
       </Grid>
       {!!form.referencias.length && (
         <Grid item xs={12} md={12} lg={12} sx={{ mt: 4 }}>
-          <TableReferencias form={form} setForm={setForm} />
+          <TableReferencias
+            form={form}
+            setForm={setForm}
+            sellerSelected={sellerSelected}
+          />
         </Grid>
       )}
     </Grid>

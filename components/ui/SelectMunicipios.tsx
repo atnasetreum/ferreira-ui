@@ -28,11 +28,7 @@ export const SelectMunicipios = ({
     <Autocomplete
       options={municipios}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Municipio"
-          autoComplete="current-password"
-        />
+        <TextField {...params} label="Municipio" autoComplete="off" />
       )}
       value={municipio}
       onChange={(event: any, newValue: string | null) => setMunicipio(newValue)}

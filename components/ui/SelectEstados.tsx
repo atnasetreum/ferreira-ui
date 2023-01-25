@@ -19,7 +19,7 @@ export const SelectEstados = ({ entidad, setEntidad }: Props) => {
     <Autocomplete
       options={entidades}
       renderInput={(params) => (
-        <TextField {...params} label="Estado" autoComplete="current-password" />
+        <TextField {...params} label="Estado" autoComplete="off" />
       )}
       value={entidad}
       onChange={(event: any, newValue: string | null) => setEntidad(newValue)}

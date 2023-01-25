@@ -12,17 +12,68 @@ import {
   SelectEstados,
   SelectMunicipios,
   SelectSellers,
-} from "../ui";
+} from "../../ui";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-import { NewSeller } from "./FormSeller";
+import { NewSeller } from "../FormSeller";
+import { Seller } from "../../../ts/interfaces";
+import Image from "next/image";
+import { createUrlImage } from "../../../utils/images";
+import { useEffect, useState } from "react";
+import { getUrlMap } from "../../../utils/strings";
 
 interface Props {
   form: NewSeller;
   setForm: (form: NewSeller) => void;
   initialForm: NewSeller;
+  sellerSelected: Seller;
 }
 
-export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
+export const FormGeneral = ({
+  form,
+  setForm,
+  initialForm,
+  sellerSelected,
+}: Props) => {
+  const [preview, setPreview] = useState<string>("");
+
+  useEffect(() => {
+    if (!form.image) {
+      setPreview("");
+      return;
+    }
+    const objectUrl = URL.createObjectURL(form.image);
+    setPreview(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [form]);
+
+  const getImageCurrent = () => {
+    if (preview) {
+      return (
+        <>
+          <center>Imagen Seleccionada</center>
+          <center>
+            <Image src={preview} alt={""} width={350} height={350} />
+          </center>
+        </>
+      );
+    } else if (Object.keys(sellerSelected).length) {
+      return (
+        <>
+          <center>Imagen Seleccionada</center>
+          <center>
+            <Image
+              src={createUrlImage(sellerSelected.image)}
+              alt={""}
+              width={350}
+              height={350}
+            />
+          </center>
+        </>
+      );
+    }
+    return null;
+  };
+
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} lg={2}>
@@ -31,6 +82,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="ID"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.id}
             onChange={({ target: { value } }) =>
               setForm({ ...form, id: value })
@@ -44,6 +96,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Nombre"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.nombre}
             onChange={({ target: { value } }) =>
               setForm({ ...form, nombre: value })
@@ -96,6 +149,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Colonia"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.colonia}
             onChange={({ target: { value } }) =>
               setForm({ ...form, colonia: value })
@@ -109,6 +163,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Calle"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.calle}
             onChange={({ target: { value } }) =>
               setForm({ ...form, calle: value })
@@ -122,6 +177,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Numero"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.numero}
             onChange={({ target: { value } }) =>
               setForm({ ...form, numero: value })
@@ -135,6 +191,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Codigo postal"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.cp}
             onChange={({ target: { value } }) =>
               setForm({ ...form, cp: value })
@@ -148,6 +205,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Link de la ubicacion"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.linkUbicacion}
             onChange={({ target: { value } }) =>
               setForm({ ...form, linkUbicacion: value })
@@ -161,6 +219,7 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             label="Persona que atiende"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={form.personaQueAtiende}
             onChange={({ target: { value } }) =>
               setForm({ ...form, personaQueAtiende: value })
@@ -205,7 +264,6 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
             }}
           />
           <AddAPhotoIcon fontSize="large" />
-
           <Typography variant="subtitle1" gutterBottom sx={{ mt: 1 }}>
             {form.image && form.image.name.substring(0, 10)}...
           </Typography>
@@ -220,6 +278,9 @@ export const FormGeneral = ({ form, setForm, initialForm }: Props) => {
         >
           Reinciar Formulario
         </Button>
+      </Grid>
+      <Grid item xs={12} md={6} lg={6}>
+        {getImageCurrent()}
       </Grid>
     </Grid>
   );

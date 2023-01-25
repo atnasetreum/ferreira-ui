@@ -1,12 +1,14 @@
 import { Button, Grid } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TabsSeller from "./TabsSeller";
 import SaveIcon from "@mui/icons-material/Save";
 import { useNotify } from "../../hooks/useNotify";
 import { SellerApi } from "../../utils/api";
 import CloseIcon from "@mui/icons-material/Close";
+import { Seller } from "../../ts/interfaces";
 
 export interface Referencia {
+  id: string;
   description: string;
   linkUbicacion: string;
   image: File | null;
@@ -14,6 +16,7 @@ export interface Referencia {
 }
 
 export interface Telefono {
+  id: string;
   name: string;
   phone: string;
   order: number;
@@ -58,11 +61,54 @@ const initialForm = {
 interface Props {
   getSellers: () => void;
   closeForm: () => void;
+  sellerSelected: Seller;
 }
 
-const FormSeller = ({ closeForm, getSellers }: Props) => {
+const FormSeller = ({ closeForm, getSellers, sellerSelected }: Props) => {
   const [form, setForm] = useState<NewSeller>(initialForm);
+  const [idSeller, setIdSeller] = useState<number>(0);
   const { notify } = useNotify();
+
+  useEffect(() => {
+    if (Object.keys(sellerSelected).length && !idSeller) {
+      console.log({ sellerSelected });
+      setIdSeller(sellerSelected.id);
+      setForm({
+        id: sellerSelected.uuid,
+        nombre: sellerSelected.nombre,
+        estado: sellerSelected.estado ?? "",
+        municipio: sellerSelected.municipio ?? "",
+        ciudad: sellerSelected.ciudad ?? "",
+        colonia: sellerSelected.colonia ?? "",
+        calle: sellerSelected.calle ?? "",
+        numero: sellerSelected.numero ?? "",
+        cp: sellerSelected.cp ?? "",
+        linkUbicacion: sellerSelected.linkUbicacion,
+        personaQueAtiende: sellerSelected.personaQueAtiende ?? "",
+        seller: sellerSelected.parent
+          ? {
+              id: sellerSelected.parent.id,
+              uuid: sellerSelected.parent.uuid,
+              nombre: sellerSelected.parent.nombre,
+            }
+          : null,
+        image: null,
+        referencias: sellerSelected.references.map((reference) => ({
+          id: `${reference.id}`,
+          description: reference.description,
+          linkUbicacion: reference.link,
+          image: null,
+          order: reference.order,
+        })),
+        telefonos: sellerSelected.referencePhones.map((telefono) => ({
+          id: `${telefono.id}`,
+          name: telefono.name,
+          phone: telefono.phone,
+          order: telefono.order,
+        })),
+      });
+    }
+  }, [sellerSelected, idSeller]);
 
   const handleSave = () => {
     const id = form.id.trim();
@@ -116,12 +162,12 @@ const FormSeller = ({ closeForm, getSellers }: Props) => {
     }
 
     const image = form.image;
-    if (!image) {
+    if (!image && !idSeller) {
       return notify("Agregue una imagen del seller");
     }
 
     const personaQueAtiende = form.personaQueAtiende.trim();
-    const idSeller = form.seller?.id;
+    const idSellerGroup = form.seller?.id;
 
     const referencias = form.referencias;
     const telefonos = form.telefonos;
@@ -151,15 +197,19 @@ const FormSeller = ({ closeForm, getSellers }: Props) => {
     if (cp) {
       formData.append("cp", cp);
     }
+
     formData.append("linkUbicacion", linkUbicacion);
-    formData.append("image", image);
+
+    if (image) {
+      formData.append("image", image);
+    }
 
     if (personaQueAtiende) {
       formData.append("personaQueAtiende", personaQueAtiende);
     }
 
-    if (idSeller) {
-      formData.append("idGroup", idSeller.toString());
+    if (idSellerGroup) {
+      formData.append("idGroup", idSellerGroup.toString());
     }
 
     if (referencias.length) {
@@ -182,27 +232,49 @@ const FormSeller = ({ closeForm, getSellers }: Props) => {
       formData.append("telefonos", JSON.stringify(telefonos));
     }
 
-    SellerApi.create(formData)
-      .then(() => {
-        notify("Seller creado correctamente", "success");
-        setForm(initialForm);
-        getSellers();
-        closeForm();
-      })
-      .catch((err) => notify(err.message));
+    const resetAll = () => {
+      notify(
+        `Seller ${idSeller ? "actualizado" : "creado"} correctamente`,
+        "success"
+      );
+      setForm(initialForm);
+      getSellers();
+      closeForm();
+      setIdSeller(0);
+    };
+
+    if (!idSeller) {
+      // nuevo
+      SellerApi.create(formData)
+        .then(() => resetAll())
+        .catch((err) => notify(err.message));
+    } else {
+      //Edicion
+      SellerApi.update(idSeller, formData)
+        .then(() => resetAll())
+        .catch((err) => notify(err.message));
+    }
   };
 
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={12} lg={12}>
-        <TabsSeller form={form} setForm={setForm} initialForm={initialForm} />
+        <TabsSeller
+          sellerSelected={sellerSelected}
+          form={form}
+          setForm={setForm}
+          initialForm={initialForm}
+        />
       </Grid>
       <Grid item xs={6} md={6} lg={6}>
         <Button
           fullWidth
           startIcon={<CloseIcon />}
           variant="outlined"
-          onClick={() => closeForm()}
+          onClick={() => {
+            closeForm();
+            setIdSeller(0);
+          }}
         >
           Cancelar
         </Button>

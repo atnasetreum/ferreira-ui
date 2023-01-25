@@ -6,10 +6,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import FormReferencias from "./FormReferencias";
-import FormTelefonos from "./FormTelefonos";
+import FormReferencias from "./referencias/FormReferencias";
+import FormTelefonos from "./referenciasTelefonicas/FormTelefonos";
 import { NewSeller } from "./FormSeller";
-import { FormGeneral } from "./FormGeneral";
+import { FormGeneral } from "./general/FormGeneral";
+import { Seller } from "../../ts/interfaces";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,9 +50,15 @@ interface Props {
   form: NewSeller;
   setForm: (form: NewSeller) => void;
   initialForm: NewSeller;
+  sellerSelected: Seller;
 }
 
-export default function TabsSeller({ form, setForm, initialForm }: Props) {
+export default function TabsSeller({
+  form,
+  setForm,
+  initialForm,
+  sellerSelected,
+}: Props) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -89,10 +96,15 @@ export default function TabsSeller({ form, setForm, initialForm }: Props) {
             form={form}
             setForm={setForm}
             initialForm={initialForm}
+            sellerSelected={sellerSelected}
           />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <FormReferencias form={form} setForm={setForm} />
+          <FormReferencias
+            form={form}
+            setForm={setForm}
+            sellerSelected={sellerSelected}
+          />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <FormTelefonos form={form} setForm={setForm} />

@@ -9,16 +9,28 @@ import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import { Seller } from "../../ts/interfaces";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import { formatTimeStamp } from "../../utils/dates";
-import { Link, Typography } from "@mui/material";
+import { ButtonGroup, IconButton, Link, Typography } from "@mui/material";
 import Image from "next/image";
 import { createUrlImage } from "../../utils/images";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { SellerApi } from "../../utils/api";
+import { useNotify } from "../../hooks";
 
 interface Props {
   sellers: Seller[];
   setSellerSelected: (seller: Seller) => void;
+  setAction: (action: string) => void;
+  getSellers: () => void;
 }
 
-export default function TableSellers({ sellers, setSellerSelected }: Props) {
+export default function TableSellers({
+  sellers,
+  setSellerSelected,
+  setAction,
+  getSellers,
+}: Props) {
+  const { notify } = useNotify();
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -29,11 +41,11 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
             <StyledTableCell>Nombre</StyledTableCell>
             <StyledTableCell>Ubicacion</StyledTableCell>
             <StyledTableCell>Imagen</StyledTableCell>
-            <StyledTableCell>Persona que atiende</StyledTableCell>
-            <StyledTableCell>No. de sucursales</StyledTableCell>
-            <StyledTableCell>Fecha de creacion</StyledTableCell>
+            <StyledTableCell>Ids, sucursales</StyledTableCell>
+            <StyledTableCell>Telefonos</StyledTableCell>
             <StyledTableCell>Ultima Actualizacion</StyledTableCell>
             <StyledTableCell align="center">Detalles</StyledTableCell>
+            <StyledTableCell align="center">Acciones</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -67,10 +79,11 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
                   height={125}
                 />
               </StyledTableCell>
-              <StyledTableCell>{seller.personaQueAtiende}</StyledTableCell>
-              <StyledTableCell>{seller.sellers.length}</StyledTableCell>
               <StyledTableCell>
-                {formatTimeStamp(seller.createdAt)}
+                {seller.sellers.map((sell) => sell.uuid).join(" - ")}
+              </StyledTableCell>
+              <StyledTableCell>
+                {seller.referencePhones.map((tel) => tel.phone).join(" - ")}
               </StyledTableCell>
               <StyledTableCell>
                 {formatTimeStamp(seller.updatedAt)}
@@ -81,6 +94,38 @@ export default function TableSellers({ sellers, setSellerSelected }: Props) {
                   color="primary"
                   onClick={() => setSellerSelected(seller)}
                 />
+              </StyledTableCell>
+              <StyledTableCell align="center">
+                <ButtonGroup aria-label="outlined primary button group">
+                  <IconButton
+                    color="warning"
+                    aria-label="update row"
+                    component="label"
+                    onClick={() => {
+                      setSellerSelected(seller);
+                      setAction("edit");
+                    }}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton
+                    color="error"
+                    aria-label="delete row"
+                    component="label"
+                    onClick={() => {
+                      SellerApi.remove(seller.id)
+                        .then(() => {
+                          notify("Seller eliminado correctamente", "success");
+                          getSellers();
+                        })
+                        .catch((err: any) =>
+                          notify(err.response?.data?.message || err.message)
+                        );
+                    }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </ButtonGroup>
               </StyledTableCell>
             </StyledTableRow>
           ))}

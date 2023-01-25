@@ -3,16 +3,18 @@ import { SelectSellers, SellerRaw } from "../../ui";
 import TablePuntos from "./TablePuntos";
 import { useState } from "react";
 import SelectDrivers from "../../ui/SelectDrivers";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { LocalizationProvider, DatePicker } from "@mui/lab";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import esLocale from "date-fns/locale/es";
 
 interface Form {
   seller: SellerRaw | null;
+  date: Date | null;
 }
 
 const initForm = {
   seller: null,
+  date: new Date(),
 };
 
 const FormRutas = () => {
@@ -38,9 +40,9 @@ const FormRutas = () => {
           <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
             <DatePicker
               label="Date sku cost monthly"
-              inputFormat="yyyy-MM-dd"
-              value={new Date()}
-              //onChange={(value) => setFilters({ ...filters, date: value })}
+              inputFormat="dd/MM/yyyy"
+              value={form.date}
+              onChange={(value) => setForm({ ...form, date: value })}
               renderInput={(params: TextFieldProps) => (
                 <TextField {...params} fullWidth />
               )}

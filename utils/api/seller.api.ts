@@ -28,9 +28,25 @@ async function create(formData: FormData) {
   return data as Seller;
 }
 
+async function update(idSeller: number, formData: FormData) {
+  const { data } = await api.patch(`${basePath}/${idSeller}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return data as Seller;
+}
+
+async function remove(id: number) {
+  const { data } = await api.delete(`${basePath}/${id}`);
+  return data as Seller;
+}
+
 export const SellerApi = {
   getAll,
   create,
+  update,
   getAllNoParent,
   getAllBasicSeller,
+  remove,
 };

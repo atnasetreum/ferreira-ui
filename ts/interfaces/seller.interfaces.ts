@@ -18,23 +18,26 @@ export interface Seller {
   references: Reference[];
   referencePhones: ReferencePhone[];
   sellers: Seller[] | [];
+  parent: Seller | null;
 }
 
 export interface ReferencePhone {
-  id: number;
+  id: string;
   name: string;
   phone: string;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  order: number;
 }
 
 export interface Reference {
-  id: number;
+  id: string;
   description: string;
   link: string;
   image: string;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  order: number;
 }

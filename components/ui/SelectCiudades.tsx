@@ -30,7 +30,7 @@ export const SelectCiudades = ({
     <Autocomplete
       options={ciudades}
       renderInput={(params) => (
-        <TextField {...params} label="Ciudad" autoComplete="current-password" />
+        <TextField {...params} label="Ciudad" autoComplete="off" />
       )}
       value={ciudad}
       onChange={(event: any, newValue: string | null) => setCiudad(newValue)}
