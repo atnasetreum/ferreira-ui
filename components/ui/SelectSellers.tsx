@@ -13,9 +13,16 @@ interface Props {
   value: SellerRaw | null;
   onChange: (value: SellerRaw | null) => void;
   type?: string;
+  idsDisabled?: number[];
 }
 
-export const SelectSellers = ({ label, value, onChange, type }: Props) => {
+export const SelectSellers = ({
+  label,
+  value,
+  onChange,
+  type,
+  idsDisabled,
+}: Props) => {
   const [options, setOptions] = useState<SellerRaw[]>([]);
 
   useEffect(() => {
@@ -30,6 +37,7 @@ export const SelectSellers = ({ label, value, onChange, type }: Props) => {
     <Autocomplete
       options={options}
       getOptionLabel={(option) => `${option.uuid} - ${option.nombre}`}
+      getOptionDisabled={(option) => !!idsDisabled?.includes(option.id)}
       renderInput={(params) => (
         <TextField {...params} label={label ?? "Sellers"} autoComplete="off" />
       )}

@@ -247,12 +247,12 @@ const FormSeller = ({ closeForm, getSellers, sellerSelected }: Props) => {
       // nuevo
       SellerApi.create(formData)
         .then(() => resetAll())
-        .catch((err) => notify(err.message));
+        .catch((err) => notify(err.response?.data?.message || err.message));
     } else {
       //Edicion
       SellerApi.update(idSeller, formData)
         .then(() => resetAll())
-        .catch((err) => notify(err.message));
+        .catch((err) => notify(err.response?.data?.message || err.message));
     }
   };
 
