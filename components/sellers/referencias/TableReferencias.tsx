@@ -55,10 +55,6 @@ const TableComponent = ({
     });
   };
 
-  useEffect(() => {
-    console.log({ records });
-  }, [records]);
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Table {...getTableProps()}>
