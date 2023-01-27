@@ -1,0 +1,14 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/dashboard/Orders": "pages/dashboard/Orders.html",
+  "/dashboard/Title": "pages/dashboard/Title.html",
+  "/dashboard": "pages/dashboard.html",
+  "/dashboard/listItems": "pages/dashboard/listItems.html",
+  "/": "pages/index.html",
+  "/rutas": "pages/rutas.html",
+  "/sellers": "pages/sellers.html",
+  "/users": "pages/users.html",
+  "/404": "pages/404.html"
+}
