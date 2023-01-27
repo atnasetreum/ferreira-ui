@@ -12,7 +12,6 @@ deploy.sh
 /coverage
 
 # next.js
-/.next/
 /out/
 
 # production
