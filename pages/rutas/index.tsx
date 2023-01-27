@@ -9,7 +9,7 @@ import ForkRightIcon from "@mui/icons-material/ForkRight";
 function RutasPage() {
   const [action, setAction] = useState<string>("");
   return (
-    <MainLayout title="Rutas">
+    <MainLayout title="Rutas Test">
       <Grid container spacing={1}>
         {action === "" && (
           <Grid item xs={12} md={12} lg={12}>
