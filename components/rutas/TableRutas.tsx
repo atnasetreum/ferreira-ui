@@ -17,15 +17,21 @@ import { Route } from "../../ts/interfaces";
 import { formatDate, formatTimeStamp } from "../../utils/dates";
 import Link from "next/link";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfRoute from "./pdf/PdfRoute";
 import { ButtonGroup } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNotify } from "../../hooks";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
 
 function Row(props: { row: Route; removeRoute: (id: number) => void }) {
   const { row, removeRoute } = props;
   const [open, setOpen] = React.useState(false);
+
+  const createPdf = async (fileName: string) => {
+    const blob = await pdf(<PdfRoute route={row} />).toBlob();
+    saveAs(blob, fileName);
+  };
 
   return (
     <React.Fragment>
@@ -48,13 +54,15 @@ function Row(props: { row: Route; removeRoute: (id: number) => void }) {
         <StyledTableCell>{formatTimeStamp(row.updatedAt)}</StyledTableCell>
         <StyledTableCell align="center">
           <ButtonGroup aria-label="outlined primary button group">
-            <IconButton color="error" aria-label="delete row" component="label">
-              <PDFDownloadLink
-                document={<PdfRoute route={row} />}
-                fileName={`${formatDate(row.date)} - ${row.user.name}.pdf`}
-              >
-                {() => <PictureAsPdfIcon color="error" />}
-              </PDFDownloadLink>
+            <IconButton
+              color="error"
+              aria-label="delete row"
+              component="label"
+              onClick={() =>
+                createPdf(`${formatDate(row.date)} - ${row.user.name}.pdf`)
+              }
+            >
+              <PictureAsPdfIcon color="error" />
             </IconButton>
             <IconButton
               color="error"
