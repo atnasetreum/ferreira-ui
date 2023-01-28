@@ -74,15 +74,19 @@ export default function DetailsTabsSeller({ sellerSelected }: Props) {
           aria-label="full width tabs example"
         >
           <Tab label="General" {...a11yProps(0)} />
-          {sellerSelected.references.length && (
-            <Tab label="Referencias" {...a11yProps(1)} />
-          )}
-          {sellerSelected.referencePhones.length && (
-            <Tab label="Telefonos" {...a11yProps(2)} />
-          )}
-          {sellerSelected.sellers.length && (
-            <Tab label="Sucursales" {...a11yProps(3)} />
-          )}
+
+          <Tab
+            label={`Referencias ${sellerSelected.references.length}`}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={`Telefonos ${sellerSelected.referencePhones.length}`}
+            {...a11yProps(2)}
+          />
+          <Tab
+            label={`Sucursales ${sellerSelected.sellers.length}`}
+            {...a11yProps(3)}
+          />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -93,21 +97,15 @@ export default function DetailsTabsSeller({ sellerSelected }: Props) {
         <TabPanel value={value} index={0} dir={theme.direction}>
           <GeneralInfo sellerSelected={sellerSelected} />
         </TabPanel>
-        {sellerSelected.references.length && (
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <ReferenciasInfo sellerSelected={sellerSelected} />
-          </TabPanel>
-        )}
-        {sellerSelected.referencePhones.length && (
-          <TabPanel value={value} index={2} dir={theme.direction}>
-            <TelefonosInfo sellerSelected={sellerSelected} />
-          </TabPanel>
-        )}
-        {sellerSelected.sellers.length && (
-          <TabPanel value={value} index={3} dir={theme.direction}>
-            <ListSucursales sellerSelected={sellerSelected} />
-          </TabPanel>
-        )}
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <ReferenciasInfo sellerSelected={sellerSelected} />
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+          <TelefonosInfo sellerSelected={sellerSelected} />
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <ListSucursales sellerSelected={sellerSelected} />
+        </TabPanel>
       </SwipeableViews>
     </Box>
   );
