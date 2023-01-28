@@ -295,6 +295,91 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 7613:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D": () => (/* binding */ TablePaginationActions)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8442);
+/* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_Box__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _mui_material_Box__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Box__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7934);
+/* harmony import */ var _mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _mui_icons_material_FirstPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3276);
+/* harmony import */ var _mui_icons_material_FirstPage__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_FirstPage__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _mui_icons_material_KeyboardArrowLeft__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(7834);
+/* harmony import */ var _mui_icons_material_KeyboardArrowLeft__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_KeyboardArrowLeft__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _mui_icons_material_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(547);
+/* harmony import */ var _mui_icons_material_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _mui_icons_material_LastPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(7967);
+/* harmony import */ var _mui_icons_material_LastPage__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_LastPage__WEBPACK_IMPORTED_MODULE_8__);
+
+
+
+
+
+
+
+
+
+const TablePaginationActions = (props)=>{
+    const theme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.useTheme)();
+    const { count , page , rowsPerPage , onPageChange  } = props;
+    const handleFirstPageButtonClick = (event)=>{
+        onPageChange(event, 0);
+    };
+    const handleBackButtonClick = (event)=>{
+        onPageChange(event, page - 1);
+    };
+    const handleNextButtonClick = (event)=>{
+        onPageChange(event, page + 1);
+    };
+    const handleLastPageButtonClick = (event)=>{
+        onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    };
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_Box__WEBPACK_IMPORTED_MODULE_3___default()), {
+        sx: {
+            flexShrink: 0,
+            ml: 2.5
+        },
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4___default()), {
+                onClick: handleFirstPageButtonClick,
+                disabled: page === 0,
+                "aria-label": "first page",
+                children: theme.direction === "rtl" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_LastPage__WEBPACK_IMPORTED_MODULE_8___default()), {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_FirstPage__WEBPACK_IMPORTED_MODULE_5___default()), {})
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4___default()), {
+                onClick: handleBackButtonClick,
+                disabled: page === 0,
+                "aria-label": "previous page",
+                children: theme.direction === "rtl" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_7___default()), {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_KeyboardArrowLeft__WEBPACK_IMPORTED_MODULE_6___default()), {})
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4___default()), {
+                onClick: handleNextButtonClick,
+                disabled: page >= Math.ceil(count / rowsPerPage) - 1,
+                "aria-label": "next page",
+                children: theme.direction === "rtl" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_KeyboardArrowLeft__WEBPACK_IMPORTED_MODULE_6___default()), {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_7___default()), {})
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_IconButton__WEBPACK_IMPORTED_MODULE_4___default()), {
+                onClick: handleLastPageButtonClick,
+                disabled: page >= Math.ceil(count / rowsPerPage) - 1,
+                "aria-label": "last page",
+                children: theme.direction === "rtl" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_FirstPage__WEBPACK_IMPORTED_MODULE_5___default()), {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_LastPage__WEBPACK_IMPORTED_MODULE_8___default()), {})
+            })
+        ]
+    });
+};
+
+
+/***/ }),
+
 /***/ 9696:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -339,6 +424,7 @@ const StyledTableCell = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_0__.sty
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AF": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.A),
+/* harmony export */   "DY": () => (/* reexport safe */ _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__.D),
 /* harmony export */   "E5": () => (/* reexport safe */ _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__.E),
 /* harmony export */   "EV": () => (/* reexport safe */ _SelectEstados__WEBPACK_IMPORTED_MODULE_2__.E),
 /* harmony export */   "Yk": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.Y),
@@ -353,8 +439,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8022);
 /* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9696);
 /* harmony import */ var _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8719);
+/* harmony import */ var _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7613);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__]);
 ([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
