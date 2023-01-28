@@ -1,15 +1,19 @@
 import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
+import TableFooter from "@mui/material/TableFooter";
+import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
+import IconButton from "@mui/material/IconButton";
 import { Seller } from "../../ts/interfaces";
-import { StyledTableCell, StyledTableRow } from "../ui";
+import { StyledTableCell, StyledTableRow, TablePaginationActions } from "../ui";
+import { TableHead } from "@mui/material";
+import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import { formatTimeStamp } from "../../utils/dates";
-import { ButtonGroup, IconButton, Link, Typography } from "@mui/material";
+import { ButtonGroup, Link, Typography } from "@mui/material";
 import Image from "next/image";
 import { createUrlImage } from "../../utils/images";
 import EditIcon from "@mui/icons-material/Edit";
@@ -25,17 +29,38 @@ interface Props {
 }
 
 export default function TableSellers({
-  sellers,
+  sellers: rows,
   setSellerSelected,
   setAction,
   getSellers,
 }: Props) {
   const { notify } = useNotify();
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableHead>
-          <TableRow>
+          <StyledTableRow>
             <StyledTableCell>ID</StyledTableCell>
             <StyledTableCell>UUID</StyledTableCell>
             <StyledTableCell>Nombre</StyledTableCell>
@@ -46,12 +71,15 @@ export default function TableSellers({
             <StyledTableCell>Ultima Actualizacion</StyledTableCell>
             <StyledTableCell align="center">Detalles</StyledTableCell>
             <StyledTableCell align="center">Acciones</StyledTableCell>
-          </TableRow>
+          </StyledTableRow>
         </TableHead>
         <TableBody>
-          {sellers.map((seller) => (
+          {(rowsPerPage > 0
+            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : rows
+          ).map((seller) => (
             <StyledTableRow key={seller.id}>
-              <StyledTableCell component="th" scope="seller">
+              <StyledTableCell component="th" scope="row">
                 {seller.id}
               </StyledTableCell>
               <StyledTableCell>{seller.uuid}</StyledTableCell>
@@ -129,7 +157,32 @@ export default function TableSellers({
               </StyledTableCell>
             </StyledTableRow>
           ))}
+          {emptyRows > 0 && (
+            <TableRow style={{ height: 53 * emptyRows }}>
+              <TableCell colSpan={10} />
+            </TableRow>
+          )}
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+              colSpan={10}
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  "aria-label": "rows per page",
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions}
+            />
+          </TableRow>
+        </TableFooter>
       </Table>
     </TableContainer>
   );

@@ -5,3 +5,4 @@ export * from "./SelectMunicipios";
 export * from "./SelectCiudades";
 export * from "./TableStyle";
 export * from "./SelectDrivers";
+export * from "./TablePaginationActions";

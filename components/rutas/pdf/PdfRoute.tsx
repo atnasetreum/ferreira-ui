@@ -10,7 +10,7 @@ import {
   View,
 } from "@react-pdf/renderer";
 import { Route } from "../../../ts/interfaces";
-import { formatDate } from "../../../utils/dates";
+import { formatDate, formatTimeStamp } from "../../../utils/dates";
 import { createUrlImage } from "../../../utils/images";
 
 const styles = StyleSheet.create({
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   image: {
     marginHorizontal: 150,
     width: 250,
+    height: 150,
   },
   imageRef: {
     marginHorizontal: 50,
@@ -88,22 +89,35 @@ const Subtitle = (props: any) => {
 };
 
 const PdfRoute = ({ route }: { route: Route }) => {
-  console.log({ route });
+  //console.log({ route });
   return (
     <Document>
-      <Page style={styles.body} wrap>
+      <Page size="A4" style={styles.body} wrap>
         <Text style={styles.header} fixed>
-          ~ Ruta ~
+          {`~ Ruta  ~`}
         </Text>
         <Text style={styles.header} fixed>
           {route.user.name} - {formatDate(route.date)}
         </Text>
+        <Subtitle>Driver</Subtitle>
+        <Text style={styles.text}>{route.user.name}</Text>
+        <Subtitle>No. de puntos en la ruta</Subtitle>
+        <Text style={styles.text}>{route.sellers.length}</Text>
+        <Subtitle>Fecha de la ruta</Subtitle>
+        <Text style={styles.text}>{formatDate(route.date)}</Text>
+        <Subtitle>Fecha Creacion</Subtitle>
+        <Text style={styles.text}>{formatTimeStamp(route.createdAt)}</Text>
+        <Subtitle>Fecha ultima actualizacion</Subtitle>
+        <Text style={styles.text}>{formatTimeStamp(route.updatedAt)}</Text>
+        <Subtitle>Nota:</Subtitle>
+        <Text style={styles.text}>Apurate cabron</Text>
         {route.sellers.map((seller, idx) => {
           return (
-            <div key={seller.id}>
-              <Subtitle break>
-                Punto {idx + 1}: {seller.nombre} -{" "}
-                <Link src={seller.linkUbicacion}>{"Ubicacion"}</Link>
+            <View key={seller.id} break wrap={false}>
+              <Subtitle>
+                <Link src={seller.linkUbicacion}>{`Punto ${idx + 1}`}</Link>
+                {" : "}
+                {seller.nombre} - {seller.uuid}
               </Subtitle>
               <Image style={styles.image} src={createUrlImage(seller.image)} />
               <Subtitle>Telefonos</Subtitle>
@@ -133,11 +147,8 @@ const PdfRoute = ({ route }: { route: Route }) => {
               {!!seller.references.length ? (
                 <View style={{ flexDirection: "column" }}>
                   {seller.references.map((referencia) => (
-                    <>
-                      <View
-                        style={{ flexDirection: "row", marginBottom: 4 }}
-                        key={referencia.id}
-                      >
+                    <View key={referencia.id}>
+                      <View style={{ flexDirection: "row", marginBottom: 4 }}>
                         <Text style={{ marginHorizontal: 8 }}>•</Text>
                         <Text style={{ fontSize: 12 }}>
                           {referencia.description} {referencia.link && ` - `}{" "}
@@ -152,7 +163,7 @@ const PdfRoute = ({ route }: { route: Route }) => {
                           src={createUrlImage(referencia.image)}
                         />
                       )}
-                    </>
+                    </View>
                   ))}
                 </View>
               ) : (
@@ -169,13 +180,12 @@ const PdfRoute = ({ route }: { route: Route }) => {
                   <Text style={styles.text}>{seller.personaQueAtiende}</Text>
                 </>
               )}
-
               <Subtitle>Direccion</Subtitle>
               <Text style={styles.text}>
                 {seller.calle} {seller.numero} {seller.colonia}, {seller.ciudad}
                 , {seller.cp} {seller.municipio}, {seller.estado}
               </Text>
-            </div>
+            </View>
           );
         })}
         <Text
