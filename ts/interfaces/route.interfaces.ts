@@ -1,6 +1,7 @@
 export interface Route {
   id: number;
   date: string;
+  notes: string;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
