@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/Pb7ilXQp8OZguE2-9rUcp/_buildManifest.js",
-    "static/Pb7ilXQp8OZguE2-9rUcp/_ssgManifest.js"
+    "static/dmAaoN0mqMLcYS_SbwkMM/_buildManifest.js",
+    "static/dmAaoN0mqMLcYS_SbwkMM/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -24,7 +24,7 @@
       "static/chunks/framework-26e25db8f64defed.js",
       "static/chunks/main-66ca454f7bdf962f.js",
       "static/css/0eba130c1c20836b.css",
-      "static/chunks/pages/_app-10c3da77cc53edf9.js"
+      "static/chunks/pages/_app-f65b7083a89932e1.js"
     ],
     "/_error": [
       "static/chunks/webpack-36d12a75f0098f30.js",
@@ -80,10 +80,10 @@
       "static/chunks/786-f9a1697500b1ce6e.js",
       "static/chunks/965-78a5d9dbde9458bc.js",
       "static/chunks/840-f634266b11440e88.js",
-      "static/chunks/507-8c01813225db6489.js",
+      "static/chunks/250-92b706ec3361f87b.js",
       "static/chunks/893-c0428e9f9bb7a33a.js",
       "static/chunks/318-31d53456f6ff8073.js",
-      "static/chunks/pages/rutas-8a4ea332330ffeec.js"
+      "static/chunks/pages/rutas-711dbd94886a6560.js"
     ],
     "/sellers": [
       "static/chunks/webpack-36d12a75f0098f30.js",
@@ -96,10 +96,10 @@
       "static/chunks/786-f9a1697500b1ce6e.js",
       "static/chunks/965-78a5d9dbde9458bc.js",
       "static/chunks/840-f634266b11440e88.js",
-      "static/chunks/507-8c01813225db6489.js",
-      "static/chunks/701-7a43c46d4daaeeb2.js",
+      "static/chunks/250-92b706ec3361f87b.js",
+      "static/chunks/660-397f37e712ed9e12.js",
       "static/chunks/318-31d53456f6ff8073.js",
-      "static/chunks/pages/sellers-d44159c1a6c53b94.js"
+      "static/chunks/pages/sellers-2fe523ad96a28d70.js"
     ],
     "/users": [
       "static/chunks/webpack-36d12a75f0098f30.js",
@@ -113,7 +113,7 @@
       "static/chunks/965-78a5d9dbde9458bc.js",
       "static/chunks/840-f634266b11440e88.js",
       "static/chunks/318-31d53456f6ff8073.js",
-      "static/chunks/pages/users-92ac6c5ab039dbce.js"
+      "static/chunks/pages/users-78e28bd736144d67.js"
     ]
   },
   "ampFirstPages": []

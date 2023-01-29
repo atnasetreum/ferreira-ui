@@ -459,6 +459,10 @@ async function create(payload) {
     const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.post */ .h.post(`${basePath}`, payload);
     return data;
 }
+async function update(id, payload) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.patch */ .h.patch(`${basePath}/${id}`, payload);
+    return data;
+}
 async function remove(id) {
     const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api["delete"] */ .h["delete"](`${basePath}/${id}`);
     return data;
@@ -466,6 +470,7 @@ async function remove(id) {
 const RouteApi = {
     getAll,
     create,
+    update,
     remove
 };
 
