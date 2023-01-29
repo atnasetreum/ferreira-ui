@@ -8,7 +8,7 @@ api.interceptors.request.use(
   function (config) {
     const token = localStorage.getItem("token") || "";
 
-    const headers = { ...config.headers } as Partial<AxiosRequestHeaders>;
+    const headers = { ...config.headers } as AxiosHeaders;
     headers["x-app-key"] = process.env.NEXT_PUBLIC_APP_KEY;
     headers["authorization"] = `Bearer ${token}`;
 

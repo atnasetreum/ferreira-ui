@@ -7,6 +7,7 @@
   "/dashboard": "pages/dashboard.html",
   "/dashboard/listItems": "pages/dashboard/listItems.html",
   "/": "pages/index.html",
+  "/placas": "pages/placas.html",
   "/rutas": "pages/rutas.html",
   "/sellers": "pages/sellers.html",
   "/users": "pages/users.html",

@@ -10,10 +10,14 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { AuthContext } from "../../contexts/auth";
 import { userTypes } from "../../constants";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 
 export const MainListItems = () => {
   const router = useRouter();
   const { user } = React.useContext(AuthContext);
+  const userType = React.useMemo(() => {
+    return user?.userType;
+  }, [user]);
   return (
     <React.Fragment>
       <ListItemButton
@@ -25,7 +29,7 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary="Inicio" />
       </ListItemButton>
-      {user?.userType === userTypes.ADMIN && (
+      {userType === userTypes.ADMIN && (
         <ListItemButton
           onClick={() => router.push("/sellers")}
           selected={router.pathname === "/sellers"}
@@ -36,16 +40,28 @@ export const MainListItems = () => {
           <ListItemText primary="Sellers" />
         </ListItemButton>
       )}
-
-      <ListItemButton
-        onClick={() => router.push("/rutas")}
-        selected={router.pathname === "/rutas"}
-      >
-        <ListItemIcon>
-          <LocationOnIcon />
-        </ListItemIcon>
-        <ListItemText primary="Rutas" />
-      </ListItemButton>
+      {userType === userTypes.ADMIN && (
+        <ListItemButton
+          onClick={() => router.push("/rutas")}
+          selected={router.pathname === "/rutas"}
+        >
+          <ListItemIcon>
+            <LocationOnIcon />
+          </ListItemIcon>
+          <ListItemText primary="Rutas" />
+        </ListItemButton>
+      )}
+      {userType === userTypes.ADMIN && (
+        <ListItemButton
+          onClick={() => router.push("/placas")}
+          selected={router.pathname === "/placas"}
+        >
+          <ListItemIcon>
+            <DirectionsCarIcon />
+          </ListItemIcon>
+          <ListItemText primary="Placas" />
+        </ListItemButton>
+      )}
       {/* <ListItemButton>
         <ListItemIcon>
           <PeopleIcon />

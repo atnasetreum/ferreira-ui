@@ -103,12 +103,10 @@ const PdfRoute = ({ route }: { route: Route }) => {
         <Text style={styles.text}>{route.user.name}</Text>
         <Subtitle>No. de puntos en la ruta</Subtitle>
         <Text style={styles.text}>{route.sellers.length}</Text>
+        <Subtitle>Ciclo</Subtitle>
+        <Text style={styles.text}>{route.ciclo}</Text>
         <Subtitle>Fecha de la ruta</Subtitle>
         <Text style={styles.text}>{formatDate(route.date)}</Text>
-        <Subtitle>Fecha de creacion</Subtitle>
-        <Text style={styles.text}>{formatTimeStamp(route.createdAt)}</Text>
-        <Subtitle>Fecha de la ultima actualizacion</Subtitle>
-        <Text style={styles.text}>{formatTimeStamp(route.updatedAt)}</Text>
         <Subtitle>Nota:</Subtitle>
         <Text style={styles.text}>{route.notes}</Text>
         {route.sellers.map((seller, idx) => {
