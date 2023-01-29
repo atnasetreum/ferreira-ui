@@ -17,6 +17,8 @@ import SaveIcon from "@mui/icons-material/Save";
 import { RouteApi } from "../../../utils/api";
 import { useNotify } from "../../../hooks";
 import ClearIcon from "@mui/icons-material/Clear";
+import { Route } from "../../../ts/interfaces";
+import { stringToDate } from "../../../utils/dates";
 
 export interface SellerWithOrder {
   id: string;
@@ -29,21 +31,26 @@ export interface IFormRutas {
   date: Date | null;
   driver: { id: number; name: string } | null;
   sellers: SellerWithOrder[];
+  notes: string;
 }
 
 const initForm = {
   date: new Date(),
   driver: null,
   sellers: [],
+  notes: "",
 };
 
 interface Props {
   setAction: (action: string) => void;
+  routeSelected: Route;
+  setRouteSelected: (routeSelected: Route) => void;
 }
 
-const FormRutas = ({ setAction }: Props) => {
+const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
   const [form, setForm] = useState<IFormRutas>(initForm);
   const [seller, setSeller] = useState<SellerRaw | null>(null);
+  const [id, setId] = useState<number>(0);
   const { notify } = useNotify();
 
   useEffect(() => {
@@ -62,6 +69,26 @@ const FormRutas = ({ setAction }: Props) => {
     }
   }, [seller, form]);
 
+  useEffect(() => {
+    if (Object.keys(routeSelected).length && !id) {
+      setForm({
+        date: stringToDate(routeSelected.date),
+        driver: {
+          id: routeSelected.user.id,
+          name: routeSelected.user.name,
+        },
+        sellers: routeSelected.sellers.map((seller, idx) => ({
+          id: seller.id.toString(),
+          uuid: seller.uuid,
+          nombre: seller.nombre,
+          order: idx + 1,
+        })),
+        notes: routeSelected.notes,
+      });
+      setId(routeSelected.id);
+    }
+  }, [routeSelected, id]);
+
   const saveRoute = () => {
     if (!form.date) {
       return notify("Seleccione una fecha");
@@ -79,16 +106,34 @@ const FormRutas = ({ setAction }: Props) => {
       return notify("Seleccione los sellers de la ruta");
     }
 
-    RouteApi.create({
-      date: form.date,
-      userId: form.driver.id,
-      sellers: form.sellers.map((seller) => Number(seller.id)),
-    })
-      .then(() => {
-        notify("Ruta creada correctamente", "success");
-        setAction("");
+    if (!id) {
+      // Creacion
+      RouteApi.create({
+        date: form.date,
+        userId: form.driver.id,
+        sellers: form.sellers.map((seller) => Number(seller.id)),
+        notes: form.notes.trim(),
       })
-      .catch((err) => notify(err.response?.data?.message || err.message));
+        .then(() => {
+          notify("Ruta creada correctamente", "success");
+          setAction("");
+        })
+        .catch((err) => notify(err.response?.data?.message || err.message));
+    } else {
+      // Edicion
+      RouteApi.update(id, {
+        date: form.date,
+        userId: form.driver.id,
+        sellers: form.sellers.map((seller) => Number(seller.id)),
+        notes: form.notes.trim(),
+      })
+        .then(() => {
+          notify("Ruta actualizada correctamente", "success");
+          setAction("");
+          setRouteSelected({} as Route);
+        })
+        .catch((err) => notify(err.response?.data?.message || err.message));
+    }
   };
 
   return (
@@ -126,13 +171,31 @@ const FormRutas = ({ setAction }: Props) => {
         </Paper>
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <ButtonGroup aria-label="outlined primary button group">
+        <Paper>
+          <TextField
+            label="Notas adicionales"
+            multiline
+            rows={2}
+            maxRows={4}
+            fullWidth
+            value={form.notes}
+            onChange={({ target: { value } }) =>
+              setForm({ ...form, notes: value })
+            }
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={12} lg={12}>
+        <ButtonGroup aria-label="outlined primary button group" fullWidth>
           <Button
             variant="outlined"
             fullWidth
             startIcon={<ClearIcon />}
             sx={{ mt: 1 }}
-            onClick={() => setAction("")}
+            onClick={() => {
+              setAction("");
+              setRouteSelected({} as Route);
+            }}
           >
             Cancelar
           </Button>

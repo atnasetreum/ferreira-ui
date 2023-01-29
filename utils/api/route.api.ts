@@ -13,6 +13,11 @@ async function create(payload: object) {
   return data as Route;
 }
 
+async function update(id: number, payload: object) {
+  const { data } = await api.patch(`${basePath}/${id}`, payload);
+  return data as Route;
+}
+
 async function remove(id: number) {
   const { data } = await api.delete(`${basePath}/${id}`);
   return data as Route;
@@ -21,5 +26,6 @@ async function remove(id: number) {
 export const RouteApi = {
   getAll,
   create,
+  update,
   remove,
 };

@@ -23,9 +23,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useNotify } from "../../hooks";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
+import EditIcon from "@mui/icons-material/Edit";
 
-function Row(props: { row: Route; removeRoute: (id: number) => void }) {
-  const { row, removeRoute } = props;
+interface PropsRow {
+  setAction: (action: string) => void;
+  row: Route;
+  removeRoute: (id: number) => void;
+  setRouteSelected: (route: Route) => void;
+}
+
+function Row(props: PropsRow) {
+  const { row, removeRoute, setAction, setRouteSelected } = props;
   const [open, setOpen] = React.useState(false);
 
   const createPdf = async (fileName: string) => {
@@ -50,6 +58,7 @@ function Row(props: { row: Route; removeRoute: (id: number) => void }) {
         </StyledTableCell>
         <StyledTableCell>{formatDate(row.date)}</StyledTableCell>
         <StyledTableCell>{row.user.name}</StyledTableCell>
+        <StyledTableCell>{row.sellers.length}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.createdAt)}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.updatedAt)}</StyledTableCell>
         <StyledTableCell align="center">
@@ -65,6 +74,17 @@ function Row(props: { row: Route; removeRoute: (id: number) => void }) {
               <PictureAsPdfIcon color="error" />
             </IconButton>
             <IconButton
+              color="warning"
+              aria-label="delete row"
+              component="label"
+              onClick={() => {
+                setRouteSelected(row);
+                setAction("edit");
+              }}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
               color="error"
               aria-label="delete row"
               component="label"
@@ -78,7 +98,7 @@ function Row(props: { row: Route; removeRoute: (id: number) => void }) {
       <StyledTableRow>
         <StyledTableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
-          colSpan={7}
+          colSpan={8}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
@@ -119,7 +139,12 @@ function Row(props: { row: Route; removeRoute: (id: number) => void }) {
   );
 }
 
-function TableRutas() {
+interface Props {
+  setAction: (action: string) => void;
+  setRouteSelected: (route: Route) => void;
+}
+
+function TableRutas({ setAction, setRouteSelected }: Props) {
   const [routes, setRoutes] = useState<Route[]>([]);
   const { notify } = useNotify();
 
@@ -147,6 +172,7 @@ function TableRutas() {
             <StyledTableCell>ID</StyledTableCell>
             <StyledTableCell>Fecha de ruta</StyledTableCell>
             <StyledTableCell>Driver</StyledTableCell>
+            <StyledTableCell>No. de puntos</StyledTableCell>
             <StyledTableCell>Fecha Creacion</StyledTableCell>
             <StyledTableCell>Ultima actualizacion</StyledTableCell>
             <StyledTableCell align="center">Acciones</StyledTableCell>
@@ -154,7 +180,13 @@ function TableRutas() {
         </TableHead>
         <TableBody>
           {routes.map((row) => (
-            <Row key={row.id} row={row} removeRoute={removeRoute} />
+            <Row
+              key={row.id}
+              row={row}
+              removeRoute={removeRoute}
+              setAction={setAction}
+              setRouteSelected={setRouteSelected}
+            />
           ))}
         </TableBody>
       </Table>

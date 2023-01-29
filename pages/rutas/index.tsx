@@ -5,9 +5,11 @@ import FormRutas from "../../components/rutas/FormRutas/FormRutas";
 import TableRutas from "../../components/rutas/TableRutas";
 import MainLayout from "../../layouts/MainLayout";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
+import { Route } from "../../ts/interfaces";
 
 function RutasPage() {
   const [action, setAction] = useState<string>("");
+  const [routeSelected, setRouteSelected] = useState<Route>({} as Route);
   return (
     <MainLayout title="Rutas">
       <Grid container spacing={1}>
@@ -28,12 +30,19 @@ function RutasPage() {
         )}
         {["add", "edit"].includes(action) && (
           <Grid item xs={12} md={12} lg={12}>
-            <FormRutas setAction={setAction} />
+            <FormRutas
+              setAction={setAction}
+              routeSelected={routeSelected}
+              setRouteSelected={setRouteSelected}
+            />
           </Grid>
         )}
         {action === "" && (
           <Grid item xs={12} md={12} lg={12}>
-            <TableRutas />
+            <TableRutas
+              setAction={setAction}
+              setRouteSelected={setRouteSelected}
+            />
           </Grid>
         )}
       </Grid>
