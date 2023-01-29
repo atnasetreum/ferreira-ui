@@ -3,6 +3,7 @@ export interface Route {
   date: string;
   notes: string;
   isActive: boolean;
+  ciclo: number;
   createdAt: string;
   updatedAt: string;
   user: UserRoutes;
