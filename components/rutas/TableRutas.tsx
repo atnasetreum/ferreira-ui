@@ -59,6 +59,7 @@ function Row(props: PropsRow) {
         <StyledTableCell>{formatDate(row.date)}</StyledTableCell>
         <StyledTableCell>{row.user.name}</StyledTableCell>
         <StyledTableCell>{row.sellers.length}</StyledTableCell>
+        <StyledTableCell>{row.ciclo}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.createdAt)}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.updatedAt)}</StyledTableCell>
         <StyledTableCell align="center">
@@ -68,7 +69,11 @@ function Row(props: PropsRow) {
               aria-label="delete row"
               component="label"
               onClick={() =>
-                createPdf(`${formatDate(row.date)} - ${row.user.name}.pdf`)
+                createPdf(
+                  `${formatDate(row.date)} - ${row.user.name} - Ciclo ${
+                    row.ciclo
+                  }.pdf`
+                )
               }
             >
               <PictureAsPdfIcon color="error" />
@@ -98,7 +103,7 @@ function Row(props: PropsRow) {
       <StyledTableRow>
         <StyledTableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
-          colSpan={8}
+          colSpan={9}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
@@ -173,6 +178,7 @@ function TableRutas({ setAction, setRouteSelected }: Props) {
             <StyledTableCell>Fecha de ruta</StyledTableCell>
             <StyledTableCell>Driver</StyledTableCell>
             <StyledTableCell>No. de puntos</StyledTableCell>
+            <StyledTableCell>Ciclo</StyledTableCell>
             <StyledTableCell>Fecha Creacion</StyledTableCell>
             <StyledTableCell>Ultima actualizacion</StyledTableCell>
             <StyledTableCell align="center">Acciones</StyledTableCell>
