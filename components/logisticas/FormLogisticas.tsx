@@ -74,6 +74,7 @@ const FormLogisticas = ({
           <TextField
             label="Nombre"
             fullWidth
+            autoComplete="off"
             value={form.name}
             onChange={({ target: { value } }) =>
               setForm({ ...form, name: value })
