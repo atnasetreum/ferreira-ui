@@ -1,10 +1,11 @@
+import { FiltersRoute } from "../../pages/rutas";
 import { Route } from "../../ts/interfaces";
 import { api } from "./axiosWrapper";
 
 const basePath = "/routes";
 
-async function getAll() {
-  const { data } = await api.get(`${basePath}`);
+async function getAll(filters: object) {
+  const { data } = await api.get(`${basePath}`, { params: filters });
   return data as Route[];
 }
 

@@ -6,7 +6,7 @@ import update from "immutability-helper";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { NewSeller, Referencia } from "../FormSeller";
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { ButtonGroup, IconButton } from "@mui/material";
 import Image from "next/image";
 import { StyledTableCell, StyledTableRow } from "../../ui";

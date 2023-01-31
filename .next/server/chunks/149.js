@@ -315,8 +315,11 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(4627);
 /* harmony import */ var _mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(8991);
 /* harmony import */ var _mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(6069);
+/* harmony import */ var _mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_contexts_auth__WEBPACK_IMPORTED_MODULE_11__]);
 _contexts_auth__WEBPACK_IMPORTED_MODULE_11__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
 
 
 
@@ -378,14 +381,26 @@ const MainListItems = ()=>{
                 ]
             }),
             userType === _constants__WEBPACK_IMPORTED_MODULE_12__/* .userTypes.ADMIN */ .v.ADMIN && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
-                onClick: ()=>router.push("/placas"),
-                selected: router.pathname === "/placas",
+                onClick: ()=>router.push("/camionetas"),
+                selected: router.pathname === "/camionetas",
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_3___default()), {
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13___default()), {})
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_4___default()), {
-                        primary: "Placas"
+                        primary: "Camionetas"
+                    })
+                ]
+            }),
+            userType === _constants__WEBPACK_IMPORTED_MODULE_12__/* .userTypes.ADMIN */ .v.ADMIN && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
+                onClick: ()=>router.push("/logisticas"),
+                selected: router.pathname === "/logisticas",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_3___default()), {
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14___default()), {})
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_4___default()), {
+                        primary: "Logisticas"
                     })
                 ]
             })

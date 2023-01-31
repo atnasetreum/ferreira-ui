@@ -7,3 +7,5 @@ export * from "./ciudad.api";
 export * from "./seller.api";
 export * from "./userType.api";
 export * from "./route.api";
+export * from "./logistica.api";
+export * from "./camioneta.api";

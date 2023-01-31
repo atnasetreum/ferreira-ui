@@ -189,6 +189,55 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 4978:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "y": () => (/* binding */ SelectLogisticas)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6042);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TextField__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2311);
+/* harmony import */ var _mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2316);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_api__WEBPACK_IMPORTED_MODULE_4__]);
+_utils_api__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+const SelectLogisticas = ({ value , onChange  })=>{
+    const [logisticas, setLogisticas] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        _utils_api__WEBPACK_IMPORTED_MODULE_4__/* .LogisticaApi.getAll */ .N4.getAll().then(setLogisticas);
+    }, []);
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3___default()), {
+        disablePortal: true,
+        id: "combo-box-demo-logisticas",
+        options: logisticas,
+        getOptionLabel: (opt)=>opt.name,
+        renderInput: (params)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_TextField__WEBPACK_IMPORTED_MODULE_2___default()), {
+                ...params,
+                label: "Logisticas",
+                fullWidth: true
+            }),
+        value: value,
+        onChange: (event, newValue)=>onChange(newValue)
+    });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 6205:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -233,6 +282,55 @@ const SelectMunicipios = ({ municipio , setMunicipio , entidad  })=>{
             }),
         value: municipio,
         onChange: (event, newValue)=>setMunicipio(newValue)
+    });
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 7494:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "D": () => (/* binding */ SelectPlacas)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6042);
+/* harmony import */ var _mui_material_TextField__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TextField__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2311);
+/* harmony import */ var _mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2316);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_utils_api__WEBPACK_IMPORTED_MODULE_4__]);
+_utils_api__WEBPACK_IMPORTED_MODULE_4__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+const SelectPlacas = ({ value , onChange  })=>{
+    const [placas, setPlacas] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        _utils_api__WEBPACK_IMPORTED_MODULE_4__/* .CamionetaApi.getAll */ .BC.getAll().then(setPlacas);
+    }, []);
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_Autocomplete__WEBPACK_IMPORTED_MODULE_3___default()), {
+        disablePortal: true,
+        id: "combo-box-demo-placas",
+        options: placas,
+        getOptionLabel: (opt)=>`${opt.placa} - ${opt.logistica.name}`,
+        renderInput: (params)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_TextField__WEBPACK_IMPORTED_MODULE_2___default()), {
+                ...params,
+                label: "Placas",
+                fullWidth: true
+            }),
+        value: value,
+        onChange: (event, newValue)=>onChange(newValue)
     });
 };
 
@@ -389,7 +487,7 @@ const TablePaginationActions = (props)=>{
 /* harmony export */ });
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8442);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mui_material_styles__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material_TableCell__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5612);
+/* harmony import */ var _mui_material_TableCell__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8099);
 /* harmony import */ var _mui_material_TableCell__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableCell__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _mui_material_TableRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4848);
 /* harmony import */ var _mui_material_TableRow__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableRow__WEBPACK_IMPORTED_MODULE_2__);
@@ -424,13 +522,15 @@ const StyledTableCell = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_0__.sty
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AF": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.A),
+/* harmony export */   "DA": () => (/* reexport safe */ _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__.D),
 /* harmony export */   "DY": () => (/* reexport safe */ _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__.D),
 /* harmony export */   "E5": () => (/* reexport safe */ _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__.E),
 /* harmony export */   "EV": () => (/* reexport safe */ _SelectEstados__WEBPACK_IMPORTED_MODULE_2__.E),
 /* harmony export */   "Yk": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.Y),
 /* harmony export */   "h1": () => (/* reexport safe */ _SelectSellers__WEBPACK_IMPORTED_MODULE_1__.E),
 /* harmony export */   "tF": () => (/* reexport safe */ _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__.t),
-/* harmony export */   "wZ": () => (/* reexport safe */ _Copyright__WEBPACK_IMPORTED_MODULE_0__.w)
+/* harmony export */   "wZ": () => (/* reexport safe */ _Copyright__WEBPACK_IMPORTED_MODULE_0__.w),
+/* harmony export */   "yO": () => (/* reexport safe */ _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__.y)
 /* harmony export */ });
 /* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9920);
 /* harmony import */ var _SelectSellers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4526);
@@ -440,8 +540,12 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9696);
 /* harmony import */ var _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8719);
 /* harmony import */ var _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7613);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__]);
-([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4978);
+/* harmony import */ var _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7494);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__]);
+([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
 
 
 

@@ -5,11 +5,28 @@ import FormRutas from "../../components/rutas/FormRutas/FormRutas";
 import TableRutas from "../../components/rutas/TableRutas";
 import MainLayout from "../../layouts/MainLayout";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
-import { Route } from "../../ts/interfaces";
+import { Camioneta, Logistica, Route } from "../../ts/interfaces";
+import FiltersOptsRoutes from "../../components/rutas/FiltersOptsRoutes";
+import { Driver } from "../../components/ui";
+
+export interface FiltersRoute {
+  id: string;
+  date: Date | null;
+  logistica: Logistica | null;
+  placa: Camioneta | null;
+  driver: Driver | null;
+}
 
 function RutasPage() {
   const [action, setAction] = useState<string>("");
   const [routeSelected, setRouteSelected] = useState<Route>({} as Route);
+  const [filters, setFilters] = useState<FiltersRoute>({
+    id: "",
+    date: new Date(),
+    driver: null,
+    logistica: null,
+    placa: null,
+  });
   return (
     <MainLayout title="Rutas">
       <Grid container spacing={1}>
@@ -38,12 +55,18 @@ function RutasPage() {
           </Grid>
         )}
         {action === "" && (
-          <Grid item xs={12} md={12} lg={12}>
-            <TableRutas
-              setAction={setAction}
-              setRouteSelected={setRouteSelected}
-            />
-          </Grid>
+          <>
+            <Grid item xs={12} md={12} lg={12}>
+              <FiltersOptsRoutes filters={filters} setFilters={setFilters} />
+            </Grid>
+            <Grid item xs={12} md={12} lg={12}>
+              <TableRutas
+                filters={filters}
+                setAction={setAction}
+                setRouteSelected={setRouteSelected}
+              />
+            </Grid>
+          </>
         )}
       </Grid>
     </MainLayout>

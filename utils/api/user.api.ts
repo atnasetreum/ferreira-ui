@@ -29,7 +29,7 @@ async function save(payload: {
 
 async function remove(id: number) {
   const { data } = await api.delete(`${basePath}/${id}`);
-  return data as UserLogin[];
+  return data as User;
 }
 
 export const UserApi = {
