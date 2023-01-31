@@ -10,7 +10,7 @@ import DetailsSeller from "../../components/sellers/details/DetailsSeller";
 import { Button, ButtonGroup } from "@mui/material";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import { useFilters } from "../../hooks";
-import FiltersOptsSellers from "../../components/sellers/general/FiltersOptsSellers";
+import FiltersOptsSellers from "../../components/sellers/FiltersOptsSellers";
 
 export interface FiltersSellers {
   id: string;

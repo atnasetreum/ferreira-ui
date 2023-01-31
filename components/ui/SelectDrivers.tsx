@@ -4,13 +4,17 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { useState, useEffect } from "react";
 import { UserApi } from "../../utils/api";
 
+export interface Driver {
+  id: number;
+  name: string;
+}
 interface Props {
-  value: { id: number; name: string } | null;
-  onChange: (value: { id: number; name: string } | null) => void;
+  value: Driver | null;
+  onChange: (value: Driver | null) => void;
 }
 
 export default function SelectDrivers({ value, onChange }: Props) {
-  const [drivers, setDrivers] = useState<{ id: number; name: string }[]>([]);
+  const [drivers, setDrivers] = useState<Driver[]>([]);
 
   useEffect(() => {
     UserApi.getDrivers().then(setDrivers);
@@ -26,9 +30,7 @@ export default function SelectDrivers({ value, onChange }: Props) {
         <TextField {...params} label="Drivers" fullWidth />
       )}
       value={value}
-      onChange={(event: any, newValue: { id: number; name: string } | null) =>
-        onChange(newValue)
-      }
+      onChange={(event: any, newValue: Driver | null) => onChange(newValue)}
     />
   );
 }

@@ -109,6 +109,11 @@ const PdfRoute = ({ route }: { route: Route }) => {
         <Text style={styles.text}>{formatDate(route.date)}</Text>
         <Subtitle>Nota:</Subtitle>
         <Text style={styles.text}>{route.notes}</Text>
+        <Subtitle>Logistica:</Subtitle>
+        <Image
+          style={styles.image}
+          src={createUrlImage(route.car.image, "placa")}
+        />
         {route.sellers.map((seller, idx) => {
           return (
             <View key={seller.id} break wrap={false}>
