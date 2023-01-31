@@ -11,6 +11,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { AuthContext } from "../../contexts/auth";
 import { userTypes } from "../../constants";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
 
 export const MainListItems = () => {
   const router = useRouter();
@@ -53,13 +54,24 @@ export const MainListItems = () => {
       )}
       {userType === userTypes.ADMIN && (
         <ListItemButton
-          onClick={() => router.push("/placas")}
-          selected={router.pathname === "/placas"}
+          onClick={() => router.push("/camionetas")}
+          selected={router.pathname === "/camionetas"}
         >
           <ListItemIcon>
             <DirectionsCarIcon />
           </ListItemIcon>
-          <ListItemText primary="Placas" />
+          <ListItemText primary="Camionetas" />
+        </ListItemButton>
+      )}
+      {userType === userTypes.ADMIN && (
+        <ListItemButton
+          onClick={() => router.push("/logisticas")}
+          selected={router.pathname === "/logisticas"}
+        >
+          <ListItemIcon>
+            <LocationCityIcon />
+          </ListItemIcon>
+          <ListItemText primary="Logisticas" />
         </ListItemButton>
       )}
       {/* <ListItemButton>

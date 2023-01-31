@@ -6,3 +6,5 @@ export * from "./SelectCiudades";
 export * from "./TableStyle";
 export * from "./SelectDrivers";
 export * from "./TablePaginationActions";
+export * from "./SelectLogisticas";
+export * from "./SelectPlacas";

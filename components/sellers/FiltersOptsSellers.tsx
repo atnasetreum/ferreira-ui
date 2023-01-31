@@ -1,7 +1,7 @@
 import { Grid, Paper, TextField, Typography } from "@mui/material";
-import { FiltersSellers } from "../../../pages/sellers";
+import { FiltersSellers } from "../../pages/sellers";
 import SouthIcon from "@mui/icons-material/South";
-import { SelectCiudades, SelectEstados, SelectMunicipios } from "../../ui";
+import { SelectCiudades, SelectEstados, SelectMunicipios } from "../ui";
 
 interface Props {
   filters: FiltersSellers;
@@ -13,7 +13,7 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
     <Grid container spacing={1}>
       <Grid item xs={12} md={12} lg={12}>
         <Typography variant="subtitle1" gutterBottom>
-          Filtros <SouthIcon sx={{ mt: 3 }} />
+          Filtros <SouthIcon />
         </Typography>
       </Grid>
       <Grid item xs={12} md={6} lg={1}>

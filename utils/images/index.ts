@@ -1,3 +1,4 @@
-export const createUrlImage = (img: string) =>
-  `https://api.transportesferreira.com/static/images/sellers/${img}`;
-//`${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/sellers/${img}`;
+export const createUrlImage = (img: string, type?: string) =>
+  `${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/${
+    type ? "cars" : "sellers"
+  }/${img}`;
