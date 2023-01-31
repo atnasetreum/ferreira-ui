@@ -17,8 +17,9 @@ import SaveIcon from "@mui/icons-material/Save";
 import { RouteApi } from "../../../utils/api";
 import { useNotify } from "../../../hooks";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Route } from "../../../ts/interfaces";
+import { Camioneta, Route } from "../../../ts/interfaces";
 import { stringToDate } from "../../../utils/dates";
+import { SelectPlacas } from "../../ui/SelectPlacas";
 
 export interface SellerWithOrder {
   id: string;
@@ -32,6 +33,7 @@ export interface IFormRutas {
   driver: { id: number; name: string } | null;
   sellers: SellerWithOrder[];
   notes: string;
+  placa: Camioneta | null;
 }
 
 const initForm = {
@@ -39,6 +41,7 @@ const initForm = {
   driver: null,
   sellers: [],
   notes: "",
+  placa: null,
 };
 
 interface Props {
@@ -84,12 +87,17 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           order: idx + 1,
         })),
         notes: routeSelected.notes,
+        placa: routeSelected.car,
       });
       setId(routeSelected.id);
     }
   }, [routeSelected, id]);
 
   const saveRoute = () => {
+    if (!form.placa) {
+      return notify("Seleccione una placa");
+    }
+
     if (!form.date) {
       return notify("Seleccione una fecha");
     }
@@ -109,6 +117,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
     if (!id) {
       // Creacion
       RouteApi.create({
+        carId: form.placa.id,
         date: form.date,
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
@@ -122,6 +131,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
     } else {
       // Edicion
       RouteApi.update(id, {
+        carId: form.placa.id,
         date: form.date,
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
@@ -138,6 +148,14 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
 
   return (
     <Grid container spacing={1}>
+      <Grid item xs={12} sm={6} md={3}>
+        <Paper>
+          <SelectPlacas
+            value={form.placa}
+            onChange={(placa) => setForm({ ...form, placa })}
+          />
+        </Paper>
+      </Grid>
       <Grid item xs={12} sm={6} md={3}>
         <Paper>
           <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
@@ -170,7 +188,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           />
         </Paper>
       </Grid>
-      <Grid item xs={12} md={6} lg={3}>
+      <Grid item xs={12} md={12} lg={12}>
         <Paper>
           <TextField
             label="Notas adicionales"

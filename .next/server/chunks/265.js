@@ -324,6 +324,54 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 5950:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "B": () => (/* binding */ CamionetaApi)
+/* harmony export */ });
+/* harmony import */ var _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(412);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__]);
+_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const basePath = "/cars";
+async function getAll() {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.get */ .h.get(`${basePath}`);
+    return data;
+}
+async function create(formData) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.post */ .h.post(`${basePath}`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    });
+    return data;
+}
+async function update(id, formData) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.patch */ .h.patch(`${basePath}/${id}`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    });
+    return data;
+}
+async function remove(id) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api["delete"] */ .h["delete"](`${basePath}/${id}`);
+    return data;
+}
+const CamionetaApi = {
+    getAll,
+    create,
+    update,
+    remove
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 438:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -379,10 +427,12 @@ __webpack_async_result__();
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BC": () => (/* reexport safe */ _camioneta_api__WEBPACK_IMPORTED_MODULE_10__.B),
 /* harmony export */   "Fz": () => (/* reexport safe */ _seller_api__WEBPACK_IMPORTED_MODULE_6__.F),
 /* harmony export */   "H0": () => (/* reexport safe */ _ciudad_api__WEBPACK_IMPORTED_MODULE_5__.H),
 /* harmony export */   "HQ": () => (/* reexport safe */ _userType_api__WEBPACK_IMPORTED_MODULE_7__.H),
 /* harmony export */   "Lz": () => (/* reexport safe */ _municipio_api__WEBPACK_IMPORTED_MODULE_4__.L),
+/* harmony export */   "N4": () => (/* reexport safe */ _logistica_api__WEBPACK_IMPORTED_MODULE_9__.N),
 /* harmony export */   "Wj": () => (/* reexport safe */ _user_api__WEBPACK_IMPORTED_MODULE_1__.W),
 /* harmony export */   "gZ": () => (/* reexport safe */ _entidad_api__WEBPACK_IMPORTED_MODULE_3__.g),
 /* harmony export */   "pg": () => (/* reexport safe */ _route_api__WEBPACK_IMPORTED_MODULE_8__.p),
@@ -397,8 +447,10 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _seller_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(3883);
 /* harmony import */ var _userType_api__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2125);
 /* harmony import */ var _route_api__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2518);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__, _user_api__WEBPACK_IMPORTED_MODULE_1__, _auth_api__WEBPACK_IMPORTED_MODULE_2__, _entidad_api__WEBPACK_IMPORTED_MODULE_3__, _municipio_api__WEBPACK_IMPORTED_MODULE_4__, _ciudad_api__WEBPACK_IMPORTED_MODULE_5__, _seller_api__WEBPACK_IMPORTED_MODULE_6__, _userType_api__WEBPACK_IMPORTED_MODULE_7__, _route_api__WEBPACK_IMPORTED_MODULE_8__]);
-([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__, _user_api__WEBPACK_IMPORTED_MODULE_1__, _auth_api__WEBPACK_IMPORTED_MODULE_2__, _entidad_api__WEBPACK_IMPORTED_MODULE_3__, _municipio_api__WEBPACK_IMPORTED_MODULE_4__, _ciudad_api__WEBPACK_IMPORTED_MODULE_5__, _seller_api__WEBPACK_IMPORTED_MODULE_6__, _userType_api__WEBPACK_IMPORTED_MODULE_7__, _route_api__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _logistica_api__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(8502);
+/* harmony import */ var _camioneta_api__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(5950);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__, _user_api__WEBPACK_IMPORTED_MODULE_1__, _auth_api__WEBPACK_IMPORTED_MODULE_2__, _entidad_api__WEBPACK_IMPORTED_MODULE_3__, _municipio_api__WEBPACK_IMPORTED_MODULE_4__, _ciudad_api__WEBPACK_IMPORTED_MODULE_5__, _seller_api__WEBPACK_IMPORTED_MODULE_6__, _userType_api__WEBPACK_IMPORTED_MODULE_7__, _route_api__WEBPACK_IMPORTED_MODULE_8__, _logistica_api__WEBPACK_IMPORTED_MODULE_9__, _camioneta_api__WEBPACK_IMPORTED_MODULE_10__]);
+([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__, _user_api__WEBPACK_IMPORTED_MODULE_1__, _auth_api__WEBPACK_IMPORTED_MODULE_2__, _entidad_api__WEBPACK_IMPORTED_MODULE_3__, _municipio_api__WEBPACK_IMPORTED_MODULE_4__, _ciudad_api__WEBPACK_IMPORTED_MODULE_5__, _seller_api__WEBPACK_IMPORTED_MODULE_6__, _userType_api__WEBPACK_IMPORTED_MODULE_7__, _route_api__WEBPACK_IMPORTED_MODULE_8__, _logistica_api__WEBPACK_IMPORTED_MODULE_9__, _camioneta_api__WEBPACK_IMPORTED_MODULE_10__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
 
@@ -408,6 +460,52 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axi
 
 
 
+
+
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 8502:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "N": () => (/* binding */ LogisticaApi)
+/* harmony export */ });
+/* harmony import */ var _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(412);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__]);
+_axiosWrapper__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const basePath = "/logistics";
+async function getAll() {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.get */ .h.get(`${basePath}`);
+    return data;
+}
+async function create(name) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.post */ .h.post(`${basePath}`, {
+        name
+    });
+    return data;
+}
+async function update(id, name) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.patch */ .h.patch(`${basePath}/${id}`, {
+        name
+    });
+    return data;
+}
+async function remove(id) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api["delete"] */ .h["delete"](`${basePath}/${id}`);
+    return data;
+}
+const LogisticaApi = {
+    getAll,
+    create,
+    update,
+    remove
+};
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
@@ -451,8 +549,10 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_axi
 _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 const basePath = "/routes";
-async function getAll() {
-    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.get */ .h.get(`${basePath}`);
+async function getAll(filters) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.get */ .h.get(`${basePath}`, {
+        params: filters
+    });
     return data;
 }
 async function create(payload) {

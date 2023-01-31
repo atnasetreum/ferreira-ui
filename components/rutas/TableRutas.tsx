@@ -24,6 +24,7 @@ import { useNotify } from "../../hooks";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import EditIcon from "@mui/icons-material/Edit";
+import { FiltersRoute } from "../../pages/rutas";
 
 interface PropsRow {
   setAction: (action: string) => void;
@@ -56,6 +57,8 @@ function Row(props: PropsRow) {
         <StyledTableCell component="th" scope="row">
           {row.id}
         </StyledTableCell>
+        <StyledTableCell>{row.car.logistica.name}</StyledTableCell>
+        <StyledTableCell>{row.car.placa}</StyledTableCell>
         <StyledTableCell>{formatDate(row.date)}</StyledTableCell>
         <StyledTableCell>{row.user.name}</StyledTableCell>
         <StyledTableCell>{row.sellers.length}</StyledTableCell>
@@ -147,13 +150,21 @@ function Row(props: PropsRow) {
 interface Props {
   setAction: (action: string) => void;
   setRouteSelected: (route: Route) => void;
+  filters: FiltersRoute;
 }
 
-function TableRutas({ setAction, setRouteSelected }: Props) {
+function TableRutas({ setAction, setRouteSelected, filters }: Props) {
   const [routes, setRoutes] = useState<Route[]>([]);
   const { notify } = useNotify();
 
-  const getAllRoutes = () => RouteApi.getAll().then(setRoutes);
+  const getAllRoutes = () =>
+    RouteApi.getAll({
+      ...(filters.id && { id: filters.id }),
+      ...(filters.date && { date: filters.date }),
+      ...(filters.driver && { driverId: filters.driver.id }),
+      ...(filters.placa && { carId: filters.placa.id }),
+      ...(filters.logistica && { logisticaId: filters.logistica.id }),
+    }).then(setRoutes);
 
   const removeRoute = (id: number) => {
     RouteApi.remove(id)
@@ -166,7 +177,7 @@ function TableRutas({ setAction, setRouteSelected }: Props) {
 
   useEffect(() => {
     getAllRoutes();
-  }, []);
+  }, [filters]);
 
   return (
     <TableContainer component={Paper}>
@@ -175,6 +186,8 @@ function TableRutas({ setAction, setRouteSelected }: Props) {
           <StyledTableRow>
             <StyledTableCell />
             <StyledTableCell>ID</StyledTableCell>
+            <StyledTableCell>Logistica</StyledTableCell>
+            <StyledTableCell>Placa</StyledTableCell>
             <StyledTableCell>Fecha de ruta</StyledTableCell>
             <StyledTableCell>Driver</StyledTableCell>
             <StyledTableCell>No. de puntos</StyledTableCell>
