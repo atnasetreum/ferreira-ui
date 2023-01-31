@@ -71,7 +71,6 @@ const FormSeller = ({ closeForm, getSellers, sellerSelected }: Props) => {
 
   useEffect(() => {
     if (Object.keys(sellerSelected).length && !idSeller) {
-      console.log({ sellerSelected });
       setIdSeller(sellerSelected.id);
       setForm({
         id: sellerSelected.uuid,
