@@ -13,7 +13,6 @@ export const useFilters = function <T extends object>(initialState: T) {
           params === "" ? `?${key}=${value}` : params + `&${key}=${value}`;
       }
     }
-    console.log({ params });
     setQuerystring(params);
   }, [filters]);
 

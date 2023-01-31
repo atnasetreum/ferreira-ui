@@ -33,7 +33,9 @@ const stringToDate = (dateStr)=>{
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "F": () => (/* binding */ createUrlImage)
 /* harmony export */ });
-const createUrlImage = (img, type)=>`${"https://api.transportesferreira.com"}/static/images/${type ? "cars" : "sellers"}/${img}`;
+const createUrlImage = (img, folder = "sellers")=>{
+    return `${"https://api.transportesferreira.com"}/static/images/${folder}/${img}`;
+};
 
 
 /***/ })

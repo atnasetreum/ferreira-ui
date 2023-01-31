@@ -1,4 +1,3 @@
-export const createUrlImage = (img: string, type?: string) =>
-  `${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/${
-    type ? "cars" : "sellers"
-  }/${img}`;
+export const createUrlImage = (img: string, folder: string = "sellers") => {
+  return `${process.env.NEXT_PUBLIC_API_ROUTE}/static/images/${folder}/${img}`;
+};

@@ -89,7 +89,6 @@ const Subtitle = (props: any) => {
 };
 
 const PdfRoute = ({ route }: { route: Route }) => {
-  //console.log({ route });
   return (
     <Document>
       <Page size="A4" style={styles.body} wrap>
@@ -110,9 +109,12 @@ const PdfRoute = ({ route }: { route: Route }) => {
         <Subtitle>Nota:</Subtitle>
         <Text style={styles.text}>{route.notes}</Text>
         <Subtitle>Logistica:</Subtitle>
+        <Text style={styles.text}>{route.car.logistica.name}</Text>
+        <Subtitle>Placa:</Subtitle>
+        <Text style={styles.text}>{route.car.placa}</Text>
         <Image
           style={styles.image}
-          src={createUrlImage(route.car.image, "placa")}
+          src={createUrlImage(route.car.image, "cars")}
         />
         {route.sellers.map((seller, idx) => {
           return (

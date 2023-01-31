@@ -19,7 +19,6 @@ import { Seller } from "../../../ts/interfaces";
 import Image from "next/image";
 import { createUrlImage } from "../../../utils/images";
 import { useEffect, useState } from "react";
-import { getUrlMap } from "../../../utils/strings";
 
 interface Props {
   form: NewSeller;

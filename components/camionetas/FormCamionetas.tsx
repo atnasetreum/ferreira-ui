@@ -14,6 +14,8 @@ import { CamionetaApi } from "../../utils/api";
 import { Camioneta, Logistica } from "../../ts/interfaces";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { SelectLogisticas } from "../ui";
+import Image from "next/image";
+import { createUrlImage } from "../../utils/images";
 
 export interface IFormCamionetas {
   logistica: Logistica | null;
@@ -42,12 +44,27 @@ const FormLogisticas = ({
 }: Props) => {
   const [form, setForm] = useState<IFormCamionetas>(initForm);
   const [id, setId] = useState<number>(0);
+  const [preview, setPreview] = useState<string>("");
   const { notify } = useNotify();
+
+  useEffect(() => {
+    if (!form.image) {
+      setPreview("");
+      return;
+    }
+    const objectUrl = URL.createObjectURL(form.image);
+    setPreview(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [form]);
 
   useEffect(() => {
     if (Object.keys(camionetaSelected).length && !id) {
       setId(camionetaSelected.id);
-      setForm({ placa: camionetaSelected.placa, image: null, logistica: null });
+      setForm({
+        placa: camionetaSelected.placa,
+        image: null,
+        logistica: camionetaSelected.logistica,
+      });
     }
   }, [camionetaSelected, id]);
 
@@ -62,9 +79,14 @@ const FormLogisticas = ({
       return notify("Agregue la placa de la camioneta");
     }
 
+    if (!form.image && !Object.keys(camionetaSelected).length) {
+      return notify("Seleccione una imagen");
+    }
+
     const formData = new FormData();
     formData.append("placa", placa);
     formData.append("logisticaId", logistica.id.toString());
+
     if (form.image) {
       formData.append("image", form.image);
     }
@@ -107,6 +129,7 @@ const FormLogisticas = ({
           <TextField
             label="Placa"
             fullWidth
+            autoComplete="off"
             value={form.placa}
             onChange={({ target: { value } }) =>
               setForm({ ...form, placa: value })
@@ -133,6 +156,16 @@ const FormLogisticas = ({
           />
           <PhotoCamera />
         </IconButton>
+        {preview ? (
+          <Image src={preview} alt={""} width={300} height={150} />
+        ) : camionetaSelected?.image ? (
+          <Image
+            src={createUrlImage(camionetaSelected.image, "cars")}
+            alt={""}
+            width={300}
+            height={150}
+          />
+        ) : null}
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
         <ButtonGroup aria-label="outlined primary button group" fullWidth>
