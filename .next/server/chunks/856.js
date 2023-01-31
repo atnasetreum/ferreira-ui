@@ -43,9 +43,6 @@ const useFilters = function(initialState) {
                 params = params === "" ? `?${key}=${value}` : params + `&${key}=${value}`;
             }
         }
-        console.log({
-            params
-        });
         setQuerystring(params);
     }, [
         filters

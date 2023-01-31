@@ -106,7 +106,7 @@ function Row(props: PropsRow) {
       <StyledTableRow>
         <StyledTableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
-          colSpan={9}
+          colSpan={11}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
