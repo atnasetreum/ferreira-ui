@@ -115,7 +115,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
 
     const pago = form.pago.trim();
 
-    if (!pago) {
+    if (!pago && !id) {
       return notify("Agregue un pago");
     }
 
