@@ -36,6 +36,7 @@ const formatDateDynamic = (date, format)=>moment__WEBPACK_IMPORTED_MODULE_0___de
 /* harmony export */   "F": () => (/* binding */ createUrlImage)
 /* harmony export */ });
 const createUrlImage = (img, folder = "sellers")=>{
+    //return `https://api.transportesferreira.com/static/images/${folder}/${img}`;
     return `${"https://api.transportesferreira.com"}/static/images/${folder}/${img}`;
 };
 
