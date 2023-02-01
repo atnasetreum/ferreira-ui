@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/lTAQTNQH0rqG3fqGQYsjO/_buildManifest.js",
-    "static/lTAQTNQH0rqG3fqGQYsjO/_ssgManifest.js"
+    "static/_t8GpSWnsS9c0zMzuKtS4/_buildManifest.js",
+    "static/_t8GpSWnsS9c0zMzuKtS4/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -133,7 +133,7 @@
       "static/chunks/468-208d354b91357386.js",
       "static/chunks/476-b4f5d07fcc2b49df.js",
       "static/chunks/318-f32ef27768db451b.js",
-      "static/chunks/pages/rutas-7cb8e4a3b76a477f.js"
+      "static/chunks/pages/rutas-0ab6ff38a397363f.js"
     ],
     "/sellers": [
       "static/chunks/webpack-36d12a75f0098f30.js",

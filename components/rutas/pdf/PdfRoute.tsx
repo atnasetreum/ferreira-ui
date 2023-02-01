@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   imageRef: {
     marginHorizontal: 50,
-    width: 100,
+    width: 200,
   },
   header: {
     fontSize: 12,
