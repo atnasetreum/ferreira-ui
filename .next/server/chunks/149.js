@@ -317,8 +317,11 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_DirectionsCar__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(6069);
 /* harmony import */ var _mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_LocationCity__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _mui_icons_material_Assessment__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(1839);
+/* harmony import */ var _mui_icons_material_Assessment__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_mui_icons_material_Assessment__WEBPACK_IMPORTED_MODULE_15__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_contexts_auth__WEBPACK_IMPORTED_MODULE_11__]);
 _contexts_auth__WEBPACK_IMPORTED_MODULE_11__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
 
 
 
@@ -403,16 +406,20 @@ const MainListItems = ()=>{
                         primary: "Logisticas"
                     })
                 ]
-            })
-        ]
-    });
-};
-const SecondaryListItems = ()=>{
-    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
-    const { logoutUser , user  } = react__WEBPACK_IMPORTED_MODULE_1__.useContext(_contexts_auth__WEBPACK_IMPORTED_MODULE_11__/* .AuthContext */ .Vo);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [
-            user?.userType === _constants__WEBPACK_IMPORTED_MODULE_12__/* .userTypes.ADMIN */ .v.ADMIN && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
+            }),
+            userType === _constants__WEBPACK_IMPORTED_MODULE_12__/* .userTypes.ADMIN */ .v.ADMIN && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
+                onClick: ()=>router.push("/reportes"),
+                selected: router.pathname === "/reportes",
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_3___default()), {
+                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_Assessment__WEBPACK_IMPORTED_MODULE_15___default()), {})
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_4___default()), {
+                        primary: "Reportes"
+                    })
+                ]
+            }),
+            userType === _constants__WEBPACK_IMPORTED_MODULE_12__/* .userTypes.ADMIN */ .v.ADMIN && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
                 onClick: ()=>router.push("/users"),
                 selected: router.pathname === "/users",
                 children: [
@@ -423,19 +430,25 @@ const SecondaryListItems = ()=>{
                         primary: "Users"
                     })
                 ]
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
-                onClick: ()=>logoutUser(),
-                children: [
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_3___default()), {
-                        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_Logout__WEBPACK_IMPORTED_MODULE_6___default()), {})
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_4___default()), {
-                        primary: "Salir"
-                    })
-                ]
             })
         ]
+    });
+};
+const SecondaryListItems = ()=>{
+    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_7__.useRouter)();
+    const { logoutUser  } = react__WEBPACK_IMPORTED_MODULE_1__.useContext(_contexts_auth__WEBPACK_IMPORTED_MODULE_11__/* .AuthContext */ .Vo);
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_ListItemButton__WEBPACK_IMPORTED_MODULE_2___default()), {
+            onClick: ()=>logoutUser(),
+            children: [
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemIcon__WEBPACK_IMPORTED_MODULE_3___default()), {
+                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_icons_material_Logout__WEBPACK_IMPORTED_MODULE_6___default()), {})
+                }),
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_ListItemText__WEBPACK_IMPORTED_MODULE_4___default()), {
+                    primary: "Salir"
+                })
+            ]
+        })
     });
 };
 
