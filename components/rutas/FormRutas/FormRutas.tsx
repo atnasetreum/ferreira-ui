@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { SelectSellers, SellerRaw } from "../../ui";
 import TablePuntos from "./TablePuntos";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import SelectDrivers from "../../ui/SelectDrivers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -34,6 +34,7 @@ export interface IFormRutas {
   sellers: SellerWithOrder[];
   notes: string;
   placa: Camioneta | null;
+  pago: string;
 }
 
 const initForm = {
@@ -42,6 +43,7 @@ const initForm = {
   sellers: [],
   notes: "",
   placa: null,
+  pago: "",
 };
 
 interface Props {
@@ -88,6 +90,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
         })),
         notes: routeSelected.notes,
         placa: routeSelected.car,
+        pago: routeSelected.pago,
       });
       setId(routeSelected.id);
     }
@@ -110,6 +113,12 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
       return notify("Seleccione un driver");
     }
 
+    const pago = form.pago.trim();
+
+    if (!pago) {
+      return notify("Agregue un pago");
+    }
+
     if (!form.sellers.length) {
       return notify("Seleccione los sellers de la ruta");
     }
@@ -122,6 +131,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
         notes: form.notes.trim(),
+        pago,
       })
         .then(() => {
           notify("Ruta creada correctamente", "success");
@@ -136,6 +146,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
         notes: form.notes.trim(),
+        pago,
       })
         .then(() => {
           notify("Ruta actualizada correctamente", "success");
@@ -148,7 +159,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
 
   return (
     <Grid container spacing={1}>
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} md={6} lg={3}>
         <Paper>
           <SelectPlacas
             value={form.placa}
@@ -156,7 +167,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           />
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
+      <Grid item xs={12} md={6} lg={2}>
         <Paper>
           <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
             <DatePicker
@@ -171,7 +182,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           </LocalizationProvider>
         </Paper>
       </Grid>
-      <Grid item xs={12} md={6} lg={3}>
+      <Grid item xs={12} md={6} lg={2}>
         <Paper>
           <SelectDrivers
             value={form.driver}
@@ -179,12 +190,27 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           />
         </Paper>
       </Grid>
-      <Grid item xs={12} md={6} lg={3}>
+      <Grid item xs={12} md={6} lg={2}>
         <Paper>
           <SelectSellers
             value={seller}
             onChange={setSeller}
             idsDisabled={form.sellers.map((sell) => Number(sell.id))}
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={6} lg={3}>
+        <Paper>
+          <TextField
+            label="Pago"
+            variant="outlined"
+            fullWidth
+            type="number"
+            autoComplete="off"
+            value={form.pago}
+            onChange={({ target: { value } }) =>
+              setForm({ ...form, pago: value })
+            }
           />
         </Paper>
       </Grid>

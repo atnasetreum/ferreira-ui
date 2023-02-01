@@ -7,6 +7,7 @@ exports.modules = {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "a8": () => (/* binding */ formatDateDynamic),
 /* harmony export */   "j5": () => (/* binding */ stringToDate),
 /* harmony export */   "jH": () => (/* binding */ formatTimeStamp),
 /* harmony export */   "p6": () => (/* binding */ formatDate)
@@ -23,6 +24,7 @@ const stringToDate = (dateStr)=>{
     const [year, month, day] = dateStr.split("-");
     return new Date(Number(year), Number(month) - 1, Number(day));
 };
+const formatDateDynamic = (date, format)=>moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format(format);
 
 
 /***/ }),

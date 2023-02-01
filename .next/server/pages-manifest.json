@@ -9,6 +9,7 @@
   "/dashboard/listItems": "pages/dashboard/listItems.html",
   "/": "pages/index.html",
   "/logisticas": "pages/logisticas.html",
+  "/reportes": "pages/reportes.html",
   "/rutas": "pages/rutas.html",
   "/sellers": "pages/sellers.html",
   "/users": "pages/users.html",

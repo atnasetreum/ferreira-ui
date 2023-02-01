@@ -567,11 +567,18 @@ async function remove(id) {
     const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api["delete"] */ .h["delete"](`${basePath}/${id}`);
     return data;
 }
+async function getDataReport(params) {
+    const { data  } = await _axiosWrapper__WEBPACK_IMPORTED_MODULE_0__/* .api.get */ .h.get(`${basePath}/reportes`, {
+        params
+    });
+    return data;
+}
 const RouteApi = {
     getAll,
     create,
     update,
-    remove
+    remove,
+    getDataReport
 };
 
 __webpack_async_result__();
