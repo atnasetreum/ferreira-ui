@@ -1,5 +1,5 @@
 import { FiltersRoute } from "../../pages/rutas";
-import { Route } from "../../ts/interfaces";
+import { Reporte, Route } from "../../ts/interfaces";
 import { api } from "./axiosWrapper";
 
 const basePath = "/routes";
@@ -24,9 +24,15 @@ async function remove(id: number) {
   return data as Route;
 }
 
+async function getDataReport(params: object) {
+  const { data } = await api.get(`${basePath}/reportes`, { params });
+  return data as Reporte[];
+}
+
 export const RouteApi = {
   getAll,
   create,
   update,
   remove,
+  getDataReport,
 };

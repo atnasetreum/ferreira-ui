@@ -12,6 +12,7 @@ import { AuthContext } from "../../contexts/auth";
 import { userTypes } from "../../constants";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 
 export const MainListItems = () => {
   const router = useRouter();
@@ -74,49 +75,18 @@ export const MainListItems = () => {
           <ListItemText primary="Logisticas" />
         </ListItemButton>
       )}
-      {/* <ListItemButton>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Customers" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Reports" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Integrations" />
-      </ListItemButton> */}
-    </React.Fragment>
-  );
-};
-
-export const SecondaryListItems = () => {
-  const router = useRouter();
-  const { logoutUser, user } = React.useContext(AuthContext);
-  return (
-    <React.Fragment>
-      {/* <ListSubheader component="div" inset>
-        Saved reports
-      </ListSubheader>
-      <ListItemButton>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Current month" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <AssignmentIcon />
-        </ListItemIcon>
-        <ListItemText primary="Last quarter" />
-      </ListItemButton> */}
-      {user?.userType === userTypes.ADMIN && (
+      {userType === userTypes.ADMIN && (
+        <ListItemButton
+          onClick={() => router.push("/reportes")}
+          selected={router.pathname === "/reportes"}
+        >
+          <ListItemIcon>
+            <AssessmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Reportes" />
+        </ListItemButton>
+      )}
+      {userType === userTypes.ADMIN && (
         <ListItemButton
           onClick={() => router.push("/users")}
           selected={router.pathname === "/users"}
@@ -127,6 +97,15 @@ export const SecondaryListItems = () => {
           <ListItemText primary="Users" />
         </ListItemButton>
       )}
+    </React.Fragment>
+  );
+};
+
+export const SecondaryListItems = () => {
+  const router = useRouter();
+  const { logoutUser } = React.useContext(AuthContext);
+  return (
+    <React.Fragment>
       <ListItemButton onClick={() => logoutUser()}>
         <ListItemIcon>
           <LogoutIcon />
