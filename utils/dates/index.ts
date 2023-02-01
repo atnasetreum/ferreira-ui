@@ -9,3 +9,6 @@ export const stringToDate = (dateStr: string) => {
   const [year, month, day] = dateStr.split("-");
   return new Date(Number(year), Number(month) - 1, Number(day));
 };
+
+export const formatDateDynamic = (date: Date, format: string) =>
+  moment(date).format(format);

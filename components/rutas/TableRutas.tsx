@@ -25,6 +25,7 @@ import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import EditIcon from "@mui/icons-material/Edit";
 import { FiltersRoute } from "../../pages/rutas";
+import { formatter } from "../../utils/numbers";
 
 interface PropsRow {
   setAction: (action: string) => void;
@@ -63,6 +64,7 @@ function Row(props: PropsRow) {
         <StyledTableCell>{row.user.name}</StyledTableCell>
         <StyledTableCell>{row.sellers.length}</StyledTableCell>
         <StyledTableCell>{row.ciclo}</StyledTableCell>
+        <StyledTableCell>{formatter.format(Number(row.pago))}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.createdAt)}</StyledTableCell>
         <StyledTableCell>{formatTimeStamp(row.updatedAt)}</StyledTableCell>
         <StyledTableCell align="center">
@@ -106,7 +108,7 @@ function Row(props: PropsRow) {
       <StyledTableRow>
         <StyledTableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
-          colSpan={11}
+          colSpan={12}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
@@ -192,6 +194,7 @@ function TableRutas({ setAction, setRouteSelected, filters }: Props) {
             <StyledTableCell>Driver</StyledTableCell>
             <StyledTableCell>No. de puntos</StyledTableCell>
             <StyledTableCell>Ciclo</StyledTableCell>
+            <StyledTableCell>Pago</StyledTableCell>
             <StyledTableCell>Fecha Creacion</StyledTableCell>
             <StyledTableCell>Ultima actualizacion</StyledTableCell>
             <StyledTableCell align="center">Acciones</StyledTableCell>
