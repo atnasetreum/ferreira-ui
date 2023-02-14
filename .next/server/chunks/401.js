@@ -393,11 +393,212 @@ __webpack_async_result__();
 
 /***/ }),
 
-/***/ 7613:
+/***/ 9401:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AF": () => (/* reexport safe */ _tables__WEBPACK_IMPORTED_MODULE_5__.A),
+/* harmony export */   "DA": () => (/* reexport safe */ _SelectPlacas__WEBPACK_IMPORTED_MODULE_8__.D),
+/* harmony export */   "E5": () => (/* reexport safe */ _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__.E),
+/* harmony export */   "EV": () => (/* reexport safe */ _SelectEstados__WEBPACK_IMPORTED_MODULE_2__.E),
+/* harmony export */   "Yk": () => (/* reexport safe */ _tables__WEBPACK_IMPORTED_MODULE_5__.Y),
+/* harmony export */   "h1": () => (/* reexport safe */ _SelectSellers__WEBPACK_IMPORTED_MODULE_1__.E),
+/* harmony export */   "tF": () => (/* reexport safe */ _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__.t),
+/* harmony export */   "wZ": () => (/* reexport safe */ _Copyright__WEBPACK_IMPORTED_MODULE_0__.w),
+/* harmony export */   "yO": () => (/* reexport safe */ _SelectLogisticas__WEBPACK_IMPORTED_MODULE_7__.y)
+/* harmony export */ });
+/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9920);
+/* harmony import */ var _SelectSellers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4526);
+/* harmony import */ var _SelectEstados__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(113);
+/* harmony import */ var _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6205);
+/* harmony import */ var _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8022);
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5477);
+/* harmony import */ var _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8719);
+/* harmony import */ var _SelectLogisticas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4978);
+/* harmony import */ var _SelectPlacas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(7494);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _tables__WEBPACK_IMPORTED_MODULE_5__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_7__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_8__]);
+([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _tables__WEBPACK_IMPORTED_MODULE_5__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_7__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_8__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
+
+
+
+
+
+
+
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 7586:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material_Table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9181);
+/* harmony import */ var _mui_material_Table__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Table__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8823);
+/* harmony import */ var _mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(443);
+/* harmony import */ var _mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _mui_material_Paper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1168);
+/* harmony import */ var _mui_material_Paper__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Paper__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2633);
+/* harmony import */ var _TableFooterCustom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(6778);
+/* harmony import */ var _TableHeadCustom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(8091);
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(856);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_hooks__WEBPACK_IMPORTED_MODULE_9__]);
+_hooks__WEBPACK_IMPORTED_MODULE_9__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+
+
+
+
+
+
+const TableContainerCustom = ({ rows , columns , renderListItem  })=>{
+    const { page , rowsPerPage , emptyRows , handleChangePage , handleChangeRowsPerPage  } = (0,_hooks__WEBPACK_IMPORTED_MODULE_9__/* .usePagination */ .h0)(rows);
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((_mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4___default()), {
+        component: (_mui_material_Paper__WEBPACK_IMPORTED_MODULE_5___default()),
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_Table__WEBPACK_IMPORTED_MODULE_2___default()), {
+            sx: {
+                minWidth: 500
+            },
+            "aria-label": "custom pagination table",
+            children: [
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableHeadCustom__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+                    columns: columns
+                }),
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((_mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3___default()), {
+                    children: [
+                        (rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows).map((row)=>renderListItem(row)),
+                        emptyRows > 0 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableStyle__WEBPACK_IMPORTED_MODULE_6__/* .StyledTableRow */ .A, {
+                            style: {
+                                height: 53 * emptyRows
+                            },
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableStyle__WEBPACK_IMPORTED_MODULE_6__/* .StyledTableCell */ .Y, {
+                                colSpan: columns.length
+                            })
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableFooterCustom__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+                    rows: rows,
+                    columns: columns,
+                    rowsPerPage: rowsPerPage,
+                    page: page,
+                    handleChangePage: handleChangePage,
+                    handleChangeRowsPerPage: handleChangeRowsPerPage
+                })
+            ]
+        })
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableContainerCustom);
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 6778:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "D": () => (/* binding */ TablePaginationActions)
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5692);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _TablePaginationActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8626);
+
+
+
+
+const TableFooterCustom = ({ rows , columns , rowsPerPage , page , handleChangePage , handleChangeRowsPerPage  })=>{
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_2__.TableFooter, {
+        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_2__.TableRow, {
+            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_2__.TablePagination, {
+                rowsPerPageOptions: [
+                    5,
+                    10,
+                    25,
+                    {
+                        label: "All",
+                        value: -1
+                    }
+                ],
+                colSpan: columns.length,
+                count: rows.length,
+                rowsPerPage: rowsPerPage,
+                page: page,
+                SelectProps: {
+                    inputProps: {
+                        "aria-label": "rows per page"
+                    },
+                    native: true
+                },
+                onPageChange: handleChangePage,
+                onRowsPerPageChange: handleChangeRowsPerPage,
+                ActionsComponent: _TablePaginationActions__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z
+            })
+        })
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableFooterCustom);
+
+
+/***/ }),
+
+/***/ 8091:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5692);
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2633);
+
+
+
+const TableHeadCustom = ({ columns  })=>{
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mui_material__WEBPACK_IMPORTED_MODULE_1__.TableHead, {
+        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableStyle__WEBPACK_IMPORTED_MODULE_2__/* .StyledTableRow */ .A, {
+            children: columns.map((column)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_TableStyle__WEBPACK_IMPORTED_MODULE_2__/* .StyledTableCell */ .Y, {
+                    children: column
+                }, column))
+        })
+    });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableHeadCustom);
+
+
+/***/ }),
+
+/***/ 8626:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
@@ -426,7 +627,7 @@ __webpack_async_result__();
 
 
 
-const TablePaginationActions = (props)=>{
+function TablePaginationActions(props) {
     const theme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.useTheme)();
     const { count , page , rowsPerPage , onPageChange  } = props;
     const handleFirstPageButtonClick = (event)=>{
@@ -473,12 +674,13 @@ const TablePaginationActions = (props)=>{
             })
         ]
     });
-};
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TablePaginationActions);
 
 
 /***/ }),
 
-/***/ 9696:
+/***/ 2633:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -516,39 +718,21 @@ const StyledTableCell = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_0__.sty
 
 /***/ }),
 
-/***/ 9401:
+/***/ 5477:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AF": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.A),
-/* harmony export */   "DA": () => (/* reexport safe */ _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__.D),
-/* harmony export */   "DY": () => (/* reexport safe */ _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__.D),
-/* harmony export */   "E5": () => (/* reexport safe */ _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__.E),
-/* harmony export */   "EV": () => (/* reexport safe */ _SelectEstados__WEBPACK_IMPORTED_MODULE_2__.E),
-/* harmony export */   "Yk": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_5__.Y),
-/* harmony export */   "h1": () => (/* reexport safe */ _SelectSellers__WEBPACK_IMPORTED_MODULE_1__.E),
-/* harmony export */   "tF": () => (/* reexport safe */ _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__.t),
-/* harmony export */   "wZ": () => (/* reexport safe */ _Copyright__WEBPACK_IMPORTED_MODULE_0__.w),
-/* harmony export */   "yO": () => (/* reexport safe */ _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__.y)
+/* harmony export */   "A": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_4__.A),
+/* harmony export */   "Y": () => (/* reexport safe */ _TableStyle__WEBPACK_IMPORTED_MODULE_4__.Y)
 /* harmony export */ });
-/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9920);
-/* harmony import */ var _SelectSellers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4526);
-/* harmony import */ var _SelectEstados__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(113);
-/* harmony import */ var _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6205);
-/* harmony import */ var _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8022);
-/* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9696);
-/* harmony import */ var _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8719);
-/* harmony import */ var _TablePaginationActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7613);
-/* harmony import */ var _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4978);
-/* harmony import */ var _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7494);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__]);
-([_SelectSellers__WEBPACK_IMPORTED_MODULE_1__, _SelectEstados__WEBPACK_IMPORTED_MODULE_2__, _SelectMunicipios__WEBPACK_IMPORTED_MODULE_3__, _SelectCiudades__WEBPACK_IMPORTED_MODULE_4__, _SelectDrivers__WEBPACK_IMPORTED_MODULE_6__, _SelectLogisticas__WEBPACK_IMPORTED_MODULE_8__, _SelectPlacas__WEBPACK_IMPORTED_MODULE_9__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-
-
-
-
-
+/* harmony import */ var _TableContainerCustom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7586);
+/* harmony import */ var _TableHeadCustom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8091);
+/* harmony import */ var _TableFooterCustom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6778);
+/* harmony import */ var _TablePaginationActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8626);
+/* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2633);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_TableContainerCustom__WEBPACK_IMPORTED_MODULE_0__]);
+_TableContainerCustom__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
 
 
@@ -557,6 +741,125 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_Sel
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 856:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "d$": () => (/* reexport safe */ _useNotify__WEBPACK_IMPORTED_MODULE_0__.d),
+/* harmony export */   "h0": () => (/* reexport safe */ _usePagination__WEBPACK_IMPORTED_MODULE_2__.h),
+/* harmony export */   "mN": () => (/* reexport safe */ _useFilters__WEBPACK_IMPORTED_MODULE_1__.m)
+/* harmony export */ });
+/* harmony import */ var _useNotify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7889);
+/* harmony import */ var _useFilters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1957);
+/* harmony import */ var _usePagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2937);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_useNotify__WEBPACK_IMPORTED_MODULE_0__]);
+_useNotify__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 1957:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "m": () => (/* binding */ useFilters)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const useFilters = function(initialState) {
+    const [filters, setFilters] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialState);
+    const [querystring, setQuerystring] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{
+        let params = "";
+        for(const key in filters){
+            const value = filters[key];
+            if (value) {
+                params = params === "" ? `?${key}=${value}` : params + `&${key}=${value}`;
+            }
+        }
+        setQuerystring(params);
+    }, [
+        filters
+    ]);
+    return {
+        filters,
+        setFilters,
+        querystring
+    };
+};
+
+
+/***/ }),
+
+/***/ 7889:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "d": () => (/* binding */ useNotify)
+/* harmony export */ });
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3590);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([react_toastify__WEBPACK_IMPORTED_MODULE_0__]);
+react_toastify__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const useNotify = ()=>{
+    const notify = (msg, type)=>{
+        (0,react_toastify__WEBPACK_IMPORTED_MODULE_0__.toast)(msg, {
+            hideProgressBar: false,
+            autoClose: 2000,
+            type: type ?? "warning",
+            position: "top-right"
+        });
+    };
+    return {
+        notify
+    };
+};
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
+/***/ 2937:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "h": () => (/* binding */ usePagination)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const usePagination = (rows)=>{
+    const [page, setPage] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(0);
+    const [rowsPerPage, setRowsPerPage] = react__WEBPACK_IMPORTED_MODULE_0___default().useState(5);
+    const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    const handleChangePage = (event, newPage)=>{
+        setPage(newPage);
+    };
+    const handleChangeRowsPerPage = (event)=>{
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+    return {
+        page,
+        rowsPerPage,
+        emptyRows,
+        handleChangePage,
+        handleChangeRowsPerPage
+    };
+};
+
 
 /***/ })
 

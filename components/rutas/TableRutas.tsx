@@ -4,10 +4,8 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { StyledTableCell, StyledTableRow } from "../ui";
@@ -26,6 +24,7 @@ import { saveAs } from "file-saver";
 import EditIcon from "@mui/icons-material/Edit";
 import { FiltersRoute } from "../../pages/rutas";
 import { formatter } from "../../utils/numbers";
+import TableContainerCustom from "../ui/tables/TableContainerCustom";
 
 interface PropsRow {
   setAction: (action: string) => void;
@@ -182,37 +181,32 @@ function TableRutas({ setAction, setRouteSelected, filters }: Props) {
   }, [filters]);
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <StyledTableRow>
-            <StyledTableCell />
-            <StyledTableCell>ID</StyledTableCell>
-            <StyledTableCell>Logistica</StyledTableCell>
-            <StyledTableCell>Placa</StyledTableCell>
-            <StyledTableCell>Fecha de ruta</StyledTableCell>
-            <StyledTableCell>Driver</StyledTableCell>
-            <StyledTableCell>No. de puntos</StyledTableCell>
-            <StyledTableCell>Ciclo</StyledTableCell>
-            <StyledTableCell>Pago</StyledTableCell>
-            <StyledTableCell>Fecha Creacion</StyledTableCell>
-            <StyledTableCell>Ultima actualizacion</StyledTableCell>
-            <StyledTableCell align="center">Acciones</StyledTableCell>
-          </StyledTableRow>
-        </TableHead>
-        <TableBody>
-          {routes.map((row) => (
-            <Row
-              key={row.id}
-              row={row}
-              removeRoute={removeRoute}
-              setAction={setAction}
-              setRouteSelected={setRouteSelected}
-            />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <TableContainerCustom
+      rows={routes}
+      columns={[
+        "",
+        "ID",
+        "Logistica",
+        "Placa",
+        "Fecha de ruta",
+        "Driver",
+        "No. de puntos",
+        "Ciclo",
+        "Pago",
+        "Fecha Creacion",
+        "Ultima actualizacion",
+        "Acciones",
+      ]}
+      renderListItem={(route) => (
+        <Row
+          key={route.id}
+          row={route}
+          removeRoute={removeRoute}
+          setAction={setAction}
+          setRouteSelected={setRouteSelected}
+        />
+      )}
+    />
   );
 }
 

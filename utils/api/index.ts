@@ -9,3 +9,4 @@ export * from "./userType.api";
 export * from "./route.api";
 export * from "./logistica.api";
 export * from "./camioneta.api";
+export * from "./dashboard.api";
