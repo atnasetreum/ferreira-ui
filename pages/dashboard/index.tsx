@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import MainLayout from "../../layouts/MainLayout";
 import Orders from "./Orders";
+import CarsByLogistics from "../../components/dashboard/CarsByLogistics";
 
 export default function DashboardContent() {
   return (
@@ -14,7 +15,7 @@ export default function DashboardContent() {
               p: 2,
               display: "flex",
               flexDirection: "column",
-              height: 240,
+              height: 300,
             }}
           >
             Orders
@@ -27,10 +28,10 @@ export default function DashboardContent() {
               p: 2,
               display: "flex",
               flexDirection: "column",
-              height: 240,
+              height: 300,
             }}
           >
-            Deposits
+            <CarsByLogistics />
           </Paper>
         </Grid>
         {/* Recent Orders */}
