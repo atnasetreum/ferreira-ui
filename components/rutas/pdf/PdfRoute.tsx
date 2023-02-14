@@ -34,6 +34,11 @@ const styles = StyleSheet.create({
     margin: 2,
     fontFamily: "Oswald",
   },
+  subtitleLarge: {
+    fontSize: 20,
+    margin: 2,
+    fontFamily: "Oswald",
+  },
   text: {
     margin: 12,
     fontSize: 14,
@@ -41,6 +46,11 @@ const styles = StyleSheet.create({
     fontFamily: "Times-Roman",
   },
   image: {
+    marginHorizontal: 120,
+    width: 280,
+    height: 200,
+  },
+  imageQr: {
     marginHorizontal: 150,
     width: 250,
     height: 150,
@@ -114,15 +124,16 @@ const PdfRoute = ({ route }: { route: Route }) => {
         <Subtitle>Placa:</Subtitle>
         <Text style={styles.text}>{route.car.placa}</Text>
         <Image
-          style={styles.image}
+          style={styles.imageQr}
           src={createUrlImage(route.car.image, "cars")}
         />
         {route.sellers.map((seller, idx) => {
           return (
             <View key={seller.id} break wrap={false}>
-              <Subtitle>
+              <Text style={styles.subtitleLarge}>
                 <Link src={seller.linkUbicacion}>{`Punto ${idx + 1}`}</Link>
-                {" : "}
+              </Text>
+              <Subtitle>
                 {seller.nombre} - {seller.uuid}
               </Subtitle>
               <Image style={styles.image} src={createUrlImage(seller.image)} />

@@ -75,7 +75,7 @@ interface Props {
   title: string;
 }
 
-export default function DashboardPage({ children, title }: Props) {
+export default function MainLayout({ children, title }: Props) {
   const [open, setOpen] = React.useState(true);
   const { isLoggedIn, user } = React.useContext(AuthContext);
   const toggleDrawer = () => {
