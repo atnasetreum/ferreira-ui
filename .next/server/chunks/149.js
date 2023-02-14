@@ -38,7 +38,7 @@ const userTypes = {
 
 __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ DashboardPage)
+/* harmony export */   "Z": () => (/* binding */ MainLayout)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
@@ -149,7 +149,7 @@ const Drawer = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.styled)((_mu
         }
     }));
 const mdTheme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_2__.createTheme)();
-function DashboardPage({ children , title  }) {
+function MainLayout({ children , title  }) {
     const [open, setOpen] = react__WEBPACK_IMPORTED_MODULE_1__.useState(true);
     const { isLoggedIn , user  } = react__WEBPACK_IMPORTED_MODULE_1__.useContext(_contexts_auth__WEBPACK_IMPORTED_MODULE_18__/* .AuthContext */ .Vo);
     const toggleDrawer = ()=>{
