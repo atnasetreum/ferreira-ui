@@ -23,6 +23,7 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
             label="ID"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={filters.id}
             onChange={({ target: { value } }) =>
               setFilters({ ...filters, id: value })
@@ -36,6 +37,7 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
             label="UUID"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={filters.uuid}
             onChange={({ target: { value } }) =>
               setFilters({ ...filters, uuid: value })
@@ -49,6 +51,7 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
             label="Nombre"
             variant="outlined"
             fullWidth
+            autoComplete="off"
             value={filters.nombre}
             onChange={({ target: { value } }) =>
               setFilters({ ...filters, nombre: value })
