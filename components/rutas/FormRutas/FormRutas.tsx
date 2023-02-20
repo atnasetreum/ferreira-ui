@@ -50,9 +50,15 @@ interface Props {
   setAction: (action: string) => void;
   routeSelected: Route;
   setRouteSelected: (routeSelected: Route) => void;
+  getAllRoutes: () => void;
 }
 
-const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
+const FormRutas = ({
+  setAction,
+  routeSelected,
+  setRouteSelected,
+  getAllRoutes,
+}: Props) => {
   const [form, setForm] = useState<IFormRutas>(initForm);
   const [seller, setSeller] = useState<SellerRaw | null>(null);
   const [id, setId] = useState<number>(0);
@@ -83,9 +89,9 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
           name: routeSelected.user.name,
         },
         sellers: routeSelected.sellers.map((seller, idx) => ({
-          id: seller.id.toString(),
-          uuid: seller.uuid,
-          nombre: seller.nombre,
+          id: seller.seller.id.toString(),
+          uuid: seller.seller.uuid,
+          nombre: seller.seller.nombre,
           order: idx + 1,
         })),
         notes: routeSelected.notes,
@@ -136,6 +142,7 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
         .then(() => {
           notify("Ruta creada correctamente", "success");
           setAction("");
+          getAllRoutes();
         })
         .catch((err) => notify(err.response?.data?.message || err.message));
     } else {
@@ -145,13 +152,14 @@ const FormRutas = ({ setAction, routeSelected, setRouteSelected }: Props) => {
         date: form.date,
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
-        notes: form.notes.trim(),
+        notes: form.notes?.trim(),
         pago,
       })
         .then(() => {
           notify("Ruta actualizada correctamente", "success");
           setAction("");
           setRouteSelected({} as Route);
+          getAllRoutes();
         })
         .catch((err) => notify(err.response?.data?.message || err.message));
     }

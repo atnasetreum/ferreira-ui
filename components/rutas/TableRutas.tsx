@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { StyledTableCell, StyledTableRow } from "../ui";
-import { useEffect, useState } from "react";
 import { RouteApi } from "../../utils/api";
 import { Route } from "../../ts/interfaces";
 import { formatDate, formatTimeStamp } from "../../utils/dates";
@@ -129,11 +128,14 @@ function Row(props: PropsRow) {
                       <StyledTableCell component="th" scope="row">
                         {idx + 1}
                       </StyledTableCell>
-                      <StyledTableCell>{seller.uuid}</StyledTableCell>
-                      <StyledTableCell>{seller.nombre}</StyledTableCell>
+                      <StyledTableCell>{seller.seller.uuid}</StyledTableCell>
+                      <StyledTableCell>{seller.seller.nombre}</StyledTableCell>
                       <StyledTableCell>
-                        <Link href={seller.linkUbicacion} target="_blank">
-                          {seller.linkUbicacion}
+                        <Link
+                          href={seller.seller.linkUbicacion}
+                          target="_blank"
+                        >
+                          {seller.seller.linkUbicacion}
                         </Link>
                       </StyledTableCell>
                     </StyledTableRow>
@@ -152,20 +154,18 @@ interface Props {
   setAction: (action: string) => void;
   setRouteSelected: (route: Route) => void;
   filters: FiltersRoute;
+  routes: Route[];
+  getAllRoutes: () => void;
 }
 
-function TableRutas({ setAction, setRouteSelected, filters }: Props) {
-  const [routes, setRoutes] = useState<Route[]>([]);
+function TableRutas({
+  setAction,
+  setRouteSelected,
+  filters,
+  routes,
+  getAllRoutes,
+}: Props) {
   const { notify } = useNotify();
-
-  const getAllRoutes = () =>
-    RouteApi.getAll({
-      ...(filters.id && { id: filters.id }),
-      ...(filters.date && { date: filters.date }),
-      ...(filters.driver && { driverId: filters.driver.id }),
-      ...(filters.placa && { carId: filters.placa.id }),
-      ...(filters.logistica && { logisticaId: filters.logistica.id }),
-    }).then(setRoutes);
 
   const removeRoute = (id: number) => {
     RouteApi.remove(id)
@@ -175,10 +175,6 @@ function TableRutas({ setAction, setRouteSelected, filters }: Props) {
       })
       .catch((err) => notify(err.response?.data?.message || err.message));
   };
-
-  useEffect(() => {
-    getAllRoutes();
-  }, [filters]);
 
   return (
     <TableContainerCustom

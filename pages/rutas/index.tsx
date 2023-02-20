@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormRutas from "../../components/rutas/FormRutas/FormRutas";
 import TableRutas from "../../components/rutas/TableRutas";
 import MainLayout from "../../layouts/MainLayout";
@@ -8,6 +8,7 @@ import ForkRightIcon from "@mui/icons-material/ForkRight";
 import { Camioneta, Logistica, Route } from "../../ts/interfaces";
 import FiltersOptsRoutes from "../../components/rutas/FiltersOptsRoutes";
 import { Driver } from "../../components/ui";
+import { RouteApi } from "../../utils/api";
 
 export interface FiltersRoute {
   id: string;
@@ -27,6 +28,21 @@ function RutasPage() {
     logistica: null,
     placa: null,
   });
+  const [routes, setRoutes] = useState<Route[]>([]);
+
+  const getAllRoutes = () =>
+    RouteApi.getAll({
+      ...(filters.id && { id: filters.id }),
+      ...(filters.date && { date: filters.date }),
+      ...(filters.driver && { driverId: filters.driver.id }),
+      ...(filters.placa && { carId: filters.placa.id }),
+      ...(filters.logistica && { logisticaId: filters.logistica.id }),
+    }).then(setRoutes);
+
+  useEffect(() => {
+    getAllRoutes();
+  }, [filters]);
+
   return (
     <MainLayout title="Rutas">
       <Grid container spacing={1}>
@@ -51,6 +67,7 @@ function RutasPage() {
               setAction={setAction}
               routeSelected={routeSelected}
               setRouteSelected={setRouteSelected}
+              getAllRoutes={getAllRoutes}
             />
           </Grid>
         )}
@@ -64,6 +81,8 @@ function RutasPage() {
                 filters={filters}
                 setAction={setAction}
                 setRouteSelected={setRouteSelected}
+                routes={routes}
+                getAllRoutes={getAllRoutes}
               />
             </Grid>
           </>
