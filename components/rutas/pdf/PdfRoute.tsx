@@ -127,7 +127,7 @@ const PdfRoute = ({ route }: { route: Route }) => {
           style={styles.imageQr}
           src={createUrlImage(route.car.image, "cars")}
         />
-        {route.sellers.map((seller, idx) => {
+        {route.sellers.map(({ seller }, idx) => {
           return (
             <View key={seller.id} break wrap={false}>
               <Text style={styles.subtitleLarge}>
