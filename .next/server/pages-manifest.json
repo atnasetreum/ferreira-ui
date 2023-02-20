@@ -1,5 +1,6 @@
 {
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/camionetas": "pages/camionetas.html",
   "/dashboard/Orders": "pages/dashboard/Orders.html",
@@ -7,7 +8,6 @@
   "/dashboard": "pages/dashboard.html",
   "/dashboard/listItems": "pages/dashboard/listItems.html",
   "/": "pages/index.html",
-  "/_error": "pages/_error.js",
   "/logisticas": "pages/logisticas.html",
   "/reportes": "pages/reportes.html",
   "/rutas": "pages/rutas.html",
