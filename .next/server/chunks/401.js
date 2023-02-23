@@ -451,7 +451,11 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var _mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableBody__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(443);
 /* harmony import */ var _mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_mui_material_TableContainer__WEBPACK_IMPORTED_MODULE_4__);
+<<<<<<< HEAD
 /* harmony import */ var _mui_material_Paper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1598);
+=======
+/* harmony import */ var _mui_material_Paper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1168);
+>>>>>>> 63e89b2a9d4c34cc42a7614dfd722c2f90d550c6
 /* harmony import */ var _mui_material_Paper__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_mui_material_Paper__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _TableStyle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2633);
 /* harmony import */ var _TableFooterCustom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(6778);
