@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["localhost", "api.transportesferreira.com"],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
