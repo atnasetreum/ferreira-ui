@@ -26,7 +26,17 @@ function TableLogisticas({
   return (
     <TableContainerCustom
       rows={logisticas}
+<<<<<<< HEAD
       columns={["ID", "Nombre", "Acciones"]}
+=======
+      columns={[
+        "ID",
+        "Nombre",
+        "Fecha Creacion",
+        "Fecha de ultima actualizacion",
+        "Acciones",
+      ]}
+>>>>>>> 63e89b2a9d4c34cc42a7614dfd722c2f90d550c6
       renderListItem={(logistica) => (
         <StyledTableRow
           key={logistica.id}
@@ -37,6 +47,15 @@ function TableLogisticas({
           </StyledTableCell>
           <StyledTableCell>{logistica.name}</StyledTableCell>
           <StyledTableCell>
+<<<<<<< HEAD
+=======
+            {formatTimeStamp(logistica.createdAt)}
+          </StyledTableCell>
+          <StyledTableCell>
+            {formatTimeStamp(logistica.updatedAt)}
+          </StyledTableCell>
+          <StyledTableCell>
+>>>>>>> 63e89b2a9d4c34cc42a7614dfd722c2f90d550c6
             <ButtonGroup aria-label="outlined primary button group">
               <IconButton
                 color="warning"
