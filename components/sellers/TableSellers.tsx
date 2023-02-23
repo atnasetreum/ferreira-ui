@@ -39,7 +39,6 @@ export default function TableSellers({
         "Imagen",
         "Ids, sucursales",
         "Telefonos",
-        "Ultima Actualizacion",
         "Detalles",
         "Acciones",
       ]}
@@ -79,7 +78,6 @@ export default function TableSellers({
           <StyledTableCell>
             {seller.referencePhones.map((tel) => tel.phone).join(" - ")}
           </StyledTableCell>
-          <StyledTableCell>{formatTimeStamp(seller.updatedAt)}</StyledTableCell>
           <StyledTableCell align="center">
             <PrivacyTipIcon
               style={{ cursor: "pointer" }}
