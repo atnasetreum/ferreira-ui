@@ -26,14 +26,7 @@ function TableLogisticas({
   return (
     <TableContainerCustom
       rows={camionetas}
-      columns={[
-        "ID",
-        "Placa",
-        "Logistica",
-        "Fecha Creacion",
-        "Fecha de ultima actualizacion",
-        "Acciones",
-      ]}
+      columns={["ID", "Placa", "Logistica", "Acciones"]}
       renderListItem={(camioneta) => (
         <StyledTableRow
           key={camioneta.id}
@@ -44,12 +37,6 @@ function TableLogisticas({
           </StyledTableCell>
           <StyledTableCell>{camioneta.placa}</StyledTableCell>
           <StyledTableCell>{camioneta.logistica.name}</StyledTableCell>
-          <StyledTableCell>
-            {formatTimeStamp(camioneta.createdAt)}
-          </StyledTableCell>
-          <StyledTableCell>
-            {formatTimeStamp(camioneta.updatedAt)}
-          </StyledTableCell>
           <StyledTableCell>
             <ButtonGroup aria-label="outlined primary button group">
               <IconButton

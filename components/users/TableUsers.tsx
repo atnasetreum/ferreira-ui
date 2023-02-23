@@ -27,14 +27,7 @@ function TableUsers({ users, getUsers }: Props) {
   return (
     <TableContainerCustom
       rows={users}
-      columns={[
-        "ID",
-        "Nombre",
-        "Tipo",
-        "Fecha de creacion",
-        "Ultima Actualizacion",
-        "Eliminar",
-      ]}
+      columns={["ID", "Nombre", "Tipo", "Eliminar"]}
       renderListItem={(user) => (
         <StyledTableRow key={user.id}>
           <StyledTableCell component="th" scope="seller">
@@ -42,9 +35,7 @@ function TableUsers({ users, getUsers }: Props) {
           </StyledTableCell>
           <StyledTableCell>{user.name}</StyledTableCell>
           <StyledTableCell>{user.userType.name}</StyledTableCell>
-          <StyledTableCell>{formatTimeStamp(user.createdAt)}</StyledTableCell>
-          <StyledTableCell>{formatTimeStamp(user.updatedAt)}</StyledTableCell>
-          <StyledTableCell align="center">
+          <StyledTableCell>
             <DeleteIcon
               color="error"
               style={{ cursor: "pointer" }}

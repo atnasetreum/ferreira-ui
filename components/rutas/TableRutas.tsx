@@ -63,9 +63,7 @@ function Row(props: PropsRow) {
         <StyledTableCell>{row.sellers.length}</StyledTableCell>
         <StyledTableCell>{row.ciclo}</StyledTableCell>
         <StyledTableCell>{formatter.format(Number(row.pago))}</StyledTableCell>
-        <StyledTableCell>{formatTimeStamp(row.createdAt)}</StyledTableCell>
-        <StyledTableCell>{formatTimeStamp(row.updatedAt)}</StyledTableCell>
-        <StyledTableCell align="center">
+        <StyledTableCell>
           <ButtonGroup aria-label="outlined primary button group">
             <IconButton
               color="error"
@@ -106,7 +104,7 @@ function Row(props: PropsRow) {
       <StyledTableRow>
         <StyledTableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
-          colSpan={12}
+          colSpan={10}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
@@ -189,8 +187,6 @@ function TableRutas({
         "No. de puntos",
         "Ciclo",
         "Pago",
-        "Fecha Creacion",
-        "Ultima actualizacion",
         "Acciones",
       ]}
       renderListItem={(route) => (
