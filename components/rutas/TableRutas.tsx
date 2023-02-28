@@ -185,7 +185,7 @@ function TableRutas({
         "Fecha de ruta",
         "Driver",
         "No. de puntos",
-        "Ciclo",
+        "# de ciclo",
         "Pago",
         "Acciones",
       ]}
