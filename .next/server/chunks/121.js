@@ -15,11 +15,7 @@ exports.defaultHead = defaultHead;
 exports["default"] = void 0;
 var _extends = (__webpack_require__(6495)/* ["default"] */ .Z);
 var _interop_require_default = (__webpack_require__(2648)/* ["default"] */ .Z);
-<<<<<<< HEAD
 var _interop_require_wildcard = (__webpack_require__(4647)/* ["default"] */ .Z);
-=======
-var _interop_require_wildcard = (__webpack_require__(1598)/* ["default"] */ .Z);
->>>>>>> 63e89b2a9d4c34cc42a7614dfd722c2f90d550c6
 var _react = _interop_require_wildcard(__webpack_require__(6689));
 var _sideEffect = _interop_require_default(__webpack_require__(2470));
 var _ampContext = __webpack_require__(3918);
