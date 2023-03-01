@@ -18,7 +18,7 @@ import { RouteApi } from "../../../utils/api";
 import { useNotify } from "../../../hooks";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Camioneta, Route } from "../../../ts/interfaces";
-import { stringToDate } from "../../../utils/dates";
+import { formatDateDynamic, stringToDate } from "../../../utils/dates";
 import { SelectPlacas } from "../../ui/SelectPlacas";
 
 export interface SellerWithOrder {
@@ -133,7 +133,7 @@ const FormRutas = ({
       // Creacion
       RouteApi.create({
         carId: form.placa.id,
-        date: form.date,
+        date: formatDateDynamic(form.date, "YYYY-MM-DD"),
         userId: form.driver.id,
         sellers: form.sellers.map((seller) => Number(seller.id)),
         notes: form.notes.trim(),

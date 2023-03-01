@@ -9,6 +9,7 @@ import { Camioneta, Logistica, Route } from "../../ts/interfaces";
 import FiltersOptsRoutes from "../../components/rutas/FiltersOptsRoutes";
 import { Driver } from "../../components/ui";
 import { RouteApi } from "../../utils/api";
+import { formatDateDynamic } from "../../utils/dates";
 
 export interface FiltersRoute {
   id: string;
@@ -33,7 +34,9 @@ function RutasPage() {
   const getAllRoutes = () =>
     RouteApi.getAll({
       ...(filters.id && { id: filters.id }),
-      ...(filters.date && { date: filters.date }),
+      ...(filters.date && {
+        date: formatDateDynamic(filters.date, "YYYY-MM-DD"),
+      }),
       ...(filters.driver && { driverId: filters.driver.id }),
       ...(filters.placa && { carId: filters.placa.id }),
       ...(filters.logistica && { logisticaId: filters.logistica.id }),
