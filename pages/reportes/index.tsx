@@ -45,8 +45,8 @@ function LogisticasPage() {
       form.logistica
     ) {
       RouteApi.getDataReport({
-        startDate: form.startDate,
-        endDate: form.endDate,
+        startDate: formatDateDynamic(form.startDate, "YYYY-MM-DD"),
+        endDate: formatDateDynamic(form.endDate, "YYYY-MM-DD"),
         logisticaId: form.logistica.id,
       }).then(setData);
     }
