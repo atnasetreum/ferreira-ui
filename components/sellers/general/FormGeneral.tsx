@@ -19,6 +19,8 @@ import { Seller } from "../../../ts/interfaces";
 import Image from "next/image";
 import { createUrlImage } from "../../../utils/images";
 import { useEffect, useState } from "react";
+import { SellerApi } from "../../../utils/api";
+import { useNotify } from "../../../hooks";
 
 interface Props {
   form: NewSeller;
@@ -33,6 +35,7 @@ export const FormGeneral = ({
   initialForm,
   sellerSelected,
 }: Props) => {
+  const { notify } = useNotify();
   const [preview, setPreview] = useState<string>("");
 
   useEffect(() => {
@@ -73,6 +76,20 @@ export const FormGeneral = ({
     return null;
   };
 
+  const validateNameSeller = () => {
+    const name = form.nombre.trim();
+    if (name) {
+      SellerApi.getOneByName(name)
+        .then(({ id, nombre }) => {
+          if (id) {
+            notify(`Seller con nombre: ${nombre}, ya existe con el ID: ${id}`);
+            setForm({ ...form, nombre: "" });
+          }
+        })
+        .catch((err) => notify(err.response?.data?.message || err.message));
+    }
+  };
+
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} lg={2}>
@@ -100,6 +117,7 @@ export const FormGeneral = ({
             onChange={({ target: { value } }) =>
               setForm({ ...form, nombre: value })
             }
+            onBlur={validateNameSeller}
           />
         </Paper>
       </Grid>

@@ -20,6 +20,9 @@ export interface FiltersSellers {
   estado: string | null;
   municipio: string | null;
   ciudad: string | null;
+  referencia: string;
+  telefonoNombre: string;
+  telefono: string;
 }
 
 const filtersInit = {
@@ -30,6 +33,9 @@ const filtersInit = {
   estado: null,
   municipio: null,
   ciudad: null,
+  referencia: "",
+  telefonoNombre: "",
+  telefono: "",
 };
 
 function SellersPage() {
@@ -88,7 +94,11 @@ function SellersPage() {
         {action === "" && (
           <>
             <Grid item xs={12} md={12} lg={12}>
-              <FiltersOptsSellers filters={filters} setFilters={setFilters} />
+              <FiltersOptsSellers
+                filters={filters}
+                setFilters={setFilters}
+                resetFilters={() => setFilters(filtersInit)}
+              />
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <TableSellers

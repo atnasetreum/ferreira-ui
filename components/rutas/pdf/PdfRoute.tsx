@@ -117,12 +117,21 @@ const PdfRoute = ({ route }: { route: Route }) => {
         <Text style={styles.text}>{route.ciclo}</Text>
         <Subtitle>Fecha de la ruta</Subtitle>
         <Text style={styles.text}>{formatDate(route.date)}</Text>
-        <Subtitle>Nota:</Subtitle>
-        <Text style={styles.text}>{route.notes}</Text>
+        {route.notes && (
+          <>
+            <Subtitle>Nota:</Subtitle>
+            <Text style={styles.text}>{route.notes}</Text>
+          </>
+        )}
         <Subtitle>Logistica:</Subtitle>
         <Text style={styles.text}>{route.car.logistica.name}</Text>
         <Subtitle>Placa:</Subtitle>
         <Text style={styles.text}>{route.car.placa}</Text>
+        <Text style={styles.subtitleLarge}>
+          <Link src="https://docs.google.com/forms/d/e/1FAIpQLSfdiQFOFSxBiULq53FuyKV0N3AqLFPi9f3gt0uYBd9ItwUdXA/viewform">
+            Formulario de inicio de ruta
+          </Link>
+        </Text>
         <Image
           style={styles.imageQr}
           src={createUrlImage(route.car.image, "cars")}

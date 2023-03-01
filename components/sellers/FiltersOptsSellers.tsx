@@ -1,14 +1,16 @@
-import { Grid, Paper, TextField, Typography } from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { FiltersSellers } from "../../pages/sellers";
 import SouthIcon from "@mui/icons-material/South";
-import { SelectCiudades, SelectEstados, SelectMunicipios } from "../ui";
+//import { SelectCiudades, SelectEstados, SelectMunicipios } from "../ui";
+import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
 interface Props {
   filters: FiltersSellers;
   setFilters: (filters: FiltersSellers) => void;
+  resetFilters: () => void;
 }
 
-const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
+const FiltersOptsSellers = ({ filters, setFilters, resetFilters }: Props) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={12} lg={12}>
@@ -61,6 +63,59 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
       </Grid>
       <Grid item xs={12} md={6} lg={2}>
         <Paper>
+          <TextField
+            label="Referencia"
+            variant="outlined"
+            fullWidth
+            autoComplete="off"
+            value={filters.referencia}
+            onChange={({ target: { value } }) =>
+              setFilters({ ...filters, referencia: value })
+            }
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={6} lg={2}>
+        <Paper>
+          <TextField
+            label="Telefono nombre"
+            variant="outlined"
+            fullWidth
+            autoComplete="off"
+            value={filters.telefonoNombre}
+            onChange={({ target: { value } }) =>
+              setFilters({ ...filters, telefonoNombre: value })
+            }
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={6} lg={2}>
+        <Paper>
+          <TextField
+            label="Telefono numero"
+            variant="outlined"
+            fullWidth
+            autoComplete="off"
+            value={filters.telefono}
+            onChange={({ target: { value } }) =>
+              setFilters({ ...filters, telefono: value })
+            }
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={12} md={6} lg={2}>
+        <Button
+          sx={{ mt: 1 }}
+          startIcon={<CleaningServicesIcon />}
+          fullWidth
+          variant="contained"
+          onClick={resetFilters}
+        >
+          Reiniciar Filtros
+        </Button>
+      </Grid>
+      {/* <Grid item xs={12} md={6} lg={2}>
+        <Paper>
           <SelectEstados
             entidad={filters.estado}
             setEntidad={(estado) => {
@@ -102,7 +157,7 @@ const FiltersOptsSellers = ({ filters, setFilters }: Props) => {
             setCiudad={(ciudad) => setFilters({ ...filters, ciudad })}
           />
         </Paper>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

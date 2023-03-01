@@ -9,6 +9,13 @@ async function getAll(params: string) {
   return data as Seller[];
 }
 
+async function getOneByName(name: string) {
+  const { data } = await api.get(`${basePath}/findOneByName`, {
+    params: { name },
+  });
+  return data as Seller;
+}
+
 async function getAllNoParent() {
   const { data } = await api.get(`${basePath}/no-parent`);
   return data as SellerRaw[];
@@ -44,6 +51,7 @@ async function remove(id: number) {
 
 export const SellerApi = {
   getAll,
+  getOneByName,
   create,
   update,
   getAllNoParent,
