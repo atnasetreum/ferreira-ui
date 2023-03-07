@@ -12,7 +12,19 @@ async function totalByLogistics() {
   return data as { name: string; y: number }[];
 }
 
+async function rutasByLogistics() {
+  const { data } = await api.get(`${basePath}/rutasByLogistics`);
+  return data as { name: string; y: number }[];
+}
+
+async function rutasByDrivers() {
+  const { data } = await api.get(`${basePath}/rutasByDrivers`);
+  return data as { categories: string[]; data: number[] };
+}
+
 export const DashboardApi = {
   carsByLogistics,
   totalByLogistics,
+  rutasByLogistics,
+  rutasByDrivers,
 };

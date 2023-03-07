@@ -3,11 +3,11 @@ import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
 import { DashboardApi } from "../../utils/api";
 
-const TotalByLogistics = () => {
+const RutasByLogistics = () => {
   const [data, setData] = useState<{ name: string; y: number }[]>([]);
 
   const getData = () => {
-    DashboardApi.totalByLogistics().then(setData);
+    DashboardApi.rutasByLogistics().then(setData);
   };
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const TotalByLogistics = () => {
           type: "pie",
         },
         title: {
-          text: "Total de ingresos por logistica",
+          text: "Total de rutas por logistica",
           align: "left",
         },
         credits: {
@@ -47,7 +47,7 @@ const TotalByLogistics = () => {
             dataLabels: {
               enabled: true,
               format:
-                "<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>Total: $ {point.y:,.2f}",
+                "<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>Total:  {point.y:,.0f}",
             },
           },
         },
@@ -63,4 +63,4 @@ const TotalByLogistics = () => {
   );
 };
 
-export default TotalByLogistics;
+export default RutasByLogistics;
