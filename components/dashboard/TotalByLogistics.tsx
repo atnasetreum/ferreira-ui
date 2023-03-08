@@ -20,10 +20,11 @@ const TotalByLogistics = () => {
       highcharts={Highcharts}
       options={{
         chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
           type: "pie",
+          options3d: {
+            enabled: true,
+            alpha: 45,
+          },
         },
         title: {
           text: "Total de ingresos por logistica",
@@ -42,6 +43,8 @@ const TotalByLogistics = () => {
         },
         plotOptions: {
           pie: {
+            innerSize: 100,
+            depth: 45,
             allowPointSelect: true,
             cursor: "pointer",
             dataLabels: {

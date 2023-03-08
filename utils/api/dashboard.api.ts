@@ -1,3 +1,4 @@
+import { StateCountDashboard } from "../../pages/dashboard";
 import { api } from "./axiosWrapper";
 
 const basePath = "/dashboard";
@@ -22,9 +23,15 @@ async function rutasByDrivers() {
   return data as { categories: string[]; data: number[] };
 }
 
+async function stateCountDashboard() {
+  const { data } = await api.get(`${basePath}/stateCountDashboard`);
+  return data as StateCountDashboard;
+}
+
 export const DashboardApi = {
   carsByLogistics,
   totalByLogistics,
   rutasByLogistics,
   rutasByDrivers,
+  stateCountDashboard,
 };

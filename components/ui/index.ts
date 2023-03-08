@@ -7,3 +7,4 @@ export * from "./tables";
 export * from "./SelectDrivers";
 export * from "./SelectLogisticas";
 export * from "./SelectPlacas";
+export * from "./Loading";

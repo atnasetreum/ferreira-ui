@@ -40,7 +40,7 @@ const RutasByDrivers = () => {
           },
         },
         title: {
-          text: "Rutas por Drivers",
+          text: "Total de rutas por drivers",
         },
         xAxis: {
           categories: data.categories,
@@ -61,12 +61,16 @@ const RutasByDrivers = () => {
         },
 
         tooltip: {
-          headerFormat: "<b>Driver: {point.x}</b><br>",
+          headerFormat: "Driver: <b>{point.x}</b><br>",
         },
         plotOptions: {
           series: {
             depth: 25,
             colorByPoint: true,
+            dataLabels: {
+              enabled: true,
+              format: "{point.y}",
+            },
           },
         },
         series: [

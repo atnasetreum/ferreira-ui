@@ -12,3 +12,5 @@ export const stringToDate = (dateStr: string) => {
 
 export const formatDateDynamic = (date: Date, format: string) =>
   moment(date).format(format);
+
+export const nowTimeStamp = () => moment().format("LLLL a");
