@@ -10,6 +10,7 @@ import { nowTimeStamp } from "../../utils/dates";
 import { useEffect, useState } from "react";
 import { DashboardApi } from "../../utils/api";
 import { LoadingBar } from "../../components/ui";
+import RutasByLogisticsTimeLine from "../../components/dashboard/RutasByLogisticsTimeLine";
 
 interface PropsInfoGlobal {
   title: string;
@@ -18,26 +19,28 @@ interface PropsInfoGlobal {
 
 const InfoGlobal = ({ title, total }: PropsInfoGlobal) => {
   return (
-    <Paper
-      sx={{
-        p: 2,
-        display: "flex",
-        flexDirection: "column",
-        height: 138,
-      }}
-    >
-      <>
-        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-          {title}
-        </Typography>
-        <Typography component="p" variant="h4">
-          {total}
-        </Typography>
-        <Typography color="text.secondary" sx={{ flex: 1 }}>
-          {nowTimeStamp()}
-        </Typography>
-      </>
-    </Paper>
+    <Grid item xs={12} md={12} lg={12}>
+      <Paper
+        sx={{
+          p: 1,
+          display: "flex",
+          flexDirection: "column",
+          height: 130,
+        }}
+      >
+        <>
+          <Typography component="h2" variant="h6" color="primary" gutterBottom>
+            {title}
+          </Typography>
+          <Typography component="p" variant="h4">
+            {total}
+          </Typography>
+          <Typography color="text.secondary" sx={{ flex: 1 }}>
+            {nowTimeStamp()}
+          </Typography>
+        </>
+      </Paper>
+    </Grid>
   );
 };
 
@@ -73,15 +76,27 @@ export default function DashboardContent() {
 
   return (
     <MainLayout title="Dashboard">
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {data && (
           <Grid item xs={12} md={4} lg={4}>
-            <InfoGlobal title={data.totales.title} total={data.totales.total} />
-            <br />
-            <InfoGlobal
-              title={data.promedioRuta.title}
-              total={data.promedioRuta.total}
-            />
+            <Grid container spacing={2}>
+              <InfoGlobal
+                title={data.totales.title}
+                total={data.totales.total}
+              />
+              <InfoGlobal
+                title={data.promedioRuta.title}
+                total={data.promedioRuta.total}
+              />
+              <InfoGlobal
+                title={data.sellers.title}
+                total={data.sellers.total}
+              />
+              <InfoGlobal
+                title={data.drivers.title}
+                total={data.drivers.total}
+              />
+            </Grid>
           </Grid>
         )}
         <Grid item xs={12} md={4} lg={4}>
@@ -90,50 +105,60 @@ export default function DashboardContent() {
               p: 2,
               display: "flex",
               flexDirection: "column",
-              height: 300,
-            }}
-          >
-            <TotalByLogistics />
-          </Paper>
-        </Grid>
-        {data && (
-          <Grid item xs={12} md={4} lg={4}>
-            <InfoGlobal title={data.sellers.title} total={data.sellers.total} />
-            <br />
-            <InfoGlobal title={data.drivers.title} total={data.drivers.total} />
-          </Grid>
-        )}
-        <Grid item xs={12} md={4} lg={4}>
-          <Paper
-            sx={{
-              p: 2,
-              display: "flex",
-              flexDirection: "column",
-              height: 300,
+              height: 570,
             }}
           >
             <CarsByLogistics />
           </Paper>
         </Grid>
         <Grid item xs={12} md={4} lg={4}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={12} lg={12}>
+              <Paper
+                sx={{
+                  p: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  height: 272,
+                }}
+              >
+                <TotalByLogistics />
+              </Paper>
+            </Grid>
+          </Grid>
+          <br />
+          <Grid item xs={12} md={12} lg={12}>
+            <Paper
+              sx={{
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                height: 272,
+              }}
+            >
+              <RutasByLogistics />
+            </Paper>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} md={6} lg={6}>
           <Paper
             sx={{
               p: 2,
               display: "flex",
               flexDirection: "column",
-              height: 300,
+              height: 500,
             }}
           >
-            <RutasByLogistics />
+            <RutasByLogisticsTimeLine />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid item xs={12} md={6} lg={6}>
           <Paper
             sx={{
               p: 2,
               display: "flex",
               flexDirection: "column",
-              height: 300,
+              height: 500,
             }}
           >
             <RutasByDrivers />
