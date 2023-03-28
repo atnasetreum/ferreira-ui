@@ -10,7 +10,7 @@ import {
   View,
 } from "@react-pdf/renderer";
 import { Route } from "../../../ts/interfaces";
-import { formatDate, formatTimeStamp } from "../../../utils/dates";
+import { formatDate } from "../../../utils/dates";
 import { createUrlImage } from "../../../utils/images";
 
 const styles = StyleSheet.create({
@@ -132,13 +132,14 @@ const PdfRoute = ({ route }: { route: Route }) => {
             Formulario de inicio de ruta
           </Link>
         </Text>
+        <Text style={styles.text}></Text>
         <Image
           style={styles.imageQr}
           src={createUrlImage(route.car.image, "cars")}
         />
         {route.sellers.map(({ seller }, idx) => {
           return (
-            <View key={seller.id} break wrap={false}>
+            <View key={seller.id} break wrap={false} style={{ flex: 1 }}>
               <Text style={styles.subtitleLarge}>
                 <Link src={seller.linkUbicacion}>{`Punto ${idx + 1}`}</Link>
               </Text>

@@ -42,6 +42,9 @@ const RutasByDrivers = () => {
         title: {
           text: "Total de rutas por drivers",
         },
+        credits: {
+          enabled: false,
+        },
         xAxis: {
           categories: data.categories,
           type: "category",
