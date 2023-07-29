@@ -115,11 +115,11 @@ export default function MainLayout({ children, title }: Props) {
             >
               {user && `${user.name} - ${user.userType}`}
             </Typography>
-            <IconButton color="inherit">
+            {/* <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

@@ -36,12 +36,11 @@ export const SelectUsers = ({ user, setUser }: Props) => {
 
   return (
     <Autocomplete
-      id="grouped-demo"
       options={users.sort(
         (a, b) => -b.nameUserType.localeCompare(a.nameUserType)
       )}
       groupBy={(option) => option.nameUserType}
-      getOptionLabel={(option) => `${option.name} - ${option.nameUserType}`}
+      getOptionLabel={(option) => `(${option.nameUserType}) ${option.name}`}
       renderInput={(params) => <TextField {...params} label="Usuarios" />}
       renderGroup={(params) => (
         <li key={params.group}>
