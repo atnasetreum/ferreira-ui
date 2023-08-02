@@ -81,7 +81,6 @@ function RutasPage() {
             </Grid>
             <Grid item xs={12} md={12} lg={12}>
               <TableRutas
-                filters={filters}
                 setAction={setAction}
                 setRouteSelected={setRouteSelected}
                 routes={routes}

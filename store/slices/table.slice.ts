@@ -11,8 +11,10 @@ export const tableSlice = createSlice({
   name: "tables",
   initialState,
   reducers: {
-    setTables: (state, action: PayloadAction<Table[]>) =>
-      (state = action.payload),
+    setTables: (state, action: PayloadAction<Table[]>) => {
+      state = action.payload;
+      return state;
+    },
     updateTable: (state, action: PayloadAction<Table>) => {
       const newTable = action.payload;
       const foundIndex = state.findIndex((table) => table.id === newTable.id);

@@ -3,7 +3,6 @@ import IconButton from "@mui/material/IconButton";
 import { Seller } from "../../ts/interfaces";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
-import { formatTimeStamp } from "../../utils/dates";
 import { ButtonGroup, Link, Typography } from "@mui/material";
 import Image from "next/image";
 import { createUrlImage } from "../../utils/images";

@@ -9,9 +9,10 @@ import { Typography } from "@mui/material";
 import { nowTimeStamp } from "../../utils/dates";
 import { useEffect, useState } from "react";
 import { DashboardApi } from "../../utils/api";
-import { LoadingBar } from "../../components/ui";
 import RutasByLogisticsTimeLine from "../../components/dashboard/RutasByLogisticsTimeLine";
-
+// import AdapterDateFns from "@mui/lab/AdapterDateFns";
+// import { LocalizationProvider, DatePicker } from "@mui/lab";
+// import esLocale from "date-fns/locale/es";
 interface PropsInfoGlobal {
   title: string;
   total: string;
@@ -77,6 +78,7 @@ export default function DashboardContent() {
   return (
     <MainLayout title="Dashboard">
       <Grid container spacing={2}>
+        <Grid item xs={12} md={12} lg={12}></Grid>
         {data && (
           <Grid item xs={12} md={4} lg={4}>
             <Grid container spacing={2}>

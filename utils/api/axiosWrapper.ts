@@ -1,4 +1,4 @@
-import axios, { AxiosHeaders, AxiosRequestHeaders } from "axios";
+import axios, { AxiosHeaders } from "axios";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_ROUTE,

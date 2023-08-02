@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { SelectSellers, SellerRaw } from "../../ui";
 import TablePuntos from "./TablePuntos";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import SelectDrivers from "../../ui/SelectDrivers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";

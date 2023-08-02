@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import { User } from "../../ts/interfaces";
-import { formatTimeStamp } from "../../utils/dates";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { UserApi } from "../../utils/api";
 import { useNotify } from "../../hooks";

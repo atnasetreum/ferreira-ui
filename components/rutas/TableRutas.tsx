@@ -11,7 +11,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import { RouteApi } from "../../utils/api";
 import { Route } from "../../ts/interfaces";
-import { formatDate, formatTimeStamp } from "../../utils/dates";
+import { formatDate } from "../../utils/dates";
 import Link from "next/link";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import PdfRoute from "./pdf/PdfRoute";
@@ -21,7 +21,6 @@ import { useNotify } from "../../hooks";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import EditIcon from "@mui/icons-material/Edit";
-import { FiltersRoute } from "../../pages/rutas";
 import { formatter } from "../../utils/numbers";
 import TableContainerCustom from "../ui/tables/TableContainerCustom";
 
@@ -151,7 +150,6 @@ function Row(props: PropsRow) {
 interface Props {
   setAction: (action: string) => void;
   setRouteSelected: (route: Route) => void;
-  filters: FiltersRoute;
   routes: Route[];
   getAllRoutes: () => void;
 }
@@ -159,7 +157,6 @@ interface Props {
 function TableRutas({
   setAction,
   setRouteSelected,
-  filters,
   routes,
   getAllRoutes,
 }: Props) {

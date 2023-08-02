@@ -102,7 +102,6 @@ export const MainListItems = () => {
 };
 
 export const SecondaryListItems = () => {
-  const router = useRouter();
   const { logoutUser } = React.useContext(AuthContext);
   return (
     <React.Fragment>

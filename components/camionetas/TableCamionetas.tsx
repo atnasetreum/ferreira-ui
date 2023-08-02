@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyledTableCell, StyledTableRow } from "../ui";
 import { Camioneta } from "../../ts/interfaces";
-import { formatTimeStamp } from "../../utils/dates";
 import { ButtonGroup, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";

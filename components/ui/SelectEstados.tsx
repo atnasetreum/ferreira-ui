@@ -22,7 +22,10 @@ export const SelectEstados = ({ entidad, setEntidad }: Props) => {
         <TextField {...params} label="Estado" autoComplete="off" />
       )}
       value={entidad}
-      onChange={(event: any, newValue: string | null) => setEntidad(newValue)}
+      onChange={(event: any, newValue: string | null) => {
+        console.log({ event });
+        setEntidad(newValue);
+      }}
     />
   );
 };

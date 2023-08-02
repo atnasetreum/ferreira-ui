@@ -42,7 +42,10 @@ export const SelectSellers = ({
         <TextField {...params} label={label ?? "Sellers"} autoComplete="off" />
       )}
       value={value}
-      onChange={(event: any, newValue: SellerRaw | null) => onChange(newValue)}
+      onChange={(event: any, newValue: SellerRaw | null) => {
+        console.log({ event });
+        onChange(newValue);
+      }}
     />
   );
 };

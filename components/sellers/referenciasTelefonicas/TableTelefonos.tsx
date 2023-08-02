@@ -6,9 +6,8 @@ import update from "immutability-helper";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { NewSeller, Telefono } from "../FormSeller";
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { ButtonGroup, IconButton } from "@mui/material";
-import Image from "next/image";
 import { StyledTableCell, StyledTableRow } from "../../ui";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -71,7 +70,7 @@ const TableComponent = ({
                       align="center"
                       {...restCellProps}
                     >
-                      {column.render("Header")}
+                      {column.render("Header") as React.ReactNode}
                     </StyledTableCell>
                   );
                 })}
@@ -158,7 +157,7 @@ const Row = ({ row, index, moveRow }: PropsRow) => {
         const { key, ...restCellProps } = cell.getCellProps();
         return (
           <StyledTableCell key={key} align="center" {...restCellProps}>
-            {cell.render("Cell")}
+            {cell.render("Cell") as React.ReactNode}
           </StyledTableCell>
         );
       })}

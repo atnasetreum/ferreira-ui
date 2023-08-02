@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useState, useEffect } from "react";
 import { CamionetaApi } from "../../utils/api";
-import { Camioneta, Logistica } from "../../ts/interfaces";
+import { Camioneta } from "../../ts/interfaces";
 
 interface Props {
   value: Camioneta | null;
@@ -26,7 +26,10 @@ export const SelectPlacas = ({ value, onChange }: Props) => {
         <TextField {...params} label="Placas" fullWidth />
       )}
       value={value}
-      onChange={(event: any, newValue: Camioneta | null) => onChange(newValue)}
+      onChange={(event: any, newValue: Camioneta | null) => {
+        console.log({ event });
+        onChange(newValue);
+      }}
     />
   );
 };

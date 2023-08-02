@@ -1,4 +1,3 @@
-import { FiltersRoute } from "../../pages/rutas";
 import { Reporte, Route } from "../../ts/interfaces";
 import { api } from "./axiosWrapper";
 

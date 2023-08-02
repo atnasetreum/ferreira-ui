@@ -26,7 +26,10 @@ export const SelectLogisticas = ({ value, onChange }: Props) => {
         <TextField {...params} label="Logisticas" fullWidth />
       )}
       value={value}
-      onChange={(event: any, newValue: Logistica | null) => onChange(newValue)}
+      onChange={(event: any, newValue: Logistica | null) => {
+        console.log({ event });
+        onChange(newValue);
+      }}
     />
   );
 };

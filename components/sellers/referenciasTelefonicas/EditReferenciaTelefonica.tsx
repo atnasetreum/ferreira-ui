@@ -6,11 +6,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { NewSeller, Telefono } from "../FormSeller";
-import { IconButton, ButtonGroup, Tooltip } from "@mui/material";
-import Image from "next/image";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
-import PartyModeIcon from "@mui/icons-material/PartyMode";
 
 interface Props {
   telefono: Telefono;

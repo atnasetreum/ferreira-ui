@@ -73,7 +73,7 @@ const TableComponent = ({
                       align="center"
                       {...restCellProps}
                     >
-                      {column.render("Header")}
+                      {column.render("Header") as React.ReactNode}
                     </StyledTableCell>
                   );
                 })}
@@ -160,7 +160,7 @@ const Row = ({ row, index, moveRow }: PropsRow) => {
         const { key, ...restCellProps } = cell.getCellProps();
         return (
           <StyledTableCell key={key} align="center" {...restCellProps}>
-            {cell.render("Cell")}
+            {cell.render("Cell") as React.ReactNode}
           </StyledTableCell>
         );
       })}

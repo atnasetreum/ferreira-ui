@@ -11,6 +11,7 @@ export const usePagination = (rows: any) => {
     event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
+    console.log({ event });
     setPage(newPage);
   };
 

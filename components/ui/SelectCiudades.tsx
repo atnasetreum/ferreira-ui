@@ -33,7 +33,10 @@ export const SelectCiudades = ({
         <TextField {...params} label="Ciudad" autoComplete="off" />
       )}
       value={ciudad}
-      onChange={(event: any, newValue: string | null) => setCiudad(newValue)}
+      onChange={(event: any, newValue: string | null) => {
+        console.log({ event });
+        setCiudad(newValue);
+      }}
     />
   );
 };

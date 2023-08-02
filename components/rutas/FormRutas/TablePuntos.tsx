@@ -67,7 +67,7 @@ const TableComponent = ({
                       align="center"
                       {...restCellProps}
                     >
-                      {column.render("Header")}
+                      {column.render("Header") as React.ReactNode}
                     </StyledTableCell>
                   );
                 })}
@@ -154,7 +154,7 @@ const Row = ({ row, index, moveRow }: PropsRow) => {
         const { key, ...restCellProps } = cell.getCellProps();
         return (
           <StyledTableCell key={key} align="center" {...restCellProps}>
-            {cell.render("Cell")}
+            {cell.render("Cell") as React.ReactNode}
           </StyledTableCell>
         );
       })}
@@ -168,7 +168,7 @@ interface Props {
   setForm: (formr: IFormRutas) => void;
 }
 
-const TablePuntos = ({ sellers, form, setForm }: Props) => {
+const TablePuntos = ({ form, setForm }: Props) => {
   const columns = React.useMemo<Column<SellerWithOrder>[]>(
     () => [
       {

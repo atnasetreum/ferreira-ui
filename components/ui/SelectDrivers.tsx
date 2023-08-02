@@ -30,7 +30,10 @@ export default function SelectDrivers({ value, onChange }: Props) {
         <TextField {...params} label="Drivers" fullWidth />
       )}
       value={value}
-      onChange={(event: any, newValue: Driver | null) => onChange(newValue)}
+      onChange={(event: any, newValue: Driver | null) => {
+        console.log({ event });
+        onChange(newValue);
+      }}
     />
   );
 }
