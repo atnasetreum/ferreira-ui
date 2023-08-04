@@ -14,3 +14,10 @@ export const formatDateDynamic = (date: Date, format: string) =>
   moment(date).format(format);
 
 export const nowTimeStamp = () => moment().format("LLLL a");
+
+export const getMonday = () => {
+  const d = new Date();
+  const day = d.getDay(),
+    diff = d.getDate() - day + (day == 0 ? -6 : 1);
+  return new Date(d.setDate(diff));
+};

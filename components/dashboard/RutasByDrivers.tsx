@@ -10,19 +10,27 @@ if (typeof Highcharts === "object") {
   cylinder(Highcharts);
 }
 
-const RutasByDrivers = () => {
+const RutasByDrivers = ({
+  startDate,
+  endDate,
+  isValidRange,
+  range,
+}: {
+  startDate: Date;
+  endDate: Date;
+  isValidRange: boolean;
+  range: string;
+}) => {
   const [data, setData] = useState<{ categories: string[]; data: number[] }>({
     categories: [],
     data: [],
   });
 
-  const getData = () => {
-    DashboardApi.rutasByDrivers().then(setData);
-  };
-
   useEffect(() => {
-    getData();
-  }, []);
+    if (!isValidRange) return;
+
+    DashboardApi.rutasByDrivers({ startDate, endDate }).then(setData);
+  }, [isValidRange, startDate, endDate]);
 
   return (
     <HighchartsReact
@@ -41,6 +49,9 @@ const RutasByDrivers = () => {
         },
         title: {
           text: "Total de rutas por drivers",
+        },
+        subtitle: {
+          text: range,
         },
         credits: {
           enabled: false,

@@ -3,16 +3,24 @@ import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
 import { DashboardApi } from "../../utils/api";
 
-const TotalByLogistics = () => {
+const TotalByLogistics = ({
+  startDate,
+  endDate,
+  isValidRange,
+  range,
+}: {
+  startDate: Date;
+  endDate: Date;
+  isValidRange: boolean;
+  range: string;
+}) => {
   const [data, setData] = useState<{ name: string; y: number }[]>([]);
 
-  const getData = () => {
-    DashboardApi.totalByLogistics().then(setData);
-  };
-
   useEffect(() => {
-    getData();
-  }, []);
+    if (!isValidRange) return;
+
+    DashboardApi.totalByLogistics({ startDate, endDate }).then(setData);
+  }, [isValidRange, startDate, endDate]);
 
   return (
     <HighchartsReact
@@ -28,6 +36,10 @@ const TotalByLogistics = () => {
         },
         title: {
           text: "Total de ingresos por logistica",
+          align: "left",
+        },
+        subtitle: {
+          text: range,
           align: "left",
         },
         credits: {

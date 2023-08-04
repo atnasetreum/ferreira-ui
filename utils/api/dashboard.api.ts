@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import { StateCountDashboard } from "../../pages/dashboard";
 import { api } from "./axiosWrapper";
 
@@ -18,13 +20,35 @@ async function carsByLogistics() {
   return data as Array<Array<{ z: string; w: number }>>;
 }
 
-async function totalByLogistics() {
-  const { data } = await api.get(`${basePath}/totalByLogistics`);
+async function totalByLogistics({
+  startDate,
+  endDate,
+}: {
+  startDate: Date;
+  endDate: Date;
+}) {
+  const { data } = await api.get(`${basePath}/totalByLogistics`, {
+    params: {
+      startDate: moment(startDate).format("YYYY-MM-DD"),
+      endDate: moment(endDate).format("YYYY-MM-DD"),
+    },
+  });
   return data as { name: string; y: number }[];
 }
 
-async function rutasByLogistics() {
-  const { data } = await api.get(`${basePath}/rutasByLogistics`);
+async function rutasByLogistics({
+  startDate,
+  endDate,
+}: {
+  startDate: Date;
+  endDate: Date;
+}) {
+  const { data } = await api.get(`${basePath}/rutasByLogistics`, {
+    params: {
+      startDate: moment(startDate).format("YYYY-MM-DD"),
+      endDate: moment(endDate).format("YYYY-MM-DD"),
+    },
+  });
   return data as { name: string; y: number }[];
 }
 
@@ -33,13 +57,35 @@ async function rutasByLogisticsTimeLine() {
   return data as ResponseRutasByLogisticsTimeLine;
 }
 
-async function rutasByDrivers() {
-  const { data } = await api.get(`${basePath}/rutasByDrivers`);
+async function rutasByDrivers({
+  startDate,
+  endDate,
+}: {
+  startDate: Date;
+  endDate: Date;
+}) {
+  const { data } = await api.get(`${basePath}/rutasByDrivers`, {
+    params: {
+      startDate: moment(startDate).format("YYYY-MM-DD"),
+      endDate: moment(endDate).format("YYYY-MM-DD"),
+    },
+  });
   return data as { categories: string[]; data: number[] };
 }
 
-async function stateCountDashboard() {
-  const { data } = await api.get(`${basePath}/stateCountDashboard`);
+async function stateCountDashboard({
+  startDate,
+  endDate,
+}: {
+  startDate: Date;
+  endDate: Date;
+}) {
+  const { data } = await api.get(`${basePath}/stateCountDashboard`, {
+    params: {
+      startDate: moment(startDate).format("YYYY-MM-DD"),
+      endDate: moment(endDate).format("YYYY-MM-DD"),
+    },
+  });
   return data as StateCountDashboard;
 }
 

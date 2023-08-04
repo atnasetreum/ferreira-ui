@@ -3,16 +3,24 @@ import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
 import { DashboardApi } from "../../utils/api";
 
-const RutasByLogistics = () => {
+const RutasByLogistics = ({
+  startDate,
+  endDate,
+  isValidRange,
+  range,
+}: {
+  startDate: Date;
+  endDate: Date;
+  isValidRange: boolean;
+  range: string;
+}) => {
   const [data, setData] = useState<{ name: string; y: number }[]>([]);
 
-  const getData = () => {
-    DashboardApi.rutasByLogistics().then(setData);
-  };
-
   useEffect(() => {
-    getData();
-  }, []);
+    if (!isValidRange) return;
+
+    DashboardApi.rutasByLogistics({ startDate, endDate }).then(setData);
+  }, [isValidRange, startDate, endDate]);
 
   return (
     <HighchartsReact
@@ -27,6 +35,10 @@ const RutasByLogistics = () => {
         },
         title: {
           text: "Total de rutas por logistica",
+          align: "left",
+        },
+        subtitle: {
+          text: range,
           align: "left",
         },
         credits: {
