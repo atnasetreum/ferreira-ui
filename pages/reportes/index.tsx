@@ -2,13 +2,7 @@ import Grid from "@mui/material/Grid";
 import MainLayout from "../../layouts/MainLayout";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import {
-  Button,
-  ButtonGroup,
-  Paper,
-  TextField,
-  TextFieldProps,
-} from "@mui/material";
+import { Button, ButtonGroup, Paper } from "@mui/material";
 import { useState, useEffect } from "react";
 import SimCardDownloadIcon from "@mui/icons-material/SimCardDownload";
 import TableReportes from "../../components/reportes/TableReportes";

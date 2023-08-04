@@ -1,18 +1,10 @@
-import {
-  Button,
-  ButtonGroup,
-  Grid,
-  Paper,
-  TextField,
-  TextFieldProps,
-} from "@mui/material";
+import { Button, ButtonGroup, Grid, Paper, TextField } from "@mui/material";
 import { SelectSellers, SellerRaw } from "../../ui";
 import TablePuntos from "./TablePuntos";
 import { useState, useEffect } from "react";
 import SelectDrivers from "../../ui/SelectDrivers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import esLocale from "date-fns/locale/es";
 import SaveIcon from "@mui/icons-material/Save";
 import { RouteApi } from "../../../utils/api";
 import { useNotify } from "../../../hooks";
