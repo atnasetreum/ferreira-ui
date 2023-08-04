@@ -13,6 +13,7 @@ import RutasByLogisticsTimeLine from "../../components/dashboard/RutasByLogistic
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import moment from "moment";
+import esLocale from "date-fns/locale/es";
 
 interface PropsInfoGlobal {
   title: string;

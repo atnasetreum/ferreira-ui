@@ -1,16 +1,9 @@
-import {
-  Grid,
-  Paper,
-  TextField,
-  TextFieldProps,
-  Typography,
-} from "@mui/material";
+import { Grid, Paper, TextField, Typography } from "@mui/material";
 import React from "react";
 import { FiltersRoute } from "../../pages/rutas";
 import SouthIcon from "@mui/icons-material/South";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import esLocale from "date-fns/locale/es";
 import SelectDrivers from "../ui/SelectDrivers";
 import { SelectLogisticas, SelectPlacas } from "../ui";
 
@@ -67,15 +60,15 @@ const FiltersOptsRoutes = ({ filters, setFilters }: Props) => {
       </Grid>
       <Grid item xs={12} md={6} lg={2}>
         <Paper>
-          <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Fecha"
-              inputFormat="dd/MM/yyyy"
+              slotProps={{
+                textField: { fullWidth: true },
+              }}
+              format="dd/MM/yyyy"
               value={filters.date}
               onChange={(value) => setFilters({ ...filters, date: value })}
-              renderInput={(params: TextFieldProps) => (
-                <TextField {...params} fullWidth />
-              )}
             />
           </LocalizationProvider>
         </Paper>

@@ -2,7 +2,6 @@ import Grid from "@mui/material/Grid";
 import MainLayout from "../../layouts/MainLayout";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import esLocale from "date-fns/locale/es";
 import {
   Button,
   ButtonGroup,
@@ -79,38 +78,32 @@ function LogisticasPage() {
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
           <Paper>
-            <LocalizationProvider
-              dateAdapter={AdapterDateFns}
-              locale={esLocale}
-            >
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Fecha Inicial"
-                inputFormat="dd/MM/yyyy"
+                slotProps={{
+                  textField: { fullWidth: true },
+                }}
+                format="dd/MM/yyyy"
                 value={form.startDate}
                 onChange={(value) => setForm({ ...form, startDate: value })}
                 maxDate={form.endDate}
-                renderInput={(params: TextFieldProps) => (
-                  <TextField {...params} fullWidth autoComplete="off" />
-                )}
               />
             </LocalizationProvider>
           </Paper>
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
           <Paper>
-            <LocalizationProvider
-              dateAdapter={AdapterDateFns}
-              locale={esLocale}
-            >
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Fecha Final"
-                inputFormat="dd/MM/yyyy"
+                slotProps={{
+                  textField: { fullWidth: true },
+                }}
+                format="dd/MM/yyyy"
                 value={form.endDate}
                 onChange={(value) => setForm({ ...form, endDate: value })}
                 minDate={form.startDate}
-                renderInput={(params: TextFieldProps) => (
-                  <TextField {...params} fullWidth autoComplete="off" />
-                )}
               />
             </LocalizationProvider>
           </Paper>

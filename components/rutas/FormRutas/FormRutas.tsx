@@ -177,15 +177,15 @@ const FormRutas = ({
       </Grid>
       <Grid item xs={12} md={6} lg={2}>
         <Paper>
-          <LocalizationProvider dateAdapter={AdapterDateFns} locale={esLocale}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Fecha"
-              inputFormat="dd/MM/yyyy"
+              slotProps={{
+                textField: { fullWidth: true },
+              }}
+              format="dd/MM/yyyy"
               value={form.date}
               onChange={(value) => setForm({ ...form, date: value })}
-              renderInput={(params: TextFieldProps) => (
-                <TextField {...params} fullWidth />
-              )}
             />
           </LocalizationProvider>
         </Paper>
